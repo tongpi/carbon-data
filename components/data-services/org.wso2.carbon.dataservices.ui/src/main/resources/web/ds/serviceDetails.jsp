@@ -369,7 +369,7 @@
                         <table>
                            <tr>
                             <td colspan="2">
-                                <a id="txManagerJNDINameMax" onclick="showAdvancedServiceDetailsConfigurations()" style="background-image: none;" href="#" >Show Advanced Distributed Transactions Settings</a>
+                                <a id="txManagerJNDINameMax" onclick="showAdvancedServiceDetailsConfigurations()" style="background-image: none;" href="#" >显示高级分布式事务设置</a>
                             </td>
                             </tr>
                             <tr id="txManagerNameRow" style="display:none">
@@ -478,11 +478,11 @@ window.onload = onLoadPage();
         var advancedConfigFields = document.getElementById('txManagerNameRow');
         if (advancedConfigFields.style.display == 'none') {
             // symbolMax.setAttribute('style','background-image:url(images/minus.gif);');
-            symbolMax.innerHTML = 'Hide Advanced Distributed Transactions Settings';
+            symbolMax.innerHTML = '隐藏高级分布式事务设置';
             advancedConfigFields.style.display = '';
         } else {
             //symbolMax.setAttribute('style','background-image:url(images/plus.gif);');
-            symbolMax.innerHTML = 'Show Advanced Distributed Transactions Settings';
+            symbolMax.innerHTML = '显示高级分布式事务设置';
             advancedConfigFields.style.display = 'none';
         }
     }
