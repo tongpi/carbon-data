@@ -20,7 +20,7 @@
 <%@ page import="org.wso2.carbon.ui.CarbonUIUtil" %>
 <%@ page import="org.wso2.carbon.utils.ServerConstants" %>
 <%@ page import="org.wso2.carbon.dataservices.task.ui.DSTaskClient" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 
@@ -108,12 +108,12 @@
                                 key="dataservices.task.miscellaneous.information"/></td>
                     </tr>
                     <tr>
-                        <td>Scheduling Type</td>
+                        <td>任务类型</td>
                         <td>
                             <select id="scheduleType" name="scheduleType" onchange="getScheduleType(this.value)">
-                                <option value="">---SELECT---</option>
-                                <option value="DataService Operation">DataService Operation</option>
-                                <option value="DataService Task Class">DataService Task Class</option>
+                                <option value="">---请选择---</option>
+                                <option value="DataService Operation">数据服务的操作</option>
+                                <option value="DataService Task Class">数据服务任务类</option>
                             </select>
                         </td>
                     </tr>
@@ -124,7 +124,7 @@
                         <td align="left">
                             <select id="serviceList" name="serviceList" class="longInput"
                                     onchange="getOperations(this);">
-                                <option value="">--------------------SELECT-----------------------
+                                <option value="">--------------------请选择-----------------------
                                 </option>
                                 <%
                                     String[] services = client.getAllSchedulableDataServices();
@@ -150,7 +150,7 @@
                         </td>
                     </tr>
                     <tr id="dssTaskClassRow" name="dssTaskClassRow" style="display:none;">
-                        <td>DataService Task Class</td>
+                        <td>数据服务任务类</td>
                         <td><input id="dssTaskClass" name="dssTaskClass" class="longInput" type="text" value=""/></td>
                     </tr>
 

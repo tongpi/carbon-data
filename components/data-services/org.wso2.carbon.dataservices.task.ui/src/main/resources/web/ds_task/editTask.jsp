@@ -24,7 +24,7 @@
 <%@ page import="org.wso2.carbon.dataservices.task.ui.DSTaskClient" %>
 <%@ page import="org.wso2.carbon.dataservices.task.ui.stub.xsd.DSTaskInfo" %>
 <%@ page import="org.wso2.carbon.dataservices.task.ui.DSTaskManagementHelper" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 
@@ -120,20 +120,20 @@
                     </tr>
 
                     <tr>
-                        <td>Scheduling Type</td>
+                        <td>任务类型</td>
                         <td>
                             <select id="scheduleType" name="scheduleType" disabled="disabled"
                                     onchange="getScheduleType(this.value)">
-                                <option value="">---SELECT---</option>
-                                <option value="DataService Operation" <%=(taskClass == null) ? "selected=\"selected\"" : ""%>>DataService Operation</option>
-                                <option value="DataService Task Class" <%=(taskClass != null && !"".equals(taskClass) ? "selected=\"selected\"" : "")%>>DataService Task Class</option>
+                                <option value="">---请选择---</option>
+                                <option value="DataService Operation" <%=(taskClass == null) ? "selected=\"selected\"" : ""%>>数据服务的操作</option>
+                                <option value="DataService Task Class" <%=(taskClass != null && !"".equals(taskClass) ? "selected=\"selected\"" : "")%>>数据服务任务类</option>
                             </select>
                         </td>
                     </tr>
 
                     <% if (taskClass != null && !"".equals(taskClass)) { %>
                     <tr id="dssTaskClassRow" name="dssTaskClassRow" >
-                        <td>DataService Task Class</td>
+                        <td>数据服务任务类</td>
                         <td><input id="dssTaskClass" name="dssTaskClass" class="longInput"
                                    type="text" value="<%=taskClass%>" readonly/></td>
                     </tr>
