@@ -127,12 +127,12 @@ function validateDatabaseSelection(){
     var datasource = document.getElementById("datasource").options[document.getElementById("datasource").selectedIndex].value;
 
     if(datasource == '') {
-        CARBON.showWarningDialog("Carbon Datasource is mandatory");
+        CARBON.showWarningDialog("请选择一个数据源");
         return false;
     }
     var db = document.getElementById('dbName').value;
     if(db == ''){
-        CARBON.showWarningDialog("Database Name is mandatory");
+        CARBON.showWarningDialog("数据源名称不能为空");
         return false;
     }
 
@@ -151,7 +151,7 @@ function validateTableSelection(obj){
 	  }
 	  index+=1;
 	 }
-   CARBON.showWarningDialog("Atleast one table needs to be selected to proceed");
+   CARBON.showWarningDialog("至少选择一张表才能继续");
    return false;
 }
 

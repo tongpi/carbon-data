@@ -27,7 +27,10 @@
 <%@ page import="org.apache.axis2.context.ConfigurationContext"%>
 <%@ page import="org.apache.axis2.AxisFault"%>
 <%@ page import="org.wso2.carbon.dataservices.ui.DataServiceAdminClient" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%> 
+<%@ page contentType="text/html;charset=utf-8"%> 
            <%@ page import="java.util.ArrayList" %>
+		   
            <carbon:breadcrumb
         label="Deployed Services"
         resourceBundle="org.wso2.carbon.dataservices.ui.i18n.Resources"
@@ -102,14 +105,14 @@
                                     </tr>
                                     <% }
                                      %>
-                                   <h3>Following Service(s) are Deployed Sucessfully</h3>
+                                   <h3>成功部署以下服务</h3>
                                 </table>
                             </td></tr>
                         </table>
                     </td>
                     </tr>
                     <% } else {%>
-                    <h3>Service Deployment Unsuccessful due to </h3>
+                    <h3>由于以下原因，服务部署失败 </h3>
                     <tr>
                                                             <td><%= error%></td>
                                                         </tr>

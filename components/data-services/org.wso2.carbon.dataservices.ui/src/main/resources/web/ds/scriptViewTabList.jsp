@@ -29,6 +29,8 @@
 <%@ page import="org.wso2.carbon.dataservices.ui.stub.admin.core.xsd.PaginatedTableInfo" %>
 <%@ page import="org.wso2.carbon.ui.CarbonUIUtil" %>
 <%@ page import="org.owasp.encoder.Encode" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%> 
+<%@ page contentType="text/html;charset=utf-8"%> 
 <carbon:breadcrumb
         label="Select the tables"
         resourceBundle="org.wso2.carbon.dataservices.ui.i18n.Resources"
@@ -201,23 +203,23 @@
 <fmt:bundle basename="org.wso2.carbon.dataservices.ui.i18n.Resources">
 
     <div id="middle">
-        <h2>Customize Service Generation</h2>
+        <h2>自定义服务生成</h2>
         <form action="scriptServiceGeneratingMode.jsp" method="post" name="dataForm">
            <div id="workArea">
                <table>
                 <tr>
                 <td>
-                    <a href="#" onclick="selectAll(true);return false;"  style="cursor:pointer">Select all</a>&nbsp<b>|</b>&nbsp;
+                    <a href="#" onclick="selectAll(true);return false;"  style="cursor:pointer">在此页面中选择全部</a>&nbsp<b>|</b>&nbsp;
                 </td>
                 <td>
-                    <a href="#" onclick="selectAll(false);return false; "  style="cursor:pointer">Select none</a>
+                    <a href="#" onclick="selectAll(false);return false; "  style="cursor:pointer">取消选择</a>
                 </td>
                 </tr>
                 </table>
                 <table class="styledLeft">
                     <thead>
                         <tr>
-                            <th colspan="2">Select Table(s)</th>
+                            <th colspan="2">选择表</th>
                         </tr>
                         </thead>
                         <%     if (totalSchemaListNew!= null){%>
