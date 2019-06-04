@@ -25,6 +25,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="org.owasp.encoder.Encode" %>
+<%@ page contentType="text/html;charset=utf-8"%>
 <script type="text/javascript" src="../admin/js/main.js"></script>
 
 <jsp:include page="../dialog/display_messages.jsp"/>
@@ -335,7 +336,7 @@
                                     <td colspan="3">
                                         <a class="icon-link"
                                            style="background-image:url(../admin/images/add.gif);"
-                                           href='addOperation.jsp?param=qparam&operationName=<%=Encode.forHtmlAttribute(operationName)%>&operationDesc=<%=Encode.forHtmlAttribute(operationDesc) %>&action=<%=Encode.forHtml(action)%>&selectedQueryId=<%=Encode.forHtmlAttribute(selectedQueryId)%>' >Add Query Params as Operation Params</a>
+                                           href='addOperation.jsp?param=qparam&operationName=<%=Encode.forHtmlAttribute(operationName)%>&operationDesc=<%=Encode.forHtmlAttribute(operationDesc) %>&action=<%=Encode.forHtml(action)%>&selectedQueryId=<%=Encode.forHtmlAttribute(selectedQueryId)%>' >添加查询参数作为操作参数</a>
                                     </td>
                                 </tr>
                                 <%
