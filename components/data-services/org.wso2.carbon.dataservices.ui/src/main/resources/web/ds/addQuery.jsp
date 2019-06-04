@@ -29,6 +29,7 @@
 <%@ page import="org.wso2.carbon.ui.util.CharacterEncoder" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.DataServiceAdminClient" %>
+<%@ page contentType="text/html;charset=utf-8"%>
 <fmt:bundle basename="org.wso2.carbon.dataservices.ui.i18n.Resources">
 <script type="text/javascript" src="../ajax/js/prototype.js"></script>
 <script type="text/javascript" src="../resources/js/resource_util.js"></script>
@@ -1067,10 +1068,10 @@ window.onload=function() {
                            value="<%=xsltPath%>"/></td>
                 <td><a onclick="showResourceTree('xsltPath', setValueConf , '/_system/config')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> Configuration Registry </a></td>
+                       href="#"> 配置注册表 </a></td>
                 <td><a onclick="showResourceTree('xsltPath', setValueGov , '/_system/governance')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> Govenance Registry </a></td>
+                       href="#">管理注册 </a></td>
 
             </tr>
 
@@ -1101,10 +1102,10 @@ window.onload=function() {
                        href="#">Registry path</a></td>--%>
                 <td><a onclick="showResourceTree('rdfXsltPath', setValueConf , '/_system/config')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> Configuration Registry </a></td>
+                       href="#"> 配置注册表 </a></td>
                 <td><a onclick="showResourceTree('rdfXsltPath', setValueGov , '/_system/governance')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> Governance Registry </a></td>
+                       href="#"> 管理注册 </a></td>
             </tr>
         </table>
     </td>

@@ -40,6 +40,7 @@
 <%@ page import="java.util.regex.Pattern" %>
 <%@ page import="java.util.regex.Matcher" %>
 <%@ page import="org.wso2.carbon.dataservices.sql.driver.parser.Constants" %>
+<%@ page contentType="text/html;charset=utf-8"%>
 
 <fmt:bundle basename="org.wso2.carbon.dataservices.ui.i18n.Resources">
 <script type="text/javascript" src="../ajax/js/prototype.js"></script>
@@ -2350,8 +2351,8 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 
         <textarea cols="40" rows="5" name="web_harvest_config_textArea" <%=!checked ? "style=\'display:none\'" : ""%> id="web_harvest_config_textArea"><%=configEle%></textarea>
         <input type="text" size="50" id="<%=propertyName%>" <%=checked ? "style=\'display:none\'" : ""%> name="<%=propertyName%>"  value="<%=filePath%>"/>
-        <td id="config_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueConf, '/_system/config')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > Configuration Registry </a></td>
-        <td id="gov_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueGov, '/_system/governance')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > Govenance Registry </a></td>
+        <td id="config_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueConf, '/_system/config')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > 配置注册表 </a></td>
+        <td id="gov_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueGov, '/_system/governance')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > 管理注册 </a></td>
 
         <% } else {
         	if(propertyName.equals("gspread_password") || propertyName.equals("jndi_password") || propertyName.equals(DBConstants.Cassandra.PASSWORD)) {%>
@@ -2380,8 +2381,8 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
         	                <td><fmt:message key="<%=propertyName%>"/><%=(isFieldMandatory(propertyName)?"<font color=\"red\">*</font>":"")%></td>
                             <td><input type="text" size="50" id="<%=propertyName%>" name="<%=propertyName%>" value="<%=propertyValue%>" />
                             </td>
-                               <td><a onclick="showResourceTree('<%=propertyName%>', setValueConf, '/_system/config')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#"> Configuration Registry </a></td>
-           	   					<td><a onclick="showResourceTree('<%=propertyName%>', setValueGov, '/_system/governance')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#"> Govenance Registry </a></td>
+                               <td><a onclick="showResourceTree('<%=propertyName%>', setValueConf, '/_system/config')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#"> 配置注册表 </a></td>
+           	   					<td><a onclick="showResourceTree('<%=propertyName%>', setValueGov, '/_system/governance')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#"> 管理注册 </a></td>
                              </tr>
                         <%} %>
         <%} else if (propertyName.equals(DBConstants.MongoDB.SERVERS) || propertyName.equals(DBConstants.Cassandra.CASSANDRA_SERVERS)) {%>

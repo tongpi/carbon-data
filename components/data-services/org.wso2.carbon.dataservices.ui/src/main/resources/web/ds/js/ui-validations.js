@@ -1717,7 +1717,7 @@ function addXAPropertyFields(obj,propertyCount) {
 
     var td1 = document.createElement("TD");
     var label = document.createElement('label');
-    var labelText = document.createTextNode('Property Name');
+    var labelText = document.createTextNode('属性名称');
     label.appendChild(labelText);
 
 
@@ -1736,7 +1736,7 @@ function addXAPropertyFields(obj,propertyCount) {
 
     var td3 = document.createElement("TD");
     var valueLabel = document.createElement('label');
-    var valueLabelText = document.createTextNode('Property Value');
+    var valueLabelText = document.createTextNode('属性值');
     valueLabel.appendChild(valueLabelText);
 
 
@@ -1762,7 +1762,7 @@ function addXAPropertyFields(obj,propertyCount) {
 
     var aliasLabelTD = document.createElement("td");
     var valueAlLabel = document.createElement('label');
-    var aliasLabelText = document.createTextNode('Use as Secret Alias');
+    var aliasLabelText = document.createTextNode('用作机密别名');
     valueAlLabel.appendChild(aliasLabelText);
 
     aliasTD.appendChild(valueAl);
