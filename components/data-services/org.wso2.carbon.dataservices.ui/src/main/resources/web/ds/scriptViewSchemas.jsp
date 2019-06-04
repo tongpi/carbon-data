@@ -29,6 +29,8 @@
 <%@ page import="org.wso2.carbon.dataservices.ui.stub.admin.core.xsd.PaginatedTableInfo" %>
 <%@ page import="org.wso2.carbon.ui.CarbonUIUtil" %>
 <%@ page import="org.owasp.encoder.Encode" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%> 
+<%@ page contentType="text/html;charset=utf-8"%> 
 <carbon:breadcrumb
         label="schema-list"
         resourceBundle="org.wso2.carbon.dataservices.ui.i18n.Resources"
@@ -150,7 +152,7 @@
                             <tr>
                                <td colspan="2">
                                    <table>
-                                       <tr><td></td> <td>Schema Name</td>
+                                       <tr><td></td> <td>方案名称</td>
                                     <td><input type="text" name="schemaName" id="schemaName"
                                                value="<%=schemaName%>"/></td></tr>
                                    </table>
