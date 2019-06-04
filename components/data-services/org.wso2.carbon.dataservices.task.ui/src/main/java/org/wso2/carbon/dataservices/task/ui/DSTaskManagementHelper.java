@@ -54,7 +54,7 @@ public class DSTaskManagementHelper {
         if (taskName == null && "".equals(taskName)) {
             taskName = request.getParameter("taskName_hidden");
             if (taskName == null && "".equals(taskName)) {
-                handleException("Task Name cannot be empty");
+                handleException("任务名称不能为空");
             }
         }
 
@@ -70,7 +70,7 @@ public class DSTaskManagementHelper {
 			try {
 				dsTaskInfo.setTaskInterval(Long.parseLong(interval.trim()));
 			} catch (NumberFormatException e) {
-				handleException("Invalid value for interval (Expected type is integer) : "
+				handleException("间隔值无效（类型应为整数）: "
 						+ interval);
 			}
 		}
@@ -80,7 +80,7 @@ public class DSTaskManagementHelper {
 			try {
 				dsTaskInfo.setTaskCount(Integer.parseInt(count.trim()));
 			} catch (NumberFormatException e) {
-				handleException("Invalid value for Count (Expected type is int) : "
+				handleException("计数值无效（类型应为int） : "
 						+ count);
 			}
 		}
@@ -96,14 +96,14 @@ public class DSTaskManagementHelper {
 
             String dataServiceName = request.getParameter("dataServiceName");
             if (dataServiceName == null || "".equals(dataServiceName)) {
-                handleException("Service Name cannot be null");
+                handleException("服务名不能为空");
             }
 
             dsTaskInfo.setServiceName(dataServiceName);
 
             String operationName = request.getParameter("operationName");
             if (operationName == null || "".equals(operationName)) {
-                handleException("Operation name cannot be null");
+                handleException("操作名不能为空");
             }
 
             dsTaskInfo.setOperationName(operationName);
@@ -131,7 +131,7 @@ public class DSTaskManagementHelper {
             cal.setTime(startTime);
             return cal;
         } catch (ParseException e) {
-            throw new AxisFault("Invalid DateTime format", e);
+            throw new AxisFault("日期时间格式无效", e);
         }
     }
 

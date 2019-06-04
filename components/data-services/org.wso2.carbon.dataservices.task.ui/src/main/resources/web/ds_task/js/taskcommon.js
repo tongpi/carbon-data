@@ -54,42 +54,42 @@ function validateTaskInputs() {
     var scheduleType = document.getElementById('scheduleType').value;
     var taskClass = document.getElementById('dssTaskClass').value;
     if (taskName == "" || taskName == null) {
-        CARBON.showWarningDialog("Task name cannot be empty");
+        CARBON.showWarningDialog("任务名称不能为空");
         return false;
     }
     if (triggerCount == "" || triggerCount == null) {
-        CARBON.showWarningDialog("Task repeat count cannot be empty");
+        CARBON.showWarningDialog("任务重复计数不能为空");
         return false;
     }
     if (!(parseInt(triggerCount) >= -1)) {
-    	CARBON.showWarningDialog("Task repeat count must be >= -1");
+    	CARBON.showWarningDialog("任务重复计数必须大于等于-1");
         return false;
     }
     if (triggerInterval == "" || triggerInterval == null) {
-        CARBON.showWarningDialog("Task interval cannot be empty");
+        CARBON.showWarningDialog("任务间隔不能为空");
         return false;
     }
     // triggerCount == 0 and triggerInterval == 0 is valid, 
     // since there need not be a trigger interval for an one time trigger.
     if (!(parseInt(triggerInterval) > 0) && !(parseInt(triggerCount) == 0 && parseInt(triggerInterval) == 0)) {
-    	CARBON.showWarningDialog("Task interval must be > 0");
+    	CARBON.showWarningDialog("任务间隔必须大于0");
         return false;
     }
     if (scheduleType == "" || scheduleType == null) {
-        CARBON.showWarningDialog("Select a schedule type");
+        CARBON.showWarningDialog("选择计划类型");
         return false;
     } else if (scheduleType == "DataService Operation") {
         if (serviceName == "" || serviceName == null) {
-            CARBON.showWarningDialog("Select a valid data service name");
+            CARBON.showWarningDialog("选择有效的数据服务名称");
             return false;
         }
         if (operationName == "" || operationName == null) {
-            CARBON.showWarningDialog("Select a valid data service operation");
+            CARBON.showWarningDialog("选择有效的数据服务操作");
             return false;
         }
     } else if (scheduleType == "DataService Task Class") {
         if (taskClass == "" || taskClass == null) {
-            CARBON.showWarningDialog("Task Class cannot be empty");
+            CARBON.showWarningDialog("任务类不能为空");
             return false;
         }
     }
@@ -102,7 +102,7 @@ function validateTaskInputs() {
     if (triggerValue == 'simple') {
         if (triggerInterval != undefined && triggerInterval != null) {
             if (!isNumber(trim(triggerInterval))) {
-                CARBON.showWarningDialog("Please enter a valid value for task interval");
+                CARBON.showWarningDialog("请输入有效的任务间隔值");
                 return false;
             }
         }
