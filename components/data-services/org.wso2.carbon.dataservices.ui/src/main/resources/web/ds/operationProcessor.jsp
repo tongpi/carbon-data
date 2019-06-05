@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="org.wso2.carbon.dataservices.common.DBConstants.DBSFields"%>
 <%@ page import="java.util.Set" %>
 <%@ page import="org.wso2.carbon.ui.CarbonUIMessage" %>
@@ -33,7 +34,7 @@
     String returnRequestStatusStr = request.getParameter("returnRequestStatus");
     String flag = request.getParameter("flag");
     String paramName = request.getParameter("paramName");
-    
+
     String action = request.getParameter("action");
     action = (action == null) ? "" : action;
     oldOperationName = (oldOperationName == null) ? "" : oldOperationName;
@@ -50,8 +51,8 @@
     Operation oldOperation = dataService.getOperation(oldOperationName);
 
     if (operation != null && action.equals("")) {
-        String message = "Please enter a different operation name. An operation called " + operationName
-                + " already exists.";
+        String message = "请指定一个不同的操作名称. 名为 " + operationName
+                + " 的操作名称已存在.";
         CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
         forwardTo = "addOperation.jsp";
 
@@ -84,7 +85,7 @@
                         forwardTo = "addOperation.jsp?operationName="+operationName+"&operationDesc="+operationDesc+"&enableStreaming="+enableStreaming+"&action=edit";
                     }
                     callQuery.setWithParams(withParamsList);
-                    
+
                 }
                     callQuery.setHref(queryId);
                     Operation newOperation = new Operation();
@@ -157,7 +158,7 @@
                     }
 //                forwardTo = "addOperation.jsp?action=edit&operationName="+operation.getName()+"&operationDesc="+operationDesc+"&enableStreaming="+enableStreaming;
                 forwardTo = "addOperation.jsp?action=edit&operationName="+operation.getName()+"&operationDesc="+operationDesc+"&enableStreaming="+enableStreaming+"&selectedQueryId="+queryId;
-                  
+
                 }
 
         }

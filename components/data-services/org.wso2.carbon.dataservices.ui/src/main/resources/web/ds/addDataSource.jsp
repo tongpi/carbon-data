@@ -15,7 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
-
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="java.util.Properties"%>
 <%@page import="org.wso2.carbon.dataservices.common.DBConstants.CustomDataSource"%>
 <%@page import="org.apache.axis2.context.ConfigurationContext"%>
@@ -329,7 +329,7 @@ private Config addNotAvailableFunctions(Config config,String selectedType, HttpS
 		 }
    	 if (config.getPropertyValue(DBConstants.RDBMS.URL) == null) {
 			 config.addProperty(DBConstants.RDBMS.URL, "");
-		 } 
+		 }
     	if (config.getPropertyValue(DBConstants.Excel.DATASOURCE) == null) {
 			 config.addProperty(DBConstants.Excel.DATASOURCE, "");
 		 }
@@ -607,7 +607,7 @@ private Config addNotAvailableFunctions(Config config,String selectedType, HttpS
 
 /* private Config addRDBMSProps(Config config, String selectedType, HttpServletRequest request) {
 	if (DBConstants.DataSourceTypes.RDBMS.equals(selectedType)) {
-		
+
 	}
 } */
 
@@ -621,20 +621,20 @@ private String getDataSourceType(String jdbcUrl) {
             return DBConstants.DataSourceTypes.EXCEL;
         } else if (DBConstants.DSSQLDriverPrefixes.GSPRED_PREFIX.equals(m.group())) {
             return DBConstants.DataSourceTypes.GDATA_SPREADSHEET;
-        } 
+        }
     }
     return DBConstants.DataSourceTypes.RDBMS;
 }
 
 private String getExcelGspreadUrl(String excelGspreadJDBCUrl, String dsType) {
 	if (dsType.equals("GDATA_SPREADSHEET")) {
-		String gSpreadPrexixesString = DBConstants.DSSQLDriverPrefixes.GSPRED_PREFIX + ":" + 
+		String gSpreadPrexixesString = DBConstants.DSSQLDriverPrefixes.GSPRED_PREFIX + ":" +
 				DBConstants.DSSQLDriverPrefixes.FILE_PATH + "=";
 		int gSpreadPrexixesLength = gSpreadPrexixesString.length();
 		int endIndex = excelGspreadJDBCUrl.indexOf(";");
 		return excelGspreadJDBCUrl.substring(gSpreadPrexixesLength, endIndex);
 	} else {
-		String excelPrexixesString = DBConstants.DSSQLDriverPrefixes.EXCEL_PREFIX + ":" + 
+		String excelPrexixesString = DBConstants.DSSQLDriverPrefixes.EXCEL_PREFIX + ":" +
 				DBConstants.DSSQLDriverPrefixes.FILE_PATH + "=";
 		int excelPrexixesLength = excelPrexixesString.length();
 		return excelGspreadJDBCUrl.substring(excelPrexixesLength);
@@ -647,16 +647,16 @@ private String getVisibility(String gSpreadJDBCUrl) {
 		String subParams[] = params[1].split("=");
 		if (subParams.length > 1 && subParams[0].equals("visibility")) {
 			return subParams[1];
-		} 
+		}
 		if (params.length > 1)
 		subParams = params[2].split("=");
 		if (subParams.length > 1 && subParams[0].equals("visibility")) {
 			return subParams[1];
-		} 
+		}
 	}
 	return "";
-	
-} 
+
+}
 
 private String getSheetName(String gSpreadJDBCUrl) {
 	String params[] = gSpreadJDBCUrl.split(";");
@@ -664,12 +664,12 @@ private String getSheetName(String gSpreadJDBCUrl) {
 		String subParams[] = params[1].split("=");
 		if (subParams.length > 1 && subParams[0].equals("sheetName")) {
 			return subParams[1];
-		} 
+		}
 		if (params.length > 1)
 		subParams = params[2].split("=");
 		if (subParams.length > 1 && subParams[0].equals("sheetName")) {
 			return subParams[1];
-		} 
+		}
 	}
 	return "";
 }
@@ -911,7 +911,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             if(dsConfig.getPropertyValue("gspread_visibility") instanceof String) {
                 visibility = (String)dsConfig.getPropertyValue("gspread_visibility");
             }
-            
+
             if(dsConfig.getPropertyValue(CustomDataSource.DATA_SOURCE_QUERY_CLASS) != null &&
             		dsConfig.getPropertyValue(CustomDataSource.DATA_SOURCE_QUERY_CLASS).toString().trim().length() > 0) {
                 customDSType = DBConstants.DataSourceTypes.CUSTOM_QUERY;
@@ -1077,11 +1077,11 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
     String passwordAlias = "";
     boolean useSecretAlias = false;
     boolean useQueryMode = false;
-    boolean customConClassAdded = false; 
+    boolean customConClassAdded = false;
     try {
         if (configId != null && configId.trim().length() > 0) {
             Config dsConfig = dataService.getConfig(configId);
-            
+
             if (dsConfig == null || (dsConfig !=null && !flag.equals("edit"))) {
                 dsConfig = newConfig;
             }
@@ -1104,7 +1104,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                         String jdbcUrl = dsConfig.getPropertyValue(DBConstants.RDBMS.URL).toString();
                         if ((jdbcUrl != null) && jdbcUrl.trim().length() > 0) {
                         	dataSourceType = getDataSourceType(jdbcUrl);
-                        		if (dataSourceType.equals(DBConstants.DataSourceTypes.GDATA_SPREADSHEET) || 
+                        		if (dataSourceType.equals(DBConstants.DataSourceTypes.GDATA_SPREADSHEET) ||
                         			dataSourceType.equals(DBConstants.DataSourceTypes.EXCEL)) {
                         			useQueryMode = true;
                         			if (dataSourceType.equals(DBConstants.DataSourceTypes.GDATA_SPREADSHEET)) {
@@ -1232,10 +1232,10 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                         onchange="changeDataSourceType(this,document)">
                     <!-- onchange="javascript:location.href = 'addDataSource.jsp?selectedType='+this.options[this.selectedIndex].value+'&configId='+document.getElementById('datasourceId').value+'&flag=edit';return false;"> -->
                     <% if (dataSourceType.equals("")) { %>
-                    <option value="" selected="selected">--SELECT--</option>
+                    <option value="" selected="selected">--请选择--</option>
                     <%
                     } else {%>
-                    <option value="">--SELECT--</option>
+                    <option value="">--请选择--</option>
                     <%}%>
 
                     <%
@@ -1292,17 +1292,17 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                     <%}%>
 
                     <% if (dataSourceType.equals("SPARQL")) { %>
-                    <option value="SPARQL" selected="selected">SPARQL Endpoint</option>
+                    <option value="SPARQL" selected="selected">SPARQL 端点</option>
                     <%
                     } else {%>
-                    <option value="SPARQL">SPARQL Endpoint</option>
+                    <option value="SPARQL">SPARQL 端点</option>
                     <%}%>
 
                     <% if (dataSourceType.equals("JNDI")) { %>
-                    <option value="JNDI" selected="selected">JNDI Datasource</option>
+                    <option value="JNDI" selected="selected">JNDI 数据源</option>
                     <%
                     } else {%>
-                    <option value="JNDI">JNDI Datasource</option>
+                    <option value="JNDI">JNDI 数据源</option>
                     <%}%>
 
                     <% if (dataSourceType.equals("GDATA_SPREADSHEET")) { %>
@@ -1314,25 +1314,25 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                     <%}%>
 
                     <% if (dataSourceType.equals("CARBON_DATASOURCE")) { %>
-                    <option value="CARBON_DATASOURCE" selected="selected">Carbon Datasource
+                    <option value="CARBON_DATASOURCE" selected="selected">Carbon 数据源
                     </option>
                     <%
                     } else {%>
-                    <option value="CARBON_DATASOURCE">Carbon Datasource</option>
+                    <option value="CARBON_DATASOURCE">Carbon 数据源</option>
                     <%}%>
 
                     <% if (dataSourceType.equals("WEB_CONFIG")) { %>
-                    <option value="WEB_CONFIG" selected="selected">Web Datasource</option>
+                    <option value="WEB_CONFIG" selected="selected">Web 数据源</option>
                     <%
                     } else {%>
-                    <option value="WEB_CONFIG">Web Datasource</option>
+                    <option value="WEB_CONFIG">Web 数据源</option>
                     <%}%>
-                    
+
                     <% if (dataSourceType.equals("CUSTOM")) { %>
-                    <option value="CUSTOM" selected="selected">Custom Datasource</option>
+                    <option value="CUSTOM" selected="selected">自定义数据源</option>
                     <%
                     } else {%>
-                    <option value="CUSTOM">Custom Datasource</option>
+                    <option value="CUSTOM">自定义数据源</option>
                     <%}%>
                 </select>
                 <% if ("RDBMS".equals(dataSourceType)) {
@@ -1366,7 +1366,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 	        	</td>
 	        	<td>
 	        		<%if(useQueryMode) { %>
-	        			<input type="checkbox" id="useQueryMode" name="useQueryMode" onclick="showGsExcelProperties(this, '<%=dataSourceType%>')" 
+	        			<input type="checkbox" id="useQueryMode" name="useQueryMode" onclick="showGsExcelProperties(this, '<%=dataSourceType%>')"
 	        			checked/>
 	        		<%} else { %>
 	        			<input type="checkbox" id="useQueryMode" name="useQueryMode" onclick="showGsExcelProperties(this, '<%=dataSourceType%>')"/>
@@ -1405,9 +1405,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                 onchange="javascript:setJDBCValues(this,document);return false;">
 
             <%if (("#".equals(rdbmsEngineType)|| rdbmsEngineType.equals(""))) {%>
-            <option value="#" selected="selected">--SELECT--</option>
+            <option value="#" selected="selected">--请选择--</option>
             <%} else {%>
-            <option value="#">--SELECT--</option>
+            <option value="#">--请选择--</option>
             <%}%>
 
             <%if ("mysql".equals(rdbmsEngineType)) {%>
@@ -1510,9 +1510,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%}%>
 
             <%if ("Generic".equals(rdbmsEngineType)) {%>
-            <option selected="selected" value="Generic#Generic">Generic</option>
+            <option selected="selected" value="Generic#Generic">通用引擎</option>
             <%} else {%>
-            <option value="Generic#Generic">Generic</option>
+            <option value="Generic#Generic">通用引擎</option>
             <%}%>
         </select>
     </td>
@@ -1525,9 +1525,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
         <select name="databaseEngine" id="databaseEngine"
                     onchange="changeXADataSourceEngine(this,document)">
             <%if (("#".equals(rdbmsEngineType)|| rdbmsEngineType.equals(""))) {%>
-            <option value="#" selected="selected">--SELECT--</option>
+            <option value="#" selected="selected">--请选择--</option>
             <%} else {%>
-            <option value="#">--SELECT--</option>
+            <option value="#">--请选择--</option>
             <%}%>
             <%if ("mysql".equals(rdbmsEngineType)) {%>
             <option selected="selected" value="<%=DBConstants.XAJDBCDriverClasses.MYSQL+"#jdbc:mysql://[machine-name/ip]:[port]/[database-name]"%>"> MySQL
@@ -1610,9 +1610,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%}%>
 
             <%if ("Generic".equals(rdbmsEngineType)) {%>
-            <option selected="selected" value="Generic">Generic</option>
+            <option selected="selected" value="Generic">通用引擎</option>
             <%} else {%>
-            <option value="Generic#Generic">Generic</option>
+            <option value="Generic#Generic">通用引擎</option>
             <%}%>
         </select>
     </td>
@@ -1622,11 +1622,11 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 	<tr>
 	<td colspan="2">
 		<%if (customDSType.equals(DBConstants.DataSourceTypes.CUSTOM_QUERY)) { %>
-			<input type="radio" name="customType" id="custom_tabular" value="tabular" onclick="changeCustomDsType()"/> Custom Tabular Datasource
-			<input type="radio" name="customType" value="query" id="custom_query" onclick="changeCustomDsType()" checked/> Custom Query Datasource
+			<input type="radio" name="customType" id="custom_tabular" value="tabular" onclick="changeCustomDsType()"/> 自定义表式数据源
+			<input type="radio" name="customType" value="query" id="custom_query" onclick="changeCustomDsType()" checked/> 自定义查询数据源
 		<%} else { %>
-			<input type="radio" name="customType" id="custom_tabular" value="tabular" onclick="changeCustomDsType()" checked/> Custom Tabular Datasource
-			<input type="radio" name="customType" value="query" id="custom_query" onclick="changeCustomDsType()"/> Custom Query Datasource
+			<input type="radio" name="customType" id="custom_tabular" value="tabular" onclick="changeCustomDsType()" checked/> 自定义表式数据源
+			<input type="radio" name="customType" value="query" id="custom_query" onclick="changeCustomDsType()"/> 自定义查询数据源
 		<%} %>
 		<input type="hidden" id="customTypeValue" name="customTypeValue" value="<%=customDSType %>"/>
 	</td>
@@ -1663,17 +1663,17 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                         <input type="text" size="50" id="<%=availableProperty.getName()%>" name="<%=availableProperty.getName()%>"
                                value="<%=availableProperty.getValue()%>"/>
                         <% if(availableProperty.isUseSecretAlias()) {%>
-                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>" 
+                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>"
                         						onclick="getUseSecretAliasValueForProperty(this,'useSecretAliasFor<%=availableProperty.getName()%>')"
                         						checked/>
                         <% } else {%>
-                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>" 
+                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>"
                         						onclick="getUseSecretAliasValueForProperty(this,'useSecretAliasFor<%=availableProperty.getName()%>')"
                         						/>
                         <%} %>
 	               		<fmt:message key="usePasswordAlias"/>
 	               	</td>
-                    
+
                 </tr>
             <%
         }%>
@@ -1681,7 +1681,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                 <td colspan="2">
                     <a class="icon-link" style="background-image:url(../admin/images/add.gif);" onclick="addXAPropertyFields(document,document.getElementById('propertyCount').value);" ><fmt:message key="add.new.xa.datasource.properties"/></a>
                 </td>
-                
+
             </tr>
             <tr>
             	<td id="externalDSProperties" style="display:none" colspan="2">
@@ -1702,24 +1702,24 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                         <input type="text" size="50" id="<%=availableProperty.getName()%>" name="<%=availableProperty.getName()%>"
                                value="<%=availableProperty.getValue()%>"/>
                         <% if(availableProperty.isUseSecretAlias()) {%>
-                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>" 
+                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>"
                         						onclick="getUseSecretAliasValueForProperty(this,'useSecretAliasFor<%=availableProperty.getName()%>')"
                         						checked/>
                         <% } else {%>
-                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>" 
+                        <input type="checkbox" id="useSecretAliasFor<%=availableProperty.getName()%>" name="useSecretAliasFor<%=availableProperty.getName()%>"
                         						onclick="getUseSecretAliasValueForProperty(this,'useSecretAliasFor<%=availableProperty.getName()%>')"
                         						/>
                         <%} %>
 	               		<fmt:message key="usePasswordAlias"/>
 	               	</td>
-                    
+
                 </tr>
             <%  }%>
         <tr>
                 <td colspan="2">
                     <a class="icon-link" style="background-image:url(../admin/images/add.gif);" onclick="addXAPropertyFields(document,document.getElementById('propertyCount').value);" ><fmt:message key="add.new.xa.datasource.properties"/></a>
                 </td>
-                
+
             </tr>
             <tr>
             	<td id="externalDSProperties" style="display:none" colspan="2">
@@ -1728,7 +1728,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                 	</tbody>
                 	</table>
                 </td>
-            </tr>	
+            </tr>
         <%}
         } %>
 
@@ -1800,9 +1800,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             ||propertyName.equals(DBConstants.RDBMS.ALTERNATE_USERNAME_ALLOWED)
             ||propertyName.equals(DBConstants.RDBMS.DYNAMIC_USER_AUTH_CLASS)
             ||propertyName.equals(DBConstants.RDBMS.DYNAMIC_USER_AUTH_MAPPING)
-            ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_PROPS) 
+            ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_PROPS)
             ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_QUERY_CLASS)
-            ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_TABULAR_CLASS)) && 
+            ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_TABULAR_CLASS)) &&
             	!(propertyName.equals(DBConstants.GSpread.DATASOURCE) && useQueryMode) &&
             	!(propertyName.equals("gspread_visibility") && useQueryMode)
             ){%>
@@ -1813,21 +1813,21 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
     <%  } if (propertyName.equals("csv_hasheader")) { %>
         <select id="<%=propertyName%>" name="<%=propertyName%>">
             <% if (propertyValue.equals("")) { %>
-            <option value="" selected="selected">--SELECT--</option>
+            <option value="" selected="selected">--请选择--</option>
             <% } else { %>
-            <option value="">--SELECT--</option>
+            <option value="">--请选择--</option>
             <% } %>
 
             <% if (propertyValue.equals("true")) { %>
-            <option value="true" selected="selected">true</option>
+            <option value="true" selected="selected">是</option>
             <% } else { %>
-            <option value="true">true</option>
+            <option value="true">是</option>
             <% } %>
 
             <% if (propertyValue.equals("false")) { %>
-            <option value="false" selected="selected">false</option>
+            <option value="false" selected="selected">否</option>
             <% } else { %>
-            <option value="false">false</option>
+            <option value="false">否</option>
             <% } %>
         </select>
         <% } else if (propertyName.equals(DBConstants.Cassandra.ENABLE_JMX_REPORTING)
@@ -1837,29 +1837,29 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                   { %>
         <select id="<%=propertyName%>" name="<%=propertyName%>">
             <% if (propertyValue.equals("")) { %>
-            <option value="" selected="selected">--SELECT--</option>
+            <option value="" selected="selected">--请选择--</option>
             <% } else { %>
-            <option value="">--SELECT--</option>
+            <option value="">--请选择--</option>
             <% } %>
 
             <% if (propertyValue.equals("true")) { %>
-            <option value="true" selected="selected">true</option>
+            <option value="true" selected="selected">是</option>
             <% } else { %>
-            <option value="true">true</option>
+            <option value="true">是</option>
             <% } %>
 
             <% if (propertyValue.equals("false")) { %>
-            <option value="false" selected="selected">false</option>
+            <option value="false" selected="selected">否</option>
             <% } else { %>
-            <option value="false">false</option>
+            <option value="false">否</option>
             <% } %>
         </select>
 		<%  } else if (propertyName.equals(DBConstants.MongoDB.AUTHENTICATION_TYPE)) { %>
 			<select id="<%=propertyName%>" name="<%=propertyName%>" onChange="setHiddenInputs();">
 				<% if (propertyValue.equals("") || propertyValue.equals("NONE")) { %>
-				<option value="" selected="selected">NONE</option>
+				<option value="" selected="selected">无</option>
 				<% } else { %>
-				<option value="">NONE</option>
+				<option value="">无</option>
 				<% } %>
 				<% if (propertyValue.equals("SCRAM-SHA-1")) { %>
 				<option value="SCRAM-SHA-1" selected="selected">SCRAM-SHA-1</option>
@@ -1890,9 +1890,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
         <%  } else if (propertyName.equals(DBConstants.MongoDB.WRITE_CONCERN)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("FSYNC_SAFE")) { %>
                 <option value="FSYNC_SAFE" selected="selected">FSYNC_SAFE</option>
@@ -1900,9 +1900,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                 <option value="FSYNC_SAFE">FSYNC_SAFE</option>
                 <% } %>
                 <% if (propertyValue.equals("NONE")) { %>
-                <option value="NONE" selected="selected">NONE</option>
+                <option value="NONE" selected="selected">无</option>
                 <% } else { %>
-                <option value="NONE">NONE</option>
+                <option value="NONE">无</option>
                 <% } %>
                 <% if (propertyValue.equals("NORMAL")) { %>
                 <option value="NORMAL" selected="selected">NORMAL</option>
@@ -1928,27 +1928,27 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%  } else if (propertyName.equals(DBConstants.MongoDB.READ_PREFERENCE)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("PRIMARY")) { %>
-                <option value="PRIMARY" selected="selected">PRIMARY</option>
+                <option value="PRIMARY" selected="selected">主</option>
                 <% } else { %>
-                <option value="PRIMARY">PRIMARY</option>
+                <option value="PRIMARY">主</option>
                 <% } %>
                 <% if (propertyValue.equals("SECONDARY")) { %>
-                <option value="SECONDARY" selected="selected">SECONDARY</option>
+                <option value="SECONDARY" selected="selected">备</option>
                 <% } else { %>
-                <option value="SECONDARY">SECONDARY</option>
+                <option value="SECONDARY">备</option>
                 <% } %>
             </select>
             <%  } else if (propertyName.equals(DBConstants.Cassandra.COMPRESSION)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("LZ4")) { %>
                 <option value="LZ4" selected="selected">LZ4</option>
@@ -1956,9 +1956,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                 <option value="LZ4">LZ4</option>
                 <% } %>
                 <% if (propertyValue.equals("NONE")) { %>
-                <option value="NONE" selected="selected">NONE</option>
+                <option value="NONE" selected="selected">无</option>
                 <% } else { %>
-                <option value="NONE">NONE</option>
+                <option value="NONE">无</option>
                 <% } %>
                 <% if (propertyValue.equals("SNAPPY")) { %>
                 <option value="SNAPPY" selected="selected">SNAPPY</option>
@@ -1969,9 +1969,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%  } else if (propertyName.equals(DBConstants.Cassandra.LOAD_BALANCING_POLICY)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("RoundRobinPolicy")) { %>
                 <option value="RoundRobinPolicy" selected="selected">RoundRobinPolicy</option>
@@ -2002,17 +2002,17 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%  } else if (propertyName.equals(DBConstants.Cassandra.CONSISTENCY_LEVEL) || propertyName.equals(DBConstants.Cassandra.SERIAL_CONSISTENCY_LEVEL)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("ALL")) { %>
-                <option value="ALL" selected="selected">ALL</option>
+                <option value="ALL" selected="selected">全部</option>
                 <% } else { %>
                 <option value="ALL">ALL</option>
                 <% } %>
                 <% if (propertyValue.equals("ANY")) { %>
-                <option value="ANY" selected="selected">ANY</option>
+                <option value="ANY" selected="selected">任意</option>
                 <% } else { %>
                 <option value="ANY">ANY</option>
                 <% } %>
@@ -2065,9 +2065,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%  } else if (propertyName.equals(DBConstants.Cassandra.PROTOCOL_VERSION)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("1")) { %>
                 <option value="1" selected="selected">1</option>
@@ -2093,9 +2093,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%  } else if (propertyName.equals(DBConstants.Cassandra.RECONNECTION_POLICY)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("ConstantReconnectionPolicy")) { %>
                 <option value="ConstantReconnectionPolicy" selected="selected">ConstantReconnectionPolicy</option>
@@ -2111,9 +2111,9 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <%  } else if (propertyName.equals(DBConstants.Cassandra.RETRY_POLICY)) { %>
             <select id="<%=propertyName%>" name="<%=propertyName%>">
                 <% if (propertyValue.equals("")) { %>
-                <option value="" selected="selected">--SELECT--</option>
+                <option value="" selected="selected">--请选择--</option>
                 <% } else { %>
-                <option value="">--SELECT--</option>
+                <option value="">--请选择--</option>
                 <% } %>
                 <% if (propertyValue.equals("DefaultRetryPolicy")) { %>
                 <option value="DefaultRetryPolicy" selected="selected">DefaultRetryPolicy</option>
@@ -2150,14 +2150,14 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 	        <%if (!useQueryMode) { %>
 		        <select id="<%=propertyName%>" name="<%=propertyName%>" onchange="javascript:gspreadVisibiltyOnChange(this,document);return false;">
 		            <% if (propertyValue.equals("private")) { %>
-		            <option value="private" selected="selected">Private</option>
+		            <option value="private" selected="selected">私有的</option>
 		            <% } else { %>
-		            <option value="private">Private</option>
+		            <option value="private">私有的</option>
 		            <% } %>
 		            <% if (propertyValue.equals("public") || propertyValue.equals("")) { %>
-		            <option value="public" selected="selected">Public</option>
+		            <option value="public" selected="selected">公开的</option>
 		            <% } else { %>
-		            <option value="public">Public</option>
+		            <option value="public">公开的</option>
 		            <% } %>
 		        </select>
 		     <%} %>
@@ -2172,7 +2172,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
          		    ||propertyName.equals(RDBMS.URL)
          		    ||propertyName.equals(RDBMS.USERNAME)
          		    || propertyName.equals(RDBMS.PASSWORD)) && !isXAType) {
-         			  
+
          			  if (!(dataSourceType.equals("GDATA_SPREADSHEET") || dataSourceType.equals("EXCEL"))) {
          		%>
                  <tr>
@@ -2196,7 +2196,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 	               		<%} %>
 	               		<input type="hidden" id="useSecretAliasValue" name="useSecretAliasValue" size="50" value="<%=useSecretAlias%>">
 	               		</td>
-	            
+
                 </tr>
                		<%} else {  %>
 
@@ -2230,14 +2230,14 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 					        	<td>
 			                 		<select id="<%=DBConstants.GSpread.VISIBILITY%>" name="<%=DBConstants.GSpread.VISIBILITY%>" onchange="javascript:gspreadVisibiltyOnChange(this,document);return false;">
 							            <% if (getVisibility(propertyValue).equals("private")) { %>
-							            <option value="private" selected="selected">Private</option>
+							            <option value="private" selected="selected">私有的</option>
 							            <% } else { %>
-							            <option value="private">Private</option>
+							            <option value="private">私有的</option>
 							            <% } %>
 							            <% if (getVisibility(propertyValue).equals("public") || propertyValue.equals("")) { %>
-							            <option value="public" selected="selected">Public</option>
+							            <option value="public" selected="selected">公开的</option>
 							            <% } else { %>
-							            <option value="public">Public</option>
+							            <option value="public">公开的</option>
 							            <% } %>
 					        		</select>
 					        	</td>
@@ -2271,8 +2271,8 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                  			<%--</td>--%>
                  		<%--</tr>--%>
                  	<%} %>
-                 <% }%> 
-                 
+                 <% }%>
+
                  <%}  else if (propertyName.equals(RDBMS.DATASOURCE_CLASSNAME) && isXAType) {  %>
                     <tr>
                         <td><label><fmt:message key="xa.datasource.class"/><font color="red">*</font></label>
@@ -2314,7 +2314,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                     </tr>
                  <%} }  else if (propertyName.equals("carbon_datasource_name")) { %>
         <select id="<%=propertyName%>" name="<%=propertyName%>">
-            <option value="" selected="selected">--SELECT--</option>
+            <option value="" selected="selected">--请选择--</option>
             <%
                 for (String dsName : carbonDataSourceNames) {
                     if (dsName.equals(propertyValue)) {
@@ -2328,7 +2328,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             <% }
             } %>
         </select>
-        <% } else if (propertyName.equals("web_harvest_config")) {            
+        <% } else if (propertyName.equals("web_harvest_config")) {
               boolean checked = false;
               String filePath = "";
               String configEle = "";
@@ -2350,12 +2350,12 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 
         <textarea cols="40" rows="5" name="web_harvest_config_textArea" <%=!checked ? "style=\'display:none\'" : ""%> id="web_harvest_config_textArea"><%=configEle%></textarea>
         <input type="text" size="50" id="<%=propertyName%>" <%=checked ? "style=\'display:none\'" : ""%> name="<%=propertyName%>"  value="<%=filePath%>"/>
-        <td id="config_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueConf, '/_system/config')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > Configuration Registry </a></td>
-        <td id="gov_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueGov, '/_system/governance')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > Govenance Registry </a></td>
+        <td id="config_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueConf, '/_system/config')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > 配置注册表 </a></td>
+        <td id="gov_reg" ><a onclick="showResourceTree('<%=propertyName%>', setValueGov, '/_system/governance')" style="background-image:url(images/registry_picker.gif);" class="icon-link" href="#" > 治理注册表 </a></td>
 
         <% } else {
         	if(propertyName.equals("gspread_password") || propertyName.equals("jndi_password") || propertyName.equals(DBConstants.Cassandra.PASSWORD)) {%>
-        	
+
         	<%if ((propertyName.equals("gspread_password") && !useQueryMode) || propertyName.equals("jndi_password") || propertyName.equals(DBConstants.Cassandra.PASSWORD)) { %>
 		        <%if(useSecretAlias) {%>
 			               <input type="text" size="50" id="pwdalias" name="pwdalias" value="<%=propertyValue%>">
@@ -2429,7 +2429,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             ||propertyName.equals(DBConstants.RDBMS.ALTERNATE_USERNAME_ALLOWED)
             ||propertyName.equals(DBConstants.RDBMS.DYNAMIC_USER_AUTH_CLASS)
             ||propertyName.equals(DBConstants.RDBMS.DYNAMIC_USER_AUTH_MAPPING)
-            ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_PROPS) 
+            ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_PROPS)
             ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_QUERY_CLASS)
             ||propertyName.equals(DBConstants.CustomDataSource.DATA_SOURCE_TABULAR_CLASS)) && !(propertyName.equals(DBConstants.GSpread.DATASOURCE) && useQueryMode)
             && !(propertyName.equals(DBConstants.GSpread.USERNAME) && useQueryMode)){ %>
@@ -2448,7 +2448,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
 <% if("RDBMS".equals(dataSourceType) || "Cassandra".equals(dataSourceType) || "CARBON_DATASOURCE".equals(dataSourceType)) { %>
 <tr>
     <td class="leftCol-small" style="white-space: nowrap;">
-        Enable OData</td>
+        启用 OData</td>
     <td>
         <input type="checkbox" name="isOData" id="isOData" value="isOData" <%=(isOData==true ? "checked" : "") %>>
     </td>
@@ -2540,15 +2540,15 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                             <td>
                          <select id="<%=propertyName%>" name="<%=propertyName%>">
                            <% if (propertyValue.equals("") || propertyValue.equals("true")) { %>
-                           <option value="true" selected="selected">true</option>
+                           <option value="true" selected="selected">是</option>
                            <% } else { %>
-                           <option value="true">true</option>
+                           <option value="true">是</option>
                            <% } %>
 
                            <% if (propertyValue.equals("false")) { %>
-                           <option value="false" selected="selected">false</option>
+                           <option value="false" selected="selected">否</option>
                            <% } else { %>
-                           <option value="false">false</option>
+                           <option value="false">否</option>
                            <% } %>
                            </select>
                             </td>
@@ -2568,14 +2568,14 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                             <td>
                       <select id="<%=propertyName%>" name="<%=propertyName%>">
                         <% if ( propertyValue.equals("true")) { %>
-                        <option value="true" selected="selected">true</option>
+                        <option value="true" selected="selected">是</option>
                         <% } else { %>
-                        <option value="true">true</option>
+                        <option value="true">是</option>
                         <% } %>
                         <% if (propertyValue.equals("") || propertyValue.equals("false")) { %>
-                        <option value="false" selected="selected">false</option>
+                        <option value="false" selected="selected">否</option>
                         <% } else { %>
-                        <option value="false">false</option>
+                        <option value="false">否</option>
                         <% } %>
                         </select>
                             </td>
@@ -2711,13 +2711,13 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
                             String dbPwd = userEntry.getPassword();  %>
 
                     <tr id="carbonUsernameRaw<%=i%>">
-                        <td><label>Carbon Username</label></td>
+                        <td><label>Carbon 用户名</label></td>
                         <td><input type="text" name="carbonUsernameRaw<%=i%>" id="carbonUsernameRaw<%=i%>" size="15" value="<%=carbonUsername%>"/></td>
 
-                        <td><label>DB Username</label></td>
+                        <td><label>数据库用户名</label></td>
                         <td><input type="text" name="dbUsernameRaw<%=i%>" id="dbUsernameRaw<%=i%>" size="15" value="<%=dbUsername%>"/></td>
 
-                        <td><label>DB User Password</label></td>
+                        <td><label>数据库用户密码</label></td>
                         <td>
                             <input type="password" name="dbPwdRaw<%=i%>" id="dbPwdRaw<%=i%>" size="15" value="<%=dbPwd%>"/>
                         </td>
@@ -2830,7 +2830,7 @@ private String getRefreshToken(String gSpreadJDBCUrl) {
             }
 
 
-            
+
         </script>
 
   <%} %>

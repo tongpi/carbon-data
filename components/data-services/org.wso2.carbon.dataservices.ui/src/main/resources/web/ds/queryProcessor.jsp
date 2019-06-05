@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.axis2.AxisFault" %>
 <%@ page import="org.apache.axis2.context.ConfigurationContext" %>
 <%@ page import="org.wso2.carbon.CarbonConstants" %>
@@ -111,30 +112,30 @@
     /*if (flag != null && flag.equals("inputMapping")) {
        session.setAttribute("validators", new ArrayList());
     }*/
-    
+
     if (queryId != null) {
         // backend validation for queries
         if(sql != null && sql.toLowerCase().contains("</textarea>")) {
            sql = "";
-           String message = "Invalid Query";
+           String message = "无效的查询";
            CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
            forwardTo = "addQuery.jsp";
            flag = "error";
         } else if(sparql != null && sparql.toLowerCase().contains("</textarea>")) {
            sparql = "";
-           String message = "Invalid Query";
+           String message = "无效的查询";
            CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
            forwardTo = "addQuery.jsp";
            flag = "error";
         } else if(cassandraExpression != null && cassandraExpression.toLowerCase().contains("</textarea>")) {
             cassandraExpression = "";
-            String message = "Invalid Query";
+            String message = "无效的查询";
             CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
             forwardTo = "addQuery.jsp";
             flag = "error";
         } else if(mongoExpression != null && mongoExpression.toLowerCase().contains("</textarea>")) {
             mongoExpression = "";
-            String message = "Invalid Query";
+            String message = "无效的查询";
             CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
             forwardTo = "addQuery.jsp";
             flag = "error";
@@ -144,7 +145,7 @@
         if (query != null) {
             if (edit.equals("false")) {
                 //checking for queries with the same query Id.
-                String message = "Please enter a different Query ID. A Query ID called " + queryId + " already exists.";
+                String message = "请输入一个不同的查询 ID. 名为 " + queryId + " 的查询ID已经存在.";
                 CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
                 forwardTo = "addQuery.jsp";
                 flag = "error";
@@ -156,7 +157,7 @@
                     // checking for operations which has used the query before deleting.
                     for (int a = 0; a < operation.size(); a++) {
                         if (queryId.equals(operation.get(a).getCallQuery().getHref())) {
-                            String message = "Query Id " + queryId + " has been used by operation(s). Please remove the relevant operation(s) to proceed.";
+                            String message = "查询Id " + queryId + " 已经被操作使用. 请移除相关的操作后再处理.";
                             CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
                             forwardTo = "queries.jsp";
                             flag = "error";
@@ -168,7 +169,7 @@
                     for (int a = 0; a < resource.size(); a++) {
                         // checking for resources which has used the query before deleting.
                         if (queryId.equals(resource.get(a).getCallQuery().getHref())) {
-                            String message = "Query Id " + queryId + " has been used by resource(s). Please remove the relevant resource(s) to proceed.";
+                            String message = "查询Id " + queryId + " 已经被资源使用. 请移除相关的资源后再处理.";
                             CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
                             forwardTo = "queries.jsp";
                             flag = "error";
@@ -700,16 +701,16 @@
                         }
                     }
                 } else {
-                    String message = "SQL query is not applicable to automate the response";
+                    String message = "SQL 查询不适合自动生成响应（response）";
                     CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
                 }
             } else {
-                String message = "SQL query is not applicable to automate the response";
+                String message = "SQL 查询不适合自动生成响应（response）";
                 CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
             }
         } catch (AxisFault e) {
             CarbonError carbonError = new CarbonError();
-            carbonError.addError("Error occurred while saving data service configuration.");
+            carbonError.addError("保存数据服务配置时发生错误.");
             request.setAttribute(CarbonError.ID, carbonError);
         }
     }

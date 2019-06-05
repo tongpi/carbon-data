@@ -15,6 +15,7 @@
 ~ specific language governing permissions and limitations
 ~ under the License.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Arrays" %>
@@ -84,7 +85,7 @@
     if (enableOptional != null) {
         optional = Boolean.parseBoolean(enableOptional);
     }
-    
+
     if (complexElementNamespace != null && complexElementNamespace.equals("null")) {
         complexElementNamespace = "";
     }
@@ -156,13 +157,13 @@
 <%
     if (isEdit) {
 %>
-<h2> Edit Output Mapping
+<h2> 编辑输出映射
     <%
         out.write(" (" + serviceName + "/" + queryId + "/" + name + ")");
     %>
 </h2>
 <%} else { %>
-<h2> Add Output Mapping
+<h2> 添加输出映射
     <%
         out.write(" (" + serviceName + "/" + queryId + ")");
     %>
@@ -226,13 +227,13 @@
         <% if (mappingType != null && !mappingType.equals("")) {%>
         <input type="hidden" name="cmbDataServiceOMType" value="<%=mappingType%>"/>
         <% } %>
-        
+
         <%
             if (isEdit) {
         %>
-        Edit Output Mapping
+        编辑输出映射
         <%} else { %>
-        Add Output Mapping
+        添加输出映射
         <%} %>
 
         <% if (flag.equals("complexError")) { %>
@@ -258,35 +259,35 @@
                     <td><select onchange="changeToNextMapping(this, document);return false;"
                                 name="cmbDataServiceOMType"
                                 id="cmbDataServiceOMType" disabled="disabled">
-                     <% } else {%>   
+                     <% } else {%>
                     <td><select onchange="changeToNextMapping(this, document);return false;"
                                 name="cmbDataServiceOMType"
                                 id="cmbDataServiceOMType">
                         <% } %>
                         <% if (mappingType.equals("")) { %>
-                        <option selected="selected" value="">--Select--</option>
+                        <option selected="selected" value="">--请选择--</option>
                         <% } else { %>
-                        <option value="">--Select--</option>
+                        <option value="">--请选择--</option>
                         <% }
                             if (mappingType.equals("element")) { %>
-                        <option selected="true" value="element">element</option>
+                        <option selected="true" value="element">元素</option>
                         <% } else { %>
-                        <option value="element">element</option>
+                        <option value="element">元素</option>
                         <% }
                             if (mappingType.equals("attribute")) { %>
-                        <option selected="selected" value="attribute">attribute</option>
+                        <option selected="selected" value="attribute">属性</option>
                         <% } else { %>
-                        <option value="attribute">attribute</option>
+                        <option value="attribute">属性</option>
                         <% }
                             if (mappingType.equals("query")) { %>
-                        <option selected="selected" value="query">query</option>
+                        <option selected="selected" value="query">查询</option>
                         <% } else { %>
-                        <option value="query">query</option>
+                        <option value="query">查询</option>
                         <% }
                             if (mappingType.equals("complexType")) { %>
-                        <option selected="selected" value="complexType">complex element</option>
+                        <option selected="selected" value="complexType">复杂元素</option>
                         <% } else { %>
-                        <option value="complexType">complex element</option>
+                        <option value="complexType">复杂元素</option>
                         <% } %>
                     </select></td>
                 </tr>
@@ -471,16 +472,16 @@
                                     <td><select id="<%="MappingType"+ params[a].getName()%>"
                                                 name="<%="MappingType"+ params[a].getName()%>">
                                         <%if (paramMappingType.equals("") || paramMappingType.equals("column")) { %>
-                                        <option value="column" selected="selected">column</option>
+                                        <option value="column" selected="selected">列</option>
                                         <% } else { %>
-                                        <option value="column">column</option>
+                                        <option value="column">列</option>
                                         <% } %>
                                         <% if (paramMappingType.equals("query-param")) { %>
                                         <option value="query-param" selected="selected">
-                                            query-param
+                                            查询参数
                                         </option>
                                         <% } else { %>
-                                        <option value="query-param">query-param</option>
+                                        <option value="query-param">查询参数</option>
                                         <% } %>
                                     </select>
                                     </td>
@@ -515,14 +516,14 @@
                         <td><select onchange="changeToDataSourceType(this, document);return false;"
                                     id="datasourceTypeId" name="datasourceType">
                             <%if (datasourceType.equals("") || datasourceType.equals("column")) { %>
-                            <option value="column" selected="selected">column</option>
+                            <option value="column" selected="selected">列</option>
                             <% } else { %>
-                            <option value="column">column</option>
+                            <option value="column">列</option>
                             <% } %>
                             <% if (datasourceType.equals("query-param")) { %>
-                            <option value="query-param" selected="selected">query-param</option>
+                            <option value="query-param" selected="selected">查询参数</option>
                             <% } else { %>
-                            <option value="query-param">query-param</option>
+                            <option value="query-param">查询参数</option>
                             <% } %>
                         </select></td>
                     </tr>
@@ -592,54 +593,54 @@
                         <td>
                             <select id="xsdType" name="xsdType">
                                 <% if (xsdType.equals("string")) { %>
-                                <option value="string" selected="selected">string</option>
+                                <option value="string" selected="selected">字符串</option>
                                 <% } else { %>
-                                <option value="string">string</option>
+                                <option value="string">字符串</option>
                                 <% }
                                     if (xsdType.equals("integer")) { %>
-                                <option value="integer" selected="selected">integer</option>
+                                <option value="integer" selected="selected">整型</option>
                                 <% } else { %>
-                                <option value="integer">integer</option>
+                                <option value="integer">整型</option>
                                 <% }
                                     if (xsdType.equals("boolean")) { %>
-                                <option value="boolean" selected="selected">boolean</option>
+                                <option value="boolean" selected="selected">布尔</option>
                                 <% } else { %>
-                                <option value="boolean">boolean</option>
+                                <option value="boolean">布尔</option>
                                 <% }
                                     if (xsdType.equals("float")) { %>
-                                <option value="float" selected="selected">float</option>
+                                <option value="float" selected="selected">浮点数</option>
                                 <% } else { %>
-                                <option value="float">float</option>
+                                <option value="float">浮点数</option>
                                 <% }
                                     if (xsdType.equals("double")) { %>
-                                <option value="double" selected="selected">double</option>
+                                <option value="double" selected="selected">双精度</option>
                                 <% } else { %>
-                                <option value="double">double</option>
+                                <option value="double">双精度</option>
                                 <% }
                                     if (xsdType.equals("decimal")) { %>
-                                <option value="decimal" selected="selected">decimal</option>
+                                <option value="decimal" selected="selected">小数</option>
                                 <% } else { %>
-                                <option value="decimal">decimal</option>
+                                <option value="decimal">小数</option>
                                 <% }
                                     if (xsdType.equals("dateTime")) { %>
-                                <option value="dateTime" selected="selected">dateTime</option>
+                                <option value="dateTime" selected="selected">日期时间</option>
                                 <% } else { %>
-                                <option value="dateTime">dateTime</option>
+                                <option value="dateTime">日期时间</option>
                                 <% }
                                     if (xsdType.equals("time")) { %>
-                                <option value="time" selected="selected">time</option>
+                                <option value="time" selected="selected">时间</option>
                                 <% } else { %>
-                                <option value="time">time</option>
+                                <option value="time">时间</option>
                                 <% }
                                     if (xsdType.equals("date")) { %>
-                                <option value="date" selected="selected">date</option>
+                                <option value="date" selected="selected">日期</option>
                                 <% } else { %>
-                                <option value="date">date</option>
+                                <option value="date">日期</option>
                                 <% }
                                     if (xsdType.equals("long")) { %>
-                                <option value="long" selected="selected">long</option>
+                                <option value="long" selected="selected">长整型</option>
                                 <% } else { %>
-                                <option value="long">long</option>
+                                <option value="long">长整型</option>
                                 <% }
                                     if (xsdType.equals("base64Binary")) { %>
                                 <option value="base64Binary" selected="selected">
@@ -727,7 +728,7 @@
             <table class="styledInner" id="userRolesTab">
                 <thead>
                 <tr>
-                    <th>User Roles</th>
+                    <th>用户角色</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -800,7 +801,7 @@
 	        result = mainQuery.getResult();
 	        isUseColomnNumbers = Boolean.parseBoolean(result.getUseColumnNumbers());
 	        if (result.getRowName() != null) {
-	        	
+
 	            List<Element> elements;
 	            List<Attribute> attributes;
 	            List<CallQuery> callQueries;
@@ -819,7 +820,7 @@
 		            	complexElements = complexElement.getComplexElements();
 	            	} else if ((complexElementName == null || complexElementName.equals("")) && complexMappingId.equals("complexType") ) {
 	            		//root level editing a complex element; should display elements under tht complexElement
-	            		complexElement = result.getChild(result.getComplexElements(), 
+	            		complexElement = result.getChild(result.getComplexElements(),
 	            				getSubComplexElementList(complexPath));
 	            		complexPath = getSubComplexPath(complexPath);
 	            		if (complexPath.equals("")) {
@@ -835,14 +836,14 @@
 			            	complexElements = complexElement.getComplexElements();
 
 	            		}
-	            		
+
 	            	} else if (complexPath != null && !complexPath.equals("")) {
 	            		complexElement = result.getChild(complexPath+"/"+complexElementName);
 	            		if (complexElementName != null && !complexElementName.equals("")) {
 	            			complexPath = complexPath+"/"+complexElementName;
 	            		}
 	            	    if (complexElement == null) {
-	            	    	complexElement = result.getChild(result.getComplexElements(), 
+	            	    	complexElement = result.getChild(result.getComplexElements(),
 	            	    			getSubComplexElementList(complexPath));
 	            	    	elements = complexElement.getElements();
 			            	attributes = complexElement.getAttributes();
@@ -856,7 +857,7 @@
 			            	complexElements = complexElement.getComplexElements();
 
 	            	    }
-		            	
+
 		            } else {
 		            	elements = result.getElements();
 		            	attributes = result.getAttributes();
@@ -871,12 +872,12 @@
 	            	complexElements = result.getComplexElements();
 
 	            }
-	          
+
 	            //if (elements.size() != 0 || attributes != null || complexElements != null ||  callQueries != null) {
 	            if (elements.size() != 0 || attributes.size() != 0 || complexElements.size() != 0 ||  callQueries.size() != 0) {
 	                %>
 <tr>
-    <td class="middle-header">Existing Output Mappings</td>
+    <td class="middle-header">现有输出映射</td>
 </tr>
 <tr>
 <td>
@@ -942,7 +943,7 @@
     </td>
     <td><%=element.getDataSourceValue()%>
     </td>
-    <td>element
+    <td>元素
     </td>
     <td><%=roles%>
     </td>
@@ -1021,7 +1022,7 @@
     </td>
     <td><%=attribute.getDataSourceValue()%>
     </td>
-    <td>attribute
+    <td>属性
     </td>
     <td><%=roles%>
     </td>

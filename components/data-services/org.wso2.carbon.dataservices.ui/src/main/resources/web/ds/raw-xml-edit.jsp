@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <%@ page import="org.wso2.carbon.CarbonError" %>
@@ -78,10 +79,10 @@ try{
 		resourceBundle="org.wso2.carbon.dataservices.ui.i18n.Resources"
 		topPage="false"
 		request="<%=request%>" />
-		
+
 <div id="middle">
     <h2><fmt:message key="dataservice.xml.editor"/>(<%=serviceName%>)</h2>
-    
+
 <div id="workArea">
 	<form method="post" onsubmit="return isValidXml();"
 		<%--action="<%= "./rawXMLProcessor.jsp?saveConfig=true&caller=../ds/raw-xml-edit.jsp&serviceName="+serviceName%>">--%>
@@ -96,12 +97,12 @@ try{
                       border:solid 1px #9fc2d5;
                       overflow-x:auto;
                       overflow-y:auto"><%=serviceContents.replaceAll("&", "&amp;")%></textarea>
-                     
+
         </td></tr>
                 <tr>
                     <td class="buttonRow">
-            <input class="button" type="submit" name="save" value="Save"/>
-            <input class="button" type="reset" name="cancel" value="Cancel" onclick="javascript:location.href='../service-mgt/service_info.jsp?serviceName=<%=serviceName %>';"/>
+            <input class="button" type="submit" name="save" value="保存"/>
+            <input class="button" type="reset" name="cancel" value="取消" onclick="javascript:location.href='../service-mgt/service_info.jsp?serviceName=<%=serviceName %>';"/>
 	</td>
          </tr>
        </table>
@@ -112,4 +113,3 @@ try{
 <script>
 $('dsConfig').innerHTML = format_xml($('dsConfig').value);
 </script>
-

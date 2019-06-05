@@ -15,6 +15,7 @@
 ~ specific language governing permissions and limitations
 ~ under the License.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.Param" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.Query" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.Validator" %>
@@ -49,7 +50,7 @@
     String ordinalStr = null;
     boolean disable;
     String serviceName = dataService.getName();
-    
+
     if (queryId != null) {
         query = dataService.getQuery(queryId);
         if (query.getParam(paramName) != null) {
@@ -333,12 +334,12 @@ paramType.equals("") ? "" : "display:none"%>"
     <td class="leftCol-small"><fmt:message key="dataservices.validator"/></td>
     <td><select id="validatorList" name="validatorList"
                 onchange="changeAddValidatorFields(this,document);">
-        <option value="#">--Select--</option>
-        <option value="validateLongRange">Long Range Validator</option>
-        <option value="validateDoubleRange">Double Range Validator</option>
-        <option value="validateLength">Length Validator</option>
-        <option value="validatePattern">Pattern Validator</option>
-        <option value="validateCustom">Custom Validator</option>
+        <option value="#">--请选择--</option>
+        <option value="validateLongRange">长整型范围验证器</option>
+        <option value="validateDoubleRange">双精度范围验证器</option>
+        <option value="validateLength">长度验证器</option>
+        <option value="validatePattern">正则表达式模式验证器</option>
+        <option value="validateCustom">自定义验证器</option>
     </select></td>
 </tr>
 
@@ -416,7 +417,7 @@ paramType.equals("") ? "" : "display:none"%>"
             <%--</tr>--%>
             <%--<% }--%>
             <%
-                if (validators.size() > 0) { 
+                if (validators.size() > 0) {
                 int i = 0;
                 %>
             <thead>
@@ -449,10 +450,10 @@ paramType.equals("") ? "" : "display:none"%>"
                         <fmt:message key="edit"/></a>
                 </td>
             </tr>
-            <% 
+            <%
             	i++;
             }
-            
+
             }
             %>
         </table>

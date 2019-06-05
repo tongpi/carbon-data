@@ -15,4 +15,5 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
-<a href="https://localhost:9443/carbon/ds/raw-xml-edit.jsp?serviceName=DataServiceSample1">edit</a>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<a href="https://localhost:9443/carbon/ds/raw-xml-edit.jsp?serviceName=DataServiceSample1">编辑</a>

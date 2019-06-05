@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <%@ page import="org.wso2.carbon.utils.ServerConstants" %>
@@ -69,7 +70,7 @@
     } else {
     	xaDatasourceClass = xaClass;
     }
-   
+
     if (xaDatasourceClass != null && rdbmsEngineType == null) {
     	rdbmsEngineType = RDBMSUtils.getRDBMSEngine4XADataSource(xaDatasourceClass);
     }
@@ -83,7 +84,7 @@
 
 <form method="post" action="" name="dataForm"
       onsubmit="return validateManageXADSForm();">
-      
+
 <table class="styledLeft">
   <tr>
     	  <td colspan="2" class="middle-header"><fmt:message key="add.edit.data.source"/></td>
@@ -102,11 +103,11 @@
             color="red">*</font></label></td>
     <td>
         <select name="databaseEngine" id="databaseEngine"
-                    onchange="changeXADataSourceEngine(this,document)"> 
+                    onchange="changeXADataSourceEngine(this,document)">
             <%if (("#".equals(rdbmsEngineType)|| rdbmsEngineType.equals(""))) {%>
-            <option value="#" selected="selected">--SELECT--</option>
+            <option value="#" selected="selected">--请选择--</option>
             <%} else {%>
-            <option value="#">--SELECT--</option>
+            <option value="#">--请选择--</option>
             <%}%>
 
             <%if ("mysql".equals(rdbmsEngineType)) {%>
@@ -190,14 +191,14 @@
             <%}%>
 
             <%if ("Generic".equals(rdbmsEngineType)) {%>
-            <option selected="selected" value="Generic">Generic</option>
+            <option selected="selected" value="Generic">通用引擎</option>
             <%} else {%>
-            <option value="Generic#Generic">Generic</option>
+            <option value="Generic#Generic">通用引擎</option>
             <%}%>
         </select>
     </td>
 </tr>
-   
+
         <tr>
           <td><fmt:message key="xa.datasource.class"/><font color="red">*</font></td>
            <td><input value="<%=xaDatasourceClass%>" id="txXADatasourceClass"
@@ -208,7 +209,7 @@
   </tr>
   <tr><td>
   <%
- 
+
 // entering for the first time add functionality
 if ( xaDataSource == null || "changed".equals(flag)) {
 	if (xaDataSource != null) {
@@ -245,8 +246,8 @@ if ( xaDataSource == null || "changed".equals(flag)) {
 		xaDataSource.addProperty("User", "");
 		xaDataSource.addProperty("Password", "");
     } else if (rdbmsEngineType.equals("informix-sqli")) {
-		
-		
+
+
     } else if (rdbmsEngineType.equals("postgresql")) {
 		xaDataSource.addProperty("ServerName", "");
 		xaDataSource.addProperty("PortNumber", "");
@@ -268,7 +269,7 @@ if ( xaDataSource == null || "changed".equals(flag)) {
     if ( xaDatasourceId != null && !xaDatasourceId.equals("")) {
     	dataService.addXADataSource(xaDataSource);
     }
-   
+
 	//for all the db engines
 }
 Iterator propertyIterator = null;
@@ -284,15 +285,15 @@ propertyIterator = configProperties.iterator();
             String propertyName = property.getName().toString();
             String propertyValue = property.getValue().toString();
 %>
-<tr> 
+<tr>
 <td><label><%=propertyName%></label></td>
 <td>
- <% if (propertyName.equalsIgnoreCase("Password")) {%> 
-<input type="password" size="50" id="<%=propertyName%>" name="<%=propertyName%>" value="<%=propertyValue%>" /> 
-<% }else {%> 
-<input type="text" size="50" id="<%=propertyName%>" name="<%=propertyName%>" value="<%=propertyValue%>" /> 
+ <% if (propertyName.equalsIgnoreCase("Password")) {%>
+<input type="password" size="50" id="<%=propertyName%>" name="<%=propertyName%>" value="<%=propertyValue%>" />
+<% }else {%>
+<input type="text" size="50" id="<%=propertyName%>" name="<%=propertyName%>" value="<%=propertyValue%>" />
 </td>
-<% }%> 
+<% }%>
 <td>
  <a class="icon-link" style="background-image:url(../admin/images/delete.gif);" onclick="deleteXADSProperty('<%=propertyName%>','<%=xaDatasourceId%>');" href="#"><fmt:message key="delete"/>
 </td>
@@ -302,7 +303,7 @@ propertyIterator = configProperties.iterator();
     }
 %>
 
-                     
+
  <tr>
                 <td colspan="2">
                     <a class="icon-link" style="background-image:url(../admin/images/add.gif);"
@@ -312,12 +313,12 @@ propertyIterator = configProperties.iterator();
             </tr>
 </table>
   </td></tr>
-  
+
  <tr>
 			<td class="buttonRow">
 			<input class="button" type="submit" onclick="document.dataForm.action='xaDataSourceProcessor.jsp'" value="<fmt:message key="save"/>" />
-	
-       
+
+
 			<input class="button" type="button" value="<fmt:message key="cancel"/>"
 				onclick="location.href = 'viewXADS.jsp'" />
 			</td>
@@ -328,6 +329,6 @@ propertyIterator = configProperties.iterator();
 
 </div>
 
-</div>          
+</div>
 
 </fmt:bundle>

@@ -18,6 +18,7 @@
 ~  *
 ~  */
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <%@ page import="org.apache.axis2.AxisFault" %>
@@ -36,7 +37,7 @@
         request="<%=request%>"/>
 <%
    // String[] selectedSchema = ()
-    boolean isBack =  request.getParameter("flag") == null ? false: true; 
+    boolean isBack =  request.getParameter("flag") == null ? false: true;
     String sourceId = null;
     String dbName = null;
     String[] schemaList = null;
@@ -49,7 +50,7 @@
     String schemaListSession[] = null;
     String pageNumberStr = request.getParameter("pageNumber");
     String[] allSchemaList = null;
-    
+
     //sourceId = (String)session.getAttribute("datasource");
 //    dbName = request.getParameter("dbName");
 //    session.setAttribute("dbName", dbName);
@@ -112,10 +113,10 @@
 	            request.setAttribute(CarbonError.ID, carbonError);
 	        }
 	}
- 
+
     //redirecting page
     if (totalSchemaList == null || totalSchemaList[0] == null) {
-    	%>                                                      
+    	%>
     	<script type="text/javascript">
     	    location.href = "scriptViewTabList.jsp";
     	</script>
@@ -186,7 +187,7 @@
                                          <% }
                                                } else {
                                          %>
-                                                
+
                                                 <td></td>
                                                 <td><input type="radio" id = "<%=totalSchemaList[y]%>"  name="schemaList"  value=<%=totalSchemaList[y]%> CHECKED ></td>
                                                 <td><%=totalSchemaList[y]%></td>
@@ -224,22 +225,22 @@
                         <td class="buttonRow" colspan="2">
                             <input class="button" type="button" value="< <fmt:message key="back"/>"
                                    onclick="location.href = 'scriptAddSource.jsp?ordinal=0&flag=back&datasource=<%=Encode.forJavaScript(sourceId)%>&dbName=<%=Encode.forJavaScript(dbName)%>' "/>
-                            
+
                          <% if (isBack ){%>
                             <input class="button" type="submit" value="<fmt:message key="next"/> > " onclick = "document.dataForm.action='scriptViewTabList.jsp?ordinal=2&flag=fwd';return validateSchemaTextField('<%=schemaNames%>');" />
-                             
+
                           <% } else {%>
                             <input class="button" type="submit" value="<fmt:message key="next"/> > " onclick = "document.dataForm.action='scriptViewTabList.jsp?ordinal=2';return validateSchemaTextField('<%=schemaNames%>');" />
-                            
+
                            <% } %>
                            <input class="button" type="button" value="<fmt:message key="cancel"/>"
 				               onclick="location.href = '../service-mgt/index.jsp'" />
-                            
+
                         </td>
                     </tr>
                 </table>
             <script type="text/javascript">
-                
+
                 function set_check_schemaList(obj){
                     var checkstate = false;
                     if (obj.checked){
@@ -266,7 +267,7 @@
                           }
                          }
                         if (!isAvailable) {
-                                CARBON.showWarningDialog("You have entered schema which not exist");
+                                CARBON.showWarningDialog("指定了一个不存在的方案(schema)");
                                 return false;
                         }
                     } else {

@@ -18,6 +18,7 @@
 ~  *
 ~  */
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <%@ page import="org.apache.axis2.AxisFault" %>
@@ -128,7 +129,7 @@
 
     //selectedTableList = (String[])session.getAttribute("tableList");
      if ((isBack)) {
-         
+
     	   tableListSession = (String[])session.getAttribute("tableList");
     	   schemaList = (String[])session.getAttribute("schemaList");
     	   String[] newschemaList = request.getParameterValues("schemaList");
@@ -201,23 +202,23 @@
 <fmt:bundle basename="org.wso2.carbon.dataservices.ui.i18n.Resources">
 
     <div id="middle">
-        <h2>Customize Service Generation</h2>
+        <h2>自定义服务生成</h2>
         <form action="scriptServiceGeneratingMode.jsp" method="post" name="dataForm">
            <div id="workArea">
                <table>
                 <tr>
                 <td>
-                    <a href="#" onclick="selectAll(true);return false;"  style="cursor:pointer">Select all</a>&nbsp<b>|</b>&nbsp;
+                    <a href="#" onclick="selectAll(true);return false;"  style="cursor:pointer">全选</a>&nbsp<b>|</b>&nbsp;
                 </td>
                 <td>
-                    <a href="#" onclick="selectAll(false);return false; "  style="cursor:pointer">Select none</a>
+                    <a href="#" onclick="selectAll(false);return false; "  style="cursor:pointer">全不选</a>
                 </td>
                 </tr>
                 </table>
                 <table class="styledLeft">
                     <thead>
                         <tr>
-                            <th colspan="2">Select Table(s)</th>
+                            <th colspan="2">选择表</th>
                         </tr>
                         </thead>
                         <%     if (totalSchemaListNew!= null){%>

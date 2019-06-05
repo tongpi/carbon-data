@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
  <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
@@ -42,7 +43,7 @@
 </jsp:useBean>
 <script type="text/javascript" src="js/ui-validations.js"></script>
 <div id="middle">
-<h2>Add/Edit Output Mapping</h2>
+<h2>添加/编辑 输出映射</h2>
 
 <div id="workArea">
 <%  String edit = request.getParameter("edit");
@@ -75,7 +76,7 @@
     String exportType = request.getParameter("exportType");
     String caption;
     Result result;
-    
+
     Query query = new Query();
     Query mainQuery = dataService.getQuery(queryId);
     datasourceType = (datasourceType == null) ? "column" : datasourceType;
@@ -145,13 +146,13 @@
        type="hidden"/>
 <input value="<%=mappingType%>" id="mappingType" name="mappingType" type="hidden"/>
 <input value="<%=requiredRoles%>" id="requiredRoles" name="requiredRoles" type="hidden"/>
-        Output Mappings
+        输出映射
     </td>
 </tr>
 <tr><td>
 <table class="normal">
             <tr>
-            <td>  
+            <td>
   		     <table>
     		  <tr>
                 <td class="leftCol-med"><fmt:message key="data.services.mapping.type"/><font color="red">*</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -159,21 +160,21 @@
                 <td><select onchange="changeToNextRDFMapping(this, document);return false;" name="cmbDataServiceOMType"
                             id="cmbDataServiceOMType">
                     <% if (mappingType.equals("")) { %>
-                    <option selected="selected" value="">--Select--</option>
+                    <option selected="selected" value="">--请选择--</option>
                     <% }else{ %>
-                    <option value="">--Select--</option>
+                    <option value="">--请选择--</option>
                     <% }if (mappingType.equals("element")) { %>
-                    <option selected="true" value="element">element</option>
+                    <option selected="true" value="element">元素</option>
                     <% }else{ %>
-                    <option value="element">element</option>
+                    <option value="element">元素</option>
                     <% }if (mappingType.equals("resource")) { %>
-                    <option selected="selected" value="resource">resource</option>
+                    <option selected="selected" value="resource">资源</option>
                     <% }else{ %>
-                    <option value="resource">resource</option>
+                    <option value="resource">资源</option>
                     <% } %>
                 </select></td>
             </tr>
-             
+
               </table>
               </td>
              </tr>
@@ -196,25 +197,25 @@
         </table>
 </div>
 <div id="omElementRowId" style="<%=(mappingType.equals("query")) ? "display:none":""%>">
-   
+
         <table class="normal" style="<%=rdfRefURI == null || rdfRefURI.equals("") ? "" : "display:none"%>">
         <tr>
-        <td>  
+        <td>
   		 <table>
              <tr>
              <td class="leftCol-med"><fmt:message key="data.services.datasource.type"/><font color="red">*</font>
 				<td><select onchange="changeToDataSourceType(this, document);return false;" id="datasourceTypeId" name="datasourceType" >
 				        <% if(datasourceType.equals("") || datasourceType.equals("column")){ %>
-				        <option value="column" selected="selected">column</option>
+				        <option value="column" selected="selected">列</option>
 				        <% }else{ %>
-				        <option value="column">column</option>
+				        <option value="column">列</option>
 				        <% } %>
 				        <% if(datasourceType.equals("query-param")) { %>
-				        <option value="query-param" selected="selected">query-param</option>
+				        <option value="query-param" selected="selected">查询参数</option>
 				        <% } else { %>
-				        <option value="query-param">query-param</option>
+				        <option value="query-param">查询参数</option>
 				        <% } %>
-				        </select> </td>   
+				        </select> </td>
             </tr>
               <tr   id="columnRow" style="<%=datasourceType.equals("column") ? "" : "display:none"%>">
                 <td class="leftCol-med"><fmt:message key="dataservice.datasource.column.name"/></td>
@@ -234,60 +235,60 @@
            <tr><td class="leftCol-med"><fmt:message key="data.services.xsdType"/></td><td>
                 <select id="xsdType" name="xsdType">
                     <% if (xsdType.equals("")) { %>
-                    <option value="" selected="selected">--SELECT--</option>
+                    <option value="" selected="selected">--请选择--</option>
                     <% } else { %>--%>
-                    <option value="">--SELECT--</option>
+                    <option value="">--请选择--</option>
                     <% } if (xsdType.equals("string")) { %>
-                    <option value="string" selected="selected">string</option>
+                    <option value="string" selected="selected">字符串</option>
                     <% } else { %>
-                    <option value="string">string</option>
+                    <option value="string">字符串</option>
                     <% } if (xsdType.equals("integer")) { %>
-                    <option value="integer" selected="selected">integer</option>
+                    <option value="integer" selected="selected">整型</option>
                     <% } else { %>
-                    <option value="integer">integer</option>
+                    <option value="integer">整型</option>
                     <% } if (xsdType.equals("boolean")) { %>
-                    <option value="boolean" selected="selected">boolean</option>
+                    <option value="boolean" selected="selected">布尔</option>
                     <% } else { %>
-                    <option value="boolean">boolean</option>
+                    <option value="boolean">布尔</option>
                     <% } if (xsdType.equals("float")) { %>
-                    <option value="float" selected="selected">float</option>
+                    <option value="float" selected="selected">浮点数</option>
                     <% } else { %>
-                    <option value="float">float</option>
+                    <option value="float">浮点数</option>
                     <% } if (xsdType.equals("double")) { %>
-                    <option value="double" selected="selected">double</option>
+                    <option value="double" selected="selected">双精度</option>
                     <% } else{ %>
-                    <option value="double">double</option>
+                    <option value="double">双精度</option>
                     <% } if (xsdType.equals("decimal")) { %>
-                    <option value="decimal" selected="selected">decimal</option>
+                    <option value="decimal" selected="selected">数字</option>
                     <% } else { %>
-                    <option value="decimal">decimal</option>
+                    <option value="decimal">数字</option>
                     <% } if (xsdType.equals("dateTime")) { %>
-                    <option value="dateTime" selected="selected">dateTime</option>
+                    <option value="dateTime" selected="selected">日期时间</option>
                     <% } else { %>
-                    <option value="dateTime">dateTime</option>
+                    <option value="dateTime">日期时间</option>
                     <% } if (xsdType.equals("time")) { %>
-                    <option value="time" selected="selected">time</option>
+                    <option value="time" selected="selected">时间</option>
                     <% } else { %>
-                    <option value="time">time</option>
+                    <option value="time">时间</option>
                     <% } if (xsdType.equals("date")) { %>
-                    <option value="date" selected="selected">date</option>
+                    <option value="date" selected="selected">日期</option>
                     <% } else { %>
-                    <option value="date">date</option>
+                    <option value="date">日期</option>
                     <% } if (xsdType.equals("long")) { %>
-                    <option value="long" selected="selected">long</option>
+                    <option value="long" selected="selected">长整型</option>
                     <% } else { %>
-                    <option value="long">long</option>
+                    <option value="long">长整型</option>
                     <% } if (xsdType.equals("base64Binary")) { %>
                     <option value="base64Binary" selected="selected">base64Binary</option>
                     <% } else { %>
                     <option value="base64Binary">base64Binary</option>
                     <% } %>
-                 </select></td></tr> 
+                 </select></td></tr>
    					</table>
    				 </tr>
 				 </td>
                <tr id="addExport">
-		       <td>  
+		       <td>
                        <table>
                          <tr id="exportSymbolMax">
 				                <td><fmt:message key="dataservices.output.mapping.export.option"/></td>
@@ -340,7 +341,7 @@
         <table class="styledInner" id="userRolesTab">
             <thead>
                 <tr>
-                    <th>User Roles</th><th></th>
+                    <th>用户角色</th><th></th>
                 </tr>
             </thead>
            <tbody>
@@ -388,7 +389,7 @@
 </td>
 </tr>
 <tr>
-    <td class="middle-header">Existing Output Mappings</td>
+    <td class="middle-header">现有输出映射</td>
 </tr>
 <tr><td>
 <table class="styledLeft" cellspacing="0" id="existingMappingsTable">
@@ -456,7 +457,7 @@
     </td>
     <td><%=element.getDataSourceValue()%>
     </td>
-    <td>element
+    <td>元素
     </td>
     <td><%=roles%>
     </td>
@@ -465,7 +466,7 @@
     <td><%=xportName%>
     </td>
     <td><%=xportType%>
-    </td>     
+    </td>
     <td>
         <a class="icon-link"
            style="background-image:url(../admin/images/edit.gif);"
@@ -508,11 +509,11 @@
     </td>
     <td><%=resource.getRdfRefURI()%>
     </td>
-    <td>resource
+    <td>资源
     </td>
     <td><%=roles%>
     </td>
-    <td><%=xType%>        
+    <td><%=xType%>
     </td>
     </td>
     <td>
@@ -598,9 +599,9 @@
 <%
    if (caption.equals("add")){
 	   flag= flag+"rdf";
-   } 
+   }
 
-	   
+
 %>
 <tr>
     <td class="buttonRow" colspan="2">

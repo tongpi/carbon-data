@@ -18,7 +18,7 @@
   ~  *
   ~  */
   --%>
-
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <%@ page import="org.wso2.carbon.CarbonError" %>
@@ -70,7 +70,7 @@
              servicesList = client.getDSServiceList(sourceId,dbName,schemaList,tableList,serviceNamespace);
         }
 
-    
+
 
    }catch(Exception e){
        servicesList = null;
@@ -102,14 +102,14 @@
                                     </tr>
                                     <% }
                                      %>
-                                   <h3>Following Service(s) are Deployed Sucessfully</h3>
+                                   <h3>下列服务部署成功</h3>
                                 </table>
                             </td></tr>
                         </table>
                     </td>
                     </tr>
                     <% } else {%>
-                    <h3>Service Deployment Unsuccessful due to </h3>
+                    <h3>服务部署失败。原因如下： </h3>
                     <tr>
                                                             <td><%= error%></td>
                                                         </tr>
@@ -119,7 +119,7 @@
                     <tr>
                         <td class="buttonRow">
                            <input
-                        class="button" type="button" value="<fmt:message key="finish"/>"
+                        class="button" type="button" value="<fmt:message key="完成"/>"
                         onclick="location.href = '../service-mgt/index.jsp'" /></td>
                         </td>
                     </tr>

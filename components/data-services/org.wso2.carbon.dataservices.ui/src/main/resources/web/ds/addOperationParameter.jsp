@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="carbon" uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" %>
 <fmt:bundle basename="org.wso2.carbon.dataservices.ui.i18n.Resources">
@@ -64,7 +65,7 @@
             <input type="hidden" name="queryId" value="<%=queryId%>">
 
             <tr>
-                <td class="leftCol-small">Param Name<font
+                <td class="leftCol-small">参数名<font
                         color="red">*</font></td>
                 <td>
                     <input value="<%=paramName%>" name="paramNameId" id="paramNameId"
@@ -74,7 +75,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="leftCol-small">Operation Param Name<font
+                <td class="leftCol-small">操作参数名<font
                         color="red">*</font></td>
                 <td>
                     <input value="<%=operationParamName%>" name="operationParamId" id="operationParamNameId"
@@ -87,9 +88,9 @@
                 <td class="buttonRow" colspan="2">
                     <%--<input class="button" type="button" value="Cancel"--%>
                     <%--onclick="location.href='operations.jsp'"/>--%>
-                    <input class="button" type="submit" value="Add"
+                    <input class="button" type="submit" value="添加"
                onclick="document.dataForm.action = 'operationParamsProcessor.jsp?flag=add&operationName=<%=operationName%>&action=<%=action%>&editParamName=<%=editParamName%>&editparam=<%=editparam%>'"/>
-               		<input class="button" type="button" value="Cancel"
+               		<input class="button" type="button" value="取消"
                            onclick="location.href='addOperation.jsp?action=edit&operationName=<%=operationName%>&operationDesc=<%=operationsDesc%>&disableStreaming=<%=disableStreaming%>'"/>
                 </td>
             </tr>
