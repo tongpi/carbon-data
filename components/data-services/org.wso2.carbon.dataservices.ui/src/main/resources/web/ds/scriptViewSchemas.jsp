@@ -151,7 +151,7 @@
                             <tr>
                                <td colspan="2">
                                    <table>
-                                       <tr><td></td> <td>Schema Name</td>
+                                       <tr><td></td> <td>方案名称</td>
                                     <td><input type="text" name="schemaName" id="schemaName"
                                                value="<%=schemaName%>"/></td></tr>
                                    </table>
