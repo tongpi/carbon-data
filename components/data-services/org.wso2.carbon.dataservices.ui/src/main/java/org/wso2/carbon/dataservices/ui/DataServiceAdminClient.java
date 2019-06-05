@@ -110,8 +110,8 @@ public class DataServiceAdminClient {
 			response = stub.testJDBCConnection(driverClass, jdbcURL, username, password,
 					passwordAlias);
 		} catch (RemoteException e) {
-			throw new AxisFault("Error connecting to " + jdbcURL +
-                    ". Message from the service is : ", e);
+			throw new AxisFault("连接时出错 " + jdbcURL +
+                    ". 来自该服务的消息是: ", e);
 		}
 		return response;
     }
@@ -125,8 +125,8 @@ public class DataServiceAdminClient {
     	try {
 			response = stub.testGSpreadConnection(clientId, clientSecret, refreshToken, visibility, documentURL);
 		} catch (RemoteException e) {
-			throw new AxisFault("Error connecting to " + documentURL +
-                    ". Message from the service is : ", e);
+			throw new AxisFault("连接时出错 " + documentURL +
+                    ". 来自该服务的消息是 : ", e);
 		}
 		return response;
     }
