@@ -81,7 +81,7 @@ public class DataTaskContext {
 			Map<String, ParamValue> params) throws DataServiceFault {
 		DataService dataService = this.getDataService(serviceName);
 		if (dataService == null) {
-			throw new DataServiceFault("The service '" + serviceName + "' does not exist");
+			throw new DataServiceFault("服务:'" + serviceName + "' 不存在");
 		}
 		return DSTools.invokeOperation(dataService, operationName, params);
 	}
@@ -97,7 +97,7 @@ public class DataTaskContext {
 			List<Map<String, ParamValue>> batchParams) throws DataServiceFault {
 		DataService dataService = this.getDataService(serviceName);
 		if (dataService == null) {
-			throw new DataServiceFault("The service '" + serviceName + "' does not exist");
+			throw new DataServiceFault("服务: '" + serviceName + "' 不存在");
 		}
 		DSTools.invokeOperation(dataService, operationName, batchParams);
 	}
@@ -115,7 +115,7 @@ public class DataTaskContext {
 			Map<String, ParamValue> params, String accessMethod) throws DataServiceFault {
 		DataService dataService = this.getDataService(serviceName);
 		if (dataService == null) {
-			throw new DataServiceFault("The service '" + serviceName + "' does not exist");
+			throw new DataServiceFault("服务: '" + serviceName + "' 不存在");
 		}
 		return DSTools.accessResource(dataService, resourcePath, params, accessMethod);
 	}
@@ -131,7 +131,7 @@ public class DataTaskContext {
 			DSTools.setDataServicesUser(new DataServiceUser(username, 
 					new HashSet<String>((Arrays.asList(DBUtils.getUserRoles(username))))));
 		} else {
-			throw new DataServiceFault("Invalid credentials for user '" + username + "'");
+			throw new DataServiceFault("用户的凭据无效 '" + username + "'");
 		}
 	}
 

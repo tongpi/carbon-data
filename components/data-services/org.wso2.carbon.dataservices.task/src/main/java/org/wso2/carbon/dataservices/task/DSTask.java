@@ -48,7 +48,7 @@ public class DSTask extends WebServiceCallTask {
 		String opName = this.getProperties().get(DSTaskConstants.DATA_SERVICE_OPERATION_NAME);
                 String tidProp = this.getProperties().get(TaskInfo.TENANT_ID_PROP);
 		if (tidProp == null) {
-			throw new RuntimeException("Cannot determine the tenant domain for the scheduled service: " +
+			throw new RuntimeException("无法确定计划服务的租户域： " +
 		            serviceName);
 		}
                 int tid = Integer.parseInt(tidProp);
@@ -61,8 +61,8 @@ public class DSTask extends WebServiceCallTask {
     	}
     	String httpEPR = DSTaskUtils.extractHTTPEPR(axisService);
     	if (httpEPR == null) {
-    		throw new RuntimeException("No HTTP endpoint found for service: " +
-    	        serviceName + " for scheduling service calls");
+    		throw new RuntimeException("找不到服务的HTTP端点： " +
+    	        serviceName + " 用于调度服务");
     	}
     	this.getProperties().put(WebServiceCallTask.SERVICE_TARGET_EPR, httpEPR);
     	String mep;

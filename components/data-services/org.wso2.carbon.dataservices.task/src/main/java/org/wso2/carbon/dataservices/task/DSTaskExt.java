@@ -39,7 +39,7 @@ public class DSTaskExt extends AbstractTask {
 		    		PrivilegedCarbonContext.getThreadLocalCarbonContext().getTenantId(true));
             this.dataTaskContext.setDataTaskProperties(this.getProperties());
 		} catch (Exception e) {
-			throw new RuntimeException("Error in initializing Data Task: " + e.getMessage(), e);
+			throw new RuntimeException("初始化数据任务时出错： " + e.getMessage(), e);
 		}
 	}
 	
