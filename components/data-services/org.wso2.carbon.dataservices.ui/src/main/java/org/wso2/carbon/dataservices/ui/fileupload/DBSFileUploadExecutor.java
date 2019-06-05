@@ -41,7 +41,7 @@ public class DBSFileUploadExecutor extends AbstractFileUploadExecutor {
         Map<String, ArrayList<FileItemData>> fileItemsMap = getFileItemsMap();
 
         if (fileItemsMap == null || fileItemsMap.isEmpty()) {
-            String msg = "File uploading failed. No files are specified";
+            String msg = "文件上传失败。 没有指定文件";
             log.error(msg);
             CarbonUIMessage.sendCarbonUIMessage(msg, CarbonUIMessage.ERROR, request,
                     response, getContextRoot(request) + "/" + webContext + "/ds/upload.jsp");
@@ -61,19 +61,19 @@ public class DBSFileUploadExecutor extends AbstractFileUploadExecutor {
                     if (fileName.endsWith(".dbs")) {
                         serviceUploaderClient.uploadService(fileName, "", fileItemData.getDataHandler());
                     } else {
-                        throw new CarbonException("File with extension " + fileName
-                                + " is not supported!");
+                        throw new CarbonException("带扩展名的文件 " + fileName
+                                + " 不支持！");
                     }
                 }
                 response.setContentType("text/html; charset=utf-8");
-                msg = "Uploaded the DBS. Deployment in progress. Status of the upload will be known once the " +
-                        "deployment is complete.Please refresh the service list in a moment";
+                msg = "上传了数据库,正在部署中 " +
+                        "部署完成后将知道上传的状态,请稍后刷新服务列表";
                 CarbonUIMessage.sendCarbonUIMessage(msg, CarbonUIMessage.INFO, request,
                         response, getContextRoot(request) + "/" + webContext + "/service-mgt/index.jsp");
                 return true;
             }
         } catch (java.lang.Exception e) {
-            msg = "File upload failed. " + e.getMessage();
+            msg = "文件上传失败. " + e.getMessage();
             log.error(msg);
             CarbonUIMessage.sendCarbonUIMessage(msg.replace("'", "`").replace("\"", "`").replace('\n', ' '),
                     CarbonUIMessage.ERROR, request,

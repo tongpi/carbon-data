@@ -43,7 +43,7 @@ public class WSDLUploadExecutor extends AbstractFileUploadExecutor {
         Map<String, ArrayList<FileItemData>> fileItemsMap = getFileItemsMap();
 
         if (fileItemsMap == null || fileItemsMap.isEmpty()) {
-            String msg = "File uploading failed. No files are specified";
+            String msg = "文件上传失败。 没有指定文件";
             log.error(msg);
             CarbonUIMessage.sendCarbonUIMessage(msg, CarbonUIMessage.ERROR, request,
                     response, getContextRoot(request) + "/" + webContext + "/ds/uploadWsdl.jsp");
@@ -61,18 +61,18 @@ public class WSDLUploadExecutor extends AbstractFileUploadExecutor {
                 if (fileName.endsWith(".wsdl")) {
                     serviceUploaderClient.uploadWsdl(fileName, fileItemData.getDataHandler());
                 } else {
-                    throw new CarbonException("File with extension " + fileName
-                            + " is not supported!");
+                    throw new CarbonException("带扩展名的文件 " + fileName
+                            + " 不支持!");
                 }
             }
             response.setContentType("text/html; charset=utf-8");
-            msg = "WSDL uploaded successfully.";
+            msg = "WSDL上传成功.";
             CarbonUIMessage.sendCarbonUIMessage(msg, CarbonUIMessage.INFO, request, response,
                     getContextRoot(request) + "/" + webContext +
                             "/ds/wizardDoneProcessor.jsp?flag=wip");
             return true;
         } catch (java.lang.Exception e) {
-            msg = "WSDL upload failed. " + e.getMessage();
+            msg = "WSDL上传失败. " + e.getMessage();
             log.error(msg);
             CarbonUIMessage.sendCarbonUIMessage(msg.replace("'", "`").replace("\"", "`").replace('\n', ' '), 
             		CarbonUIMessage.ERROR, request,
