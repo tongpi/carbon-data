@@ -48,7 +48,7 @@ public class DataServiceFileUploader extends DataServiceAdmin {
     		}    		
 			this.saveDataService(serviceName, serviceHierarchy, serviceContents);
 		} catch (Exception e) {
-		    throw new Exception("Failed to upload the service archive " + fileName, e);
+		    throw new Exception("无法上传服务存档 " + fileName, e);
 		}
 
 		return DBConstants.LABEL_SUCESSFULL;

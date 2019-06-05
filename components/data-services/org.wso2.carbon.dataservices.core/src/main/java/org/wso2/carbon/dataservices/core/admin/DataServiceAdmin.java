@@ -132,7 +132,7 @@ public class DataServiceAdmin extends AbstractAdmin {
 				in.close();
 			} catch (IOException e) {
 				throw new AxisFault(
-						"Error while reading the contents from the service config file for service '"
+						"从服务的服务配置文件读取内容时出错 '"
 								+ serviceId + "'", e);
 			}
 		}
@@ -194,7 +194,7 @@ public class DataServiceAdmin extends AbstractAdmin {
 			*/
 			File directory = new File(dataServiceDirectory);
 			if (!directory.exists() && !directory.mkdirs()) {
-				throw new AxisFault("Cannot create directory: " + directory.getAbsolutePath());
+				throw new AxisFault("无法创建目录: " + directory.getAbsolutePath());
 			}
 		} else {
 			dataServiceFilePath = ((DataService) axisService.getParameter(
@@ -220,7 +220,7 @@ public class DataServiceAdmin extends AbstractAdmin {
 		} catch (IOException e) {
 			log.error("Error while saving " + serviceName, e);
 			throw new AxisFault(
-					"Error occurred while writing the contents for the service config file for the new service "
+					"写入新服务的服务配置文件的内容时出错 "
 							+ serviceName, e);
 		}
 	}
@@ -251,14 +251,14 @@ public class DataServiceAdmin extends AbstractAdmin {
 
 			String resolvePwd;
 			if (driverClass == null || driverClass.length() == 0) {
-				String message = "Driver class is missing";
+				String message = "缺少驱动程序类";
 				if (log.isDebugEnabled()) {
 					log.debug(message);
 				}
 				return message;
 			}
 			if (jdbcURL == null || jdbcURL.length() == 0) {
-				String message = "Driver connection URL is missing";
+				String message = "驱动程序连接URL丢失";
 				if (log.isDebugEnabled()) {
 					log.debug(message);
 				}
@@ -289,18 +289,18 @@ public class DataServiceAdmin extends AbstractAdmin {
 		} catch (SQLException e) {
 			String message;
 			if (null != username && !username.isEmpty()) {
-				message = "Could not connect to database " + jdbcURL + " with username " + username;
+				message = "无法连接到数据库 " + jdbcURL + " 用户名: " + username;
 			} else {
-				message = "Could not connect to database " + jdbcURL;
+				message = "无法连接到数据库 " + jdbcURL;
 			}
 			log.error(message, e);
 			return message;
 		} catch (ClassNotFoundException e) {
-			String message = "Driver class " + driverClass + " can not be loaded";
+			String message = "驱动类 " + driverClass + " 无法加载";
 			log.error(message, e);
 			return message;
 		} catch (Exception e) {
-            String message = "Could not connect to database " + jdbcURL + ", Error message - " + e.getMessage();
+            String message = "无法连接到数据库 " + jdbcURL + ", 错误信息 - " + e.getMessage();
             return message;
         } finally {
 			if (connection != null) {
@@ -344,7 +344,7 @@ public class DataServiceAdmin extends AbstractAdmin {
     public String testGSpreadConnection(String clientId, String clientSecret, String refreshToken, String visibility,
                                         String documentURL) {
         if (DBUtils.isEmptyString(documentURL)) {
-            String message = "Document URL is empty";
+            String message = "文档URL为空";
             log.debug(message);
             return message;
         }
@@ -353,7 +353,7 @@ public class DataServiceAdmin extends AbstractAdmin {
         try {
             key = GSpreadConfig.extractKey(documentURL);
         } catch (DataServiceFault e) {
-            String message = "Invalid documentURL:" + documentURL;
+            String message = "无效的文档URL:" + documentURL;
             log.error(message, e);
             return message;
         }
@@ -385,7 +385,7 @@ public class DataServiceAdmin extends AbstractAdmin {
             try {
                 credential.refreshToken();
             } catch (IOException e) {
-                String message = "Google spreadsheet connection failed, Error refreshing the token ";
+                String message = "Google电子表格连接失败，刷新令牌时出错 ";
                 log.debug(message);
                 return message;
             }
@@ -398,24 +398,24 @@ public class DataServiceAdmin extends AbstractAdmin {
             URL url = new URL(worksheetFeedURL);
             try {
                 service.getFeed(url,  CellFeed.class);
-                String message = "Google spreadsheet connection is successfull ";
+                String message = "谷歌电子表格连接成功 ";
                 log.debug(message);
                 return message;
             } catch (AuthenticationException e) {
-                String message = "Invalid Credentials";
+                String message = "无效的凭据";
                 log.error(message,e);
                 return message;
             } catch (IOException e) {
-                String message = "URL Not found:" + documentURL;
+                String message = "未找到URL:" + documentURL;
                 log.error(message,e);
                 return message;
             } catch (ServiceException e) {
-                String message = "URL Not found:" + documentURL;
+                String message = "未找到URL:" + documentURL;
                 log.error(message,e);
                 return message;
             }
         } catch (MalformedURLException e) {
-            String message = "Invalid documentURL:" + documentURL;
+            String message = "无效的文档URL:" + documentURL;
             log.error(message,e);
             return message;
         }
@@ -462,7 +462,7 @@ public class DataServiceAdmin extends AbstractAdmin {
             List<String> columns = SQLParserUtil.extractOutputColumns(sql);
             return columns.toArray(new String[columns.size()]);
 		} catch (Exception e) {
-			throw new AxisFault("Error occurred while generating response for the query " + sql +
+			throw new AxisFault("为查询生成响应时出错 " + sql +
                     ".", e);
 		}
     }
@@ -472,7 +472,7 @@ public class DataServiceAdmin extends AbstractAdmin {
 			List<String> inputMappings = SQLParserUtil.extractInputMappingNames(sql);
             return inputMappings.toArray(new String[inputMappings.size()]);
 		} catch (Exception e) {
-			throw new AxisFault("Error occurred while generating input mappings for the query " +
+			throw new AxisFault("为查询生成输入映射时出错 " +
                     sql + ".", e);
 		}
     }
@@ -555,8 +555,8 @@ public class DataServiceAdmin extends AbstractAdmin {
             return sourceList;
         }
         if (pageNumber < 0){
-            throw new RuntimeException("Page number should be a positive integer. " +
-                                       "Page numbers begin at 0.");
+            throw new RuntimeException("页码应为正整数. " +
+                                       "页码从0开始.");
         }
         int itemsPerPageInt = 60; // the default number of item per page
         int numberOfPages = (int) Math.ceil((double) sourceList.size() / itemsPerPageInt);
@@ -594,7 +594,7 @@ public class DataServiceAdmin extends AbstractAdmin {
         try {
             return DBUtils.getAllRolesUsingAuthorizationProvider(authProviderConfig);
         } catch (DataServiceFault e) {
-            throw new AxisFault("Error in retrieving role list: " + e.getMessage(), e);
+            throw new AxisFault("检索角色列表时出错: " + e.getMessage(), e);
         }
     }
     
