@@ -54,7 +54,7 @@ public class DSTaskAdmin extends AbstractAdmin {
             return result.toArray(new String[result.size()]);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new AxisFault("Error in getting task names: " + e.getMessage(), e);
+            throw new AxisFault("获取任务名称时出错： " + e.getMessage(), e);
         }
     }
 
@@ -65,7 +65,7 @@ public class DSTaskAdmin extends AbstractAdmin {
             return DSTaskUtils.convert(tm.getTask(taskName));
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new AxisFault("Error getting task info for task: " + taskName, e);
+            throw new AxisFault("获取任务的任务信息时出错： " + taskName, e);
         }
     }
 
@@ -86,7 +86,7 @@ public class DSTaskAdmin extends AbstractAdmin {
                     log.error(e.getMessage(), e);
                 }
             }
-            throw new AxisFault("Error scheduling task: " + dsTaskInfo.getName(), e);
+            throw new AxisFault("计划任务时出错：" + dsTaskInfo.getName(), e);
         }
     }
 
@@ -99,7 +99,7 @@ public class DSTaskAdmin extends AbstractAdmin {
             tm.rescheduleTask(taskInfo.getName());
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new AxisFault("Error rescheduling task: " + dsTaskInfo.getName() + " : " + e.getMessage(), e);
+            throw new AxisFault("重新计划任务时出错：" + dsTaskInfo.getName() + " : " + e.getMessage(), e);
         }
         return true;
     }
@@ -111,7 +111,7 @@ public class DSTaskAdmin extends AbstractAdmin {
             tm.deleteTask(taskName);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new AxisFault("Error deleting task: " + taskName, e);
+            throw new AxisFault("删除任务时出错： " + taskName, e);
         }
     }
 
@@ -122,7 +122,7 @@ public class DSTaskAdmin extends AbstractAdmin {
             return tm.isTaskScheduled(taskName);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new AxisFault("Error checking task scheduled status: " + taskName, e);
+            throw new AxisFault("检查任务计划状态时出错： " + taskName, e);
         }
     }
 
