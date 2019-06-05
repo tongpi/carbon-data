@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.*" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.wso2.carbon.ui.CarbonUIMessage" %>
@@ -36,7 +37,7 @@
     dialect = (dialect == null) ? "" : dialect;
     boolean isDialectAvailable = false;
 
-   
+
     Query query;
     if (queryId != null) {
         // backend validation for sql query
@@ -44,7 +45,7 @@
             // check for </textarea>, ignoring cases
             if (sql.toLowerCase().contains("</textarea>")) {
                 sql = "";
-                String message = "Invalid Query";
+                String message = "无效的查询";
                 CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
             }
         }
@@ -60,11 +61,11 @@
                  if (!isDialectAvailable) {
                       query.addSqlDialects(dialect,sql);
                  } else {
-                     String message = "SQLDialect " + dialect + " already exist.";
+                     String message = "SQL方言 " + dialect + " 已经存在.";
                      CarbonUIMessage.sendCarbonUIMessage(message, CarbonUIMessage.ERROR, request);
                  }
 
-    		 } else if (flag.equals("edit")) { 
+    		 } else if (flag.equals("edit")) {
     			 query.updateSQLDialect(edit,dialect,sql);
     		 } else if (flag.equals("delete")) {
          		query.removeSQLDialect(dialect);
@@ -74,16 +75,16 @@
             query.setId(queryId);
             query.setConfigToUse(datasource);
             query.setSql(mainSql);
-            if (flag.equals("add")) { 
+            if (flag.equals("add")) {
       		  query.addSqlDialects(dialect,sql);
  		    }
             dataService.getQueries().add(query);
     	 }
-     
-    } 
-    
-    
-    
+
+    }
+
+
+
 
 %>
 <input type="hidden" id="flag" name="flag" value="<%=flag%>"/>

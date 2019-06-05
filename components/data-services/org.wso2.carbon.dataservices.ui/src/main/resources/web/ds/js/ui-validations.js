@@ -19,7 +19,7 @@
 function validateServiceDetailsForm(){
     var serviceName = document.getElementById('serviceName').value;
     if(serviceName == ''){
-        CARBON.showWarningDialog("数据服务名称不能为空");
+        CARBON.showWarningDialog("数据服务名称是必需的");
         return false;
     }
     var  regex = /[~!@#$%^&*()+=\:;<>'"?[\]{}|\s,]/;
@@ -63,11 +63,11 @@ function validateServiceDetailsForm(){
                 doc.async = "false";
                 var hasParse = doc.loadXML(source);
                 if (!hasParse) {
-                    CARBON.showErrorDialog('无效配置');
+                    CARBON.showErrorDialog("无效的配置");
                     return false;
                 }
             } catch (e) {
-                CARBON.showErrorDialog('无效配置');
+                CARBON.showErrorDialog("无效的配置");
                 return false;
             }
         } else {
@@ -86,7 +86,7 @@ function validateServiceDetailsForm(){
                 }
             }
             if (message != "") {
-                CARBON.showErrorDialog('Invalid Configuration :' + message);
+                CARBON.showErrorDialog('无效的配置 :' + message);
                 return false;
             }
         }
@@ -97,7 +97,7 @@ function validateDSGenerator(){
     var serviceName = document.getElementById('txtServiceName').value;
     var multipleMode = document.getElementById("mode");
     if(serviceName == '' && getCheckedValue(multipleMode) == "Single"){
-        CARBON.showWarningDialog("数据服务名称不能为空");
+        CARBON.showWarningDialog("数据服务名称是必需的");
         return false;
     }
     return true;
@@ -112,10 +112,10 @@ function validateSQLDialectForm(){
 	var sqlDialect = document.getElementById('txSQLDialect').value;
 	var sql = document.getElementById('txtSQL').value;
 	if (sqlDialect == '') {
-	    CARBON.showWarningDialog("指定支持的驱动程序名称");
+	    CARBON.showWarningDialog("请指定支持的驱动名称");
 	    return false;
 	} if (sql == '' || trim(sql) == '') {
-	    CARBON.showWarningDialog("指定SQL查询");
+	    CARBON.showWarningDialog("请指定SQL查询");
 	    return false;
 	} else {
         return validateQuery(sql);
@@ -127,12 +127,12 @@ function validateDatabaseSelection(){
     var datasource = document.getElementById("datasource").options[document.getElementById("datasource").selectedIndex].value;
 
     if(datasource == '') {
-        CARBON.showWarningDialog("请选择一个数据源");
+        CARBON.showWarningDialog("Carbon 数据源是必需的");
         return false;
     }
     var db = document.getElementById('dbName').value;
     if(db == ''){
-        CARBON.showWarningDialog("数据源名称不能为空");
+        CARBON.showWarningDialog("数据库名称是必需的");
         return false;
     }
 
@@ -151,7 +151,7 @@ function validateTableSelection(obj){
 	  }
 	  index+=1;
 	 }
-   CARBON.showWarningDialog("至少选择一张表才能继续");
+   CARBON.showWarningDialog("至少需要选择一个表才能继续");
    return false;
 }
 
@@ -165,24 +165,24 @@ function validateDataSourcesForm(){
 function validateAddDataSourceForm(){
     if(document.getElementById('datasourceId').value == ''){
         //CARBON.showErrorDialog("Data Service Name is mandatory");
-        CARBON.showWarningDialog('数据源标识不能为空');
+        CARBON.showWarningDialog('数据源Id是必需的');
         return false;
     }
     if(document.getElementById('datasourceType').value == ''){
-        CARBON.showWarningDialog('数据源类型不能为空');
+        CARBON.showWarningDialog('选择数据源类型');
         return false;
     }
     if(document.getElementById('datasourceType').value == 'RDBMS'){
         if(document.getElementById('databaseEngine').value == '#'){
-            CARBON.showWarningDialog('请选择数据库引擎');
+            CARBON.showWarningDialog('选择数据库引擎');
             return false;
         }
         if(document.getElementById('driverClassName').value ==  ''){
-            CARBON.showWarningDialog('数据库驱动程序不能为空');
+            CARBON.showWarningDialog('数据库驱动是必需的');
             return false;
         }
         if(document.getElementById('url').value ==  ''){
-            CARBON.showWarningDialog('JDBC URL不能为空');
+            CARBON.showWarningDialog('JDBC URL 是必需的');
             return false;
         }
         if(!ValidateDataSourceProperties()) {
@@ -191,7 +191,7 @@ function validateAddDataSourceForm(){
 
     }else if(document.getElementById('datasourceType').value == 'EXCEL'){
         if(document.getElementById('excel_datasource').value == ''){
-            CARBON.showWarningDialog('Excel文件位置不能为空');
+            CARBON.showWarningDialog('Excel 文件位置是必需的');
             return false;
         }
         //File extension check
@@ -204,31 +204,31 @@ function validateAddDataSourceForm(){
         }
     }else if(document.getElementById('datasourceType').value == 'RDF'){
         if(document.getElementById('rdf_datasource').value == ''){
-            CARBON.showWarningDialog('RDF文件位置不能为空');
+            CARBON.showWarningDialog('RDF 文件位置是必需的');
             return false;
         }
     }else if(document.getElementById('datasourceType').value == 'SPARQL'){
         if(document.getElementById('sparql_datasource').value == ''){
-            CARBON.showWarningDialog('sparql端点uri不能为空');
+            CARBON.showWarningDialog('Sparql 端点URI 是必需的');
             return false;
         }
     }else if(document.getElementById('datasourceType').value == 'MongoDB'){
         if(document.getElementById('mongoDB_servers').value == ''){
-            CARBON.showWarningDialog('MongoDB服务器不能为空');
+            CARBON.showWarningDialog('MongoDB 服务器是必需的');
             return false;
         }
         if(document.getElementById('mongoDB_database').value == ''){
-            CARBON.showWarningDialog('MongoDB数据库名称不能为空');
+            CARBON.showWarningDialog('MongoDB 数据库名称是必需的');
             return false;
         }
     }else if(document.getElementById('datasourceType').value == 'Cassandra'){
         if(document.getElementById('cassandraServers').value == ''){
-            CARBON.showWarningDialog('Cassandra服务器不能为空');
+            CARBON.showWarningDialog('Cassandra 服务器是必需的');
             return false;
         }
     }else if(document.getElementById('datasourceType').value == 'CSV'){
         if(document.getElementById('csv_datasource').value == ''){
-            CARBON.showWarningDialog('csv文件位置不能为空');
+            CARBON.showWarningDialog('CSV 文件位置是必需的');
             return false;
         }
         //File extension check
@@ -240,44 +240,44 @@ function validateAddDataSourceForm(){
             return false;
         }
         if(document.getElementById('csv_hasheader').value == ''){
-            CARBON.showWarningDialog('包含列标题行不能为空');
+            CARBON.showWarningDialog('必须包含列头行');
             return false;
         }
         if (document.getElementById('csv_hasheader').value == 'true') {
             if (document.getElementById('csv_headerrow').value == '') {
-                CARBON.showWarningDialog('输入标题行的值');
+                CARBON.showWarningDialog('Enter value of the header row');
                 return false;
             }
             if (document.getElementById('csv_headerrow').value.match(/^[a-zA-Z]+$/)) {
-                CARBON.showWarningDialog('在标题行中输入数值');
+                CARBON.showWarningDialog('Enter numeric values to header row');
                 return false;
             }
             if (!document.getElementById('csv_headerrow').value.match(/^\s*[1-9]\d*\s*$/)) {
-                CARBON.showWarningDialog('在标题行中输入大于零的正数');
+                CARBON.showWarningDialog('Enter positive numeric value greater than zero to header row');
                 return false;
             }
             if ( document.getElementById('csv_headerrow').value > 2147483647) {
-                CARBON.showWarningDialog('输入的标题行值超过了允许的最大值');
+                CARBON.showWarningDialog('Entered header row value exceeds the allowed maximum value');
                 return false;
             }
         }
     }else if(document.getElementById('datasourceType').value == 'JNDI'){
        if(document.getElementById('jndi_resource_name').value == ''){
-            CARBON.showWarningDialog('资源名称不能为空');
+            CARBON.showWarningDialog('资源名称是必需的');
             return false;
         }
     } else if (document.getElementById('datasourceType').value == 'WEB_CONFIG') {
     	if (document.getElementById('config').checked) {
     		if(document.getElementById('web_harvest_config_textArea').value ==  ''){
-                CARBON.showWarningDialog('请指定Web收获配置');
+                CARBON.showWarningDialog('请指定 Web Harvest 配置');
                 return false;
             } else if ((document.getElementById('web_harvest_config_textArea').value.trim()).indexOf('<config>') != 0) {
-            	CARBON.showWarningDialog('Web收获配置无效');
+            	CARBON.showWarningDialog('无效的 Web Harvest 配置');
                 return false;
             }
     	} else {
     		if(document.getElementById('web_harvest_config').value ==  ''){
-                CARBON.showWarningDialog('请指定Web收获配置文件路径');
+                CARBON.showWarningDialog('请指定 Web Harvest 配置文件路径');
                 return false;
             }
     	}
@@ -290,7 +290,7 @@ function validateQueryId(obj){
 	var queryId = document.getElementById('queryId').value;
        var reWhiteSpace = new RegExp("^[a-zA-Z0-9_]+$");
     if(queryId == ''){
-         CARBON.showWarningDialog('查询ID不能为空');
+         CARBON.showWarningDialog('查询Id是必需的');
          return  false;
     }
     // Validate for alphanumeric characters and underscores
@@ -307,7 +307,7 @@ function validateFieldsForEvents(obj){
     var reWhiteSpace = new RegExp("^[a-zA-Z0-9_]+$");
     var dataSourceId = document.getElementById('datasource').value;
     if(queryId == ''){
-        CARBON.showWarningDialog('查询ID不能为空');
+        CARBON.showWarningDialog("查询Id是必需的");
         return  false;
     }
     // Validate for alphanumeric characters and underscores
@@ -316,7 +316,7 @@ function validateFieldsForEvents(obj){
         return false;
     }
     if(dataSourceId == '#'){
-        CARBON.showWarningDialog('选择数据源');
+        CARBON.showWarningDialog('Select the datasource');
         return  false;
     }
     return true;
@@ -351,11 +351,11 @@ function validateAddQueryFormSave(obj) {
 	var queryId = document.getElementById('queryId').value;
 	var dataSourceId = document.getElementById('datasource').value;
     if(queryId == ''){
-        CARBON.showWarningDialog('查询ID不能为空');
+        CARBON.showWarningDialog('查询Id是必需的');
         return  false;
     }
     if(dataSourceId == '#'){
-        CARBON.showWarningDialog('选择数据源');
+        CARBON.showWarningDialog('请选择数据源');
         return  false;
     }
 
@@ -370,7 +370,7 @@ function validateAddQueryFormSave(obj) {
     if(document.getElementById('RDFRow').style.display == '') {
         var value = document.getElementById('sparql').value;
         if(value == '') {
-            CARBON.showWarningDialog('SPARQL不能为空');
+            CARBON.showWarningDialog('Sparql 是必需的');
             return false;
         } else {
             return validateQuery(value);
@@ -380,7 +380,7 @@ function validateAddQueryFormSave(obj) {
     if(document.getElementById('RDBMSnJNDIRow').style.display == ''){
         var value = document.getElementById('sql').value;
         if(value == '') {
-            CARBON.showWarningDialog('SQL不能为空');
+            CARBON.showWarningDialog('SQL 是必需的');
             return false;
         } else {
             return validateQuery(value);
@@ -390,7 +390,7 @@ function validateAddQueryFormSave(obj) {
     if (document.getElementById('CASSANDRARow').style.display == '') {
         var value = document.getElementById('cassandraExpression').value;
         if (value == '') {
-            CARBON.showWarningDialog('表达式不能为空');
+            CARBON.showWarningDialog('表达式是必需的');
             return false;
         } else {
             return validateQuery(value);
@@ -400,7 +400,7 @@ function validateAddQueryFormSave(obj) {
     if (document.getElementById('MongoDBQueryRow').style.display == '') {
         var value = document.getElementById('mongoExpression').value;
         if (value == '') {
-            CARBON.showWarningDialog('表达式不能为空');
+            CARBON.showWarningDialog('表达式是必需的');
             return false;
         } else {
             return validateQuery(value);
@@ -409,47 +409,47 @@ function validateAddQueryFormSave(obj) {
 
     if (document.getElementById(dataSourceId).value == 'EXCEL') {
         if (document.getElementById('txtExcelWorkbookName').value == '') {
-            CARBON.showWarningDialog('工作手册的输入值');
+            CARBON.showWarningDialog('请指定工作表名称');
             return false;
         }
         if (document.getElementById('txtExcelStartingRow').value == '') {
-            CARBON.showWarningDialog('输入开始读取的值');
+            CARBON.showWarningDialog('Enter value to Start reading from');
             return false;
         }
         if (document.getElementById('txtExcelHeaderRow').value == '') {
-            CARBON.showWarningDialog('输入标题行的值');
+            CARBON.showWarningDialog('Enter value of the header row');
             return false;
         }
         if (document.getElementById('txtExcelMaxRowCount').value == '') {
-            CARBON.showWarningDialog('输入要读取的行的值');
+            CARBON.showWarningDialog('Enter value to Rows to read');
             return false;
         }
         if (document.getElementById('txtExcelStartingRow').value.match(/^[a-zA-Z]+$/)) {
-            CARBON.showWarningDialog('输入要开始读取的数值');
+            CARBON.showWarningDialog('Enter numeric values to Start reading from');
             return false;
         }
         if (!document.getElementById('txtExcelStartingRow').value.match(/^\s*[1-9]\d*\s*$/)) {
-            CARBON.showWarningDialog('输入大于零的正数开始读取');
+            CARBON.showWarningDialog('Enter positive numeric value greater than zero to Start reading from');
             return false;
         }
         if ( document.getElementById('txtExcelStartingRow').value > 2147483647) {
-        	CARBON.showWarningDialog('输入的起始值超过了允许的最大值');
+        	CARBON.showWarningDialog('Entered Start reading from value exceeds the allowed maximum value');
             return false;
         }
         if (document.getElementById('txtExcelHeaderRow').value.match(/^[a-zA-Z]+$/)) {
-            CARBON.showWarningDialog('在标题行中输入数值');
+            CARBON.showWarningDialog('Enter numeric values to header row');
             return false;
         }
         if (!document.getElementById('txtExcelHeaderRow').value.match(/^\s*[1-9]\d*\s*$/)) {
-            CARBON.showWarningDialog('在标题行中输入大于零的正数');
+            CARBON.showWarningDialog('Enter positive numeric value greater than zero to header row');
             return false;
         }
         if ( document.getElementById('txtExcelHeaderRow').value > 2147483647) {
-            CARBON.showWarningDialog('输入的标题行值超过了允许的最大值');
+            CARBON.showWarningDialog('Entered header row value exceeds the allowed maximum value');
             return false;
         }
         if (document.getElementById('txtExcelMaxRowCount').value.match(/^[a-zA-Z]+$/)) {
-            CARBON.showWarningDialog('向要读取的行输入数值');
+            CARBON.showWarningDialog('Enter numeric values to Rows to read');
             return false;
         }
     }
@@ -457,7 +457,7 @@ function validateAddQueryFormSave(obj) {
     if (document.getElementById('timeout').value != null) {
         var timeout = document.getElementById('timeout').value;
         if(isNaN(timeout)){
-            CARBON.showWarningDialog("超时 " + "'" +timeout + "'" + " 应为数值");
+            CARBON.showWarningDialog("超时 " + "'" +timeout + "'" + " 应该是数字值");
             return  false;
         }
     }
@@ -467,7 +467,7 @@ function validateAddQueryFormSave(obj) {
         var fetchSize = document.getElementById('fetchSize').value;
         if(isNaN(fetchSize))
         {
-            CARBON.showWarningDialog("取大小 "+ "'" + fetchSize + "'" + " 应为数值");
+            CARBON.showWarningDialog("提取大小 "+ "'" + fetchSize + "'" + " 应该是数字值");
             return  false;
         }
     }
@@ -476,7 +476,7 @@ function validateAddQueryFormSave(obj) {
         var maxFieldSize = document.getElementById('maxFieldSize').value;
         if(isNaN(maxFieldSize))
         {
-            CARBON.showWarningDialog("最大字段大小 "+ "'" + maxFieldSize + "'" + " 应为数值");
+            CARBON.showWarningDialog("最大字段大小 "+ "'" + maxFieldSize + "'" + " 应该是数字值");
             return  false;
         }
     }
@@ -485,14 +485,14 @@ function validateAddQueryFormSave(obj) {
         var maxRows = document.getElementById('maxRows').value;
         if(isNaN(maxRows))
         {
-            CARBON.showWarningDialog("最大行数 "+ "'" +maxRows + "'" + " 应为数值");
+            CARBON.showWarningDialog("最大行数 "+ "'" +maxRows + "'" + " 应该是数字值");
             return  false;
         }
     }
 
     if(document.getElementById('noOutputmappings') != null )  {
         if((document.getElementById('outputTypeId').value == 'xml') && (document.getElementById('txtDataServiceWrapElement').value != '' ||  document.getElementById('txtDataServiceRowName').value != '' )){
-            CARBON.showWarningDialog('没有输出映射，无法插入结果元素。插入输出映射以继续。');
+            CARBON.showWarningDialog('没有输出映射，无法插入结果元素。插入输出映射以继续.');
             return  false;
         }
     }
@@ -532,11 +532,11 @@ function validateManageXADSForm(){
 	var xaDatasourceId = document.getElementById('xaId').value;
 	var txXADatasourceClass = document.getElementById('txXADatasourceClass').value;
 	if(xaDatasourceId == ''){
-        CARBON.showWarningDialog('XA datasource id不能为空');
+        CARBON.showWarningDialog('XA 数据源Id是必需的');
         return false;
     }
 	if(txXADatasourceClass == ''){
-        CARBON.showWarningDialog('XA Datasource 类不能为空');
+        CARBON.showWarningDialog('XA 数据源Class是必需的');
         return false;
     }
     return true;
@@ -545,17 +545,17 @@ function validateManageXADSForm(){
 function validateAddOperationForm(){
     var operationName = document.getElementById('operationName').value;
     if(document.getElementById('operationName').value == ''){
-        CARBON.showWarningDialog('操作名称不能为空');
+        CARBON.showWarningDialog('操作名称是必需的');
         return false;
     }
     if(document.getElementById('queryId').value == ''){
-        CARBON.showWarningDialog('选择查询ID');
+        CARBON.showWarningDialog('请选择查询Id');
         return false;
     }
     var  reWhiteSpace = new RegExp("^[a-zA-Z0-9_]+$");
     // Check for white space
     if (!reWhiteSpace.test(operationName)) {
-        CARBON.showWarningDialog("只允许输入字母数字字符和下划线");
+        CARBON.showWarningDialog("在操作名称中只允许出现字母数字字符和下划线");
         return false;
     }
     return true;
@@ -579,15 +579,15 @@ function validateAddResourceForm(){
         var query = queryId.value;
     }
     if(document.getElementById('resourcePath').value == ''){
-        CARBON.showWarningDialog('资源路径不能为空');
+        CARBON.showWarningDialog('资源路径是必需的');
         return false;
     }
     if(document.getElementById('resourceMethod').value == ''){
-        CARBON.showWarningDialog('选择资源方法');
+        CARBON.showWarningDialog('请选择资源方法');
         return false;
     }
     if(query == ''){
-        CARBON.showWarningDialog('选择查询ID');
+        CARBON.showWarningDialog('请选择查询Id');
         return false;
     }
     return true;
@@ -753,18 +753,18 @@ function validateOutputMappingFields(obj){
     }
     if((grpByElement == '') && (rdfBaseURI == '')){
         if (grpByElement == ''){
-            CARBON.showWarningDialog('输入按元素分组的值');
+            CARBON.showWarningDialog('Enter value to Grouped by element');
         } else {
-            CARBON.showWarningDialog('输入RDF基URI的值');
+            CARBON.showWarningDialog('Enter value to RDF Base URI');
         }
         return false;
     }
     if(queryId == ''){
-        CARBON.showWarningDialog('添加输出映射之前需要查询ID');
+        CARBON.showWarningDialog("添加输出映射之前需要查询ID");
         return false;
     }
     if(datasource == '#'){
-        CARBON.showWarningDialog('选择数据源');
+        CARBON.showWarningDialog('请选择数据源');
         return false;
     }
     //location.href = 'queryProcessor.jsp?flag=outputMapping&queryId='+document.getElementById('queryId').value+'&sql='+document.getElementById('sql').value+'&datasource='+document.getElementById('datasource').value+'&rowName='+document.getElementById('txtDataServiceRowName').value+'&element='+document.getElementById('txtDataServiceWrapElement').value+'&ns='+document.getElementById('txtDataServiceRowNamespace').value;
@@ -775,7 +775,7 @@ function validateOutputMappingFields(obj){
 function validateComplexElement(obj){
     //location.href = 'queryProcessor.jsp?flag=outputMapping&queryId='+document.getElementById('queryId').value+'&sql='+document.getElementById('sql').value+'&datasource='+document.getElementById('datasource').value+'&rowName='+document.getElementById('txtDataServiceRowName').value+'&element='+document.getElementById('txtDataServiceWrapElement').value+'&ns='+document.getElementById('txtDataServiceRowNamespace').value;
     if (document.getElementById('txtDataServiceComplexElementName').value == '') {
-    	 CARBON.showWarningDialog('输入复杂元素名称');
+    	 CARBON.showWarningDialog('请指定复合元素名称');
          return false;
     }
     document.getElementById('dataForm').action ='OutputMappingProcessor.jsp?flag=complexElement&cmbDataServiceOMType=complexType&queryId=' + document.getElementById('queryId').value+'&txtDataServiceComplexElementName=' + document.getElementById('txtDataServiceComplexElementName').value+'&txtDataServiceComplexElementNamespace=' + document.getElementById('txtDataServiceComplexElementNamespace').value;
@@ -794,18 +794,18 @@ function validateInputMappings(){
     var structType = document.getElementById('structType').value;
 
     if(name == ''){
-        CARBON.showWarningDialog('输入映射名称的值');
+        CARBON.showWarningDialog("输入映射名称的值");
         return false;
     }
     if(sqlType == ''){
         CARBON.showWarningDialog('选择SQL类型');
         return false;
     } else if (sqlType == 'STRUCT' && structType == '') {
-        CARBON.showWarningDialog('输入SQL结构类型的名称');
+        CARBON.showWarningDialog("输入SQL结构类型的名称");
         return false;
     }
     if(ordinal.match(/^[a-zA-Z]+$/)){
-        CARBON.showWarningDialog('将数值输入到序号');
+        CARBON.showWarningDialog('请指定数字序号');
         return false;
     }
     // }
@@ -818,19 +818,19 @@ function validateAddEvent(){
     var targetTopic = document.getElementById('targetTopic').value;
 
     if(name == ''){
-        CARBON.showWarningDialog('输入事件ID');
+        CARBON.showWarningDialog('请指定事件ID');
         return false;
     }
     if (name.length > 100) {
-    	  CARBON.showWarningDialog('事件ID应该是有效的ID');
+    	  CARBON.showWarningDialog('事件Id无效');
           return false;
     }
     if(expression == ''){
-        CARBON.showWarningDialog('输入表达式');
+        CARBON.showWarningDialog('请指定表达式');
         return false;
     }
     if(targetTopic == ''){
-        CARBON.showWarningDialog('输入目标主题');
+        CARBON.showWarningDialog('请指定目标主题');
         return false;
     }
 
@@ -842,11 +842,11 @@ function validateSparqlInputMappings(){
     var sqlType = document.getElementById('inputMappingSqlTypeId').value;
 
     if(name == ''){
-        CARBON.showWarningDialog('输入映射名称的值');
+        CARBON.showWarningDialog("输入映射名称的值");
         return false;
     }
     if(sqlType == ''){
-        CARBON.showWarningDialog('选择XSD类型');
+        CARBON.showWarningDialog('选择 XSD 类型');
         return false;
     }
     return true;
@@ -888,7 +888,7 @@ function validatRDFeOutputMappingMandatoryFields(){
                 return false;
             }
             if (!isNaN(outputField)) {
-           	 	CARBON.showWarningDialog('输出字段名不能为数字');
+           	 	CARBON.showWarningDialog("输出字段名不能为数字");
            	 	return false;
             }
 
@@ -896,7 +896,7 @@ function validatRDFeOutputMappingMandatoryFields(){
         return true;
     }
     else{
-        CARBON.showWarningDialog('需要映射类型.');
+        CARBON.showWarningDialog('请指定映射类型.');
         return false;
     }
     return true;
@@ -906,12 +906,12 @@ function validateOutputMappingMandatoryFields(){
     if(document.getElementById('cmbDataServiceOMType').value != ''){
         if(document.getElementById('cmbDataServiceOMType').value == 'query'){
         	if(document.getElementById('cmbDataServiceQueryId').value == ''){
-                CARBON.showWarningDialog('请选择要继续的查询');
+                CARBON.showWarningDialog('请选择要处理的查询');
                 return false;
             }
         } else if (document.getElementById('cmbDataServiceOMType').value == 'complexType') {
         	if((document.getElementById('txtDataServiceComplexElementName').value == '')){
-                CARBON.showWarningDialog('添加输出映射之前需要复杂类型元素名称字段');
+                CARBON.showWarningDialog('加输出映射之前需要复杂类型元素名称字段');
                 return false;
             }
 
@@ -923,21 +923,21 @@ function validateOutputMappingMandatoryFields(){
             }
 
             if (!isNaN(outputField)) {
-           	 	CARBON.showWarningDialog('输出字段名不能为数字');
+           	 	CARBON.showWarningDialog("输出字段名不能为数字");
            	 	return false;
             }
             if (outputField.indexOf(" ") != -1) {
-                CARBON.showWarningDialog('输出文件名不能包含空格');
+                CARBON.showWarningDialog('输出字段名不能包含空格');
                 return false;
             }
             if (document.getElementById('datasourceValue1').value == '' && document.getElementById('datasourceValue2').value == ''){
-            	CARBON.showWarningDialog('添加输出映射需要列名称/查询参数');
+            	CARBON.showWarningDialog('要添加输出映射，列名 / 查询参数是必需的');
                 return false;
             }
         }
         return true;
     }else{
-        CARBON.showWarningDialog('需要映射类型');
+        CARBON.showWarningDialog('请指定映射类型.');
         return false;
     }
     return true;
@@ -947,11 +947,11 @@ function validateInputMappingButton(){
     var queryId = document.getElementById('queryId').value;
     var sql = document.getElementById('sql').value;
     if(queryId == ''){
-        CARBON.showWarningDialog('添加输入映射之前需要查询ID');
+        CARBON.showWarningDialog('要添加输入映射，必须指定查询id');
         return false;
     }
     if(sql == ''){
-        CARBON.showWarningDialog('输入SQL值');
+        CARBON.showWarningDialog('请指定SQL');
         return false;
     }
     //location.href = 'queryProcessor.jsp?flag=inputMapping&queryId='+document.getElementById('queryId').value+'&sql='+document.getElementById('sql').value+'&datasource='+document.getElementById('datasource').value;
@@ -1077,7 +1077,7 @@ function getCSVHeaderValues(obj){
 function setCSVColumnSelection(){
     var csvColumns = document.getElementById('csvColumnSelection');
     if (csvSelectedColumnOrder == csvColumns.options.length) {
-        var message = "You have aleady selected all columns.This will reset all column selections done so far. Do you want to continue?";
+        var message = "您已经选择了所有列，这将重置到目前为止所做的所有列选择。你想继续吗?";
         if (confirm(message)) {
             csvSelectedColumnOrder = 0;
             getCSVHeaderColumnNames(document);
@@ -1117,7 +1117,7 @@ function deleteDatasource(obj) {
         var url = 'dataSourceProcessor.jsp?datasourceId=' + obj + '&flag=delete';
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除数据源 ' + obj + ' ?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除数据源 ' + obj + ' 吗?', forwardToDel);
 }
 
 function deleteXADatasource(obj) {
@@ -1125,7 +1125,7 @@ function deleteXADatasource(obj) {
         var url = 'xaDataSourceProcessor.jsp?xaId=' + obj + '&action=delete';
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除xa数据源 ' + obj + ' ?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除 XA 数据源 ' + obj + ' 吗?', forwardToDel);
 
 }
 
@@ -1134,7 +1134,7 @@ function deleteXADSProperty(obj,xaId) {
         var url = 'xaDataSourceProcessor.jsp?txPropertyName=' + obj + '&xaId='+xaId+'&action=deleteAddProp';
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除xa datasource属性 ' + obj + ' ?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除 XA 数据源属性 ' + obj + ' 吗?', forwardToDel);
 
 }
 
@@ -1143,7 +1143,7 @@ function deleteQuery(obj){
         var url = 'queryProcessor.jsp?queryId='+obj+'&flag=delete';
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除 '+obj+' 查询?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除 '+obj+' 查询吗?', forwardToDel);
 
 }
 
@@ -1152,7 +1152,7 @@ function deleteResources(objPath, objMethod){
         var url = 'resourceProcessor.jsp?action=remove&oldResourcePath='+objPath+'&oldResourceMethod='+objMethod;
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除资源 '+objPath+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除资源 '+objPath+' 吗?', forwardToDel);
 
 }
 
@@ -1161,7 +1161,7 @@ function deleteOperations(obj){
         var url = 'operationProcessor.jsp?action=remove&operationName='+obj;
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除操作 '+obj+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除操作 '+obj+' 吗?', forwardToDel);
 }
 
 function deleteInputMappings(objName,objSqlType,queryId, type){
@@ -1170,7 +1170,7 @@ function deleteInputMappings(objName,objSqlType,queryId, type){
         document.location.href = url;
 
     }
-    CARBON.showConfirmationDialog('是否要删除输入映射 '+objName+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输入映射 '+objName+' 吗?', forwardToDel);
 }
 
 function deleteSparqlInputMappings(objName,objSqlType,queryId){
@@ -1178,7 +1178,7 @@ function deleteSparqlInputMappings(objName,objSqlType,queryId){
         var url = 'inputMappingProcessor.jsp?inputMappingId='+objName+'&inputMappingSqlTypeId='+objSqlType+'&queryId='+queryId+'&flag=delete&origin=add';
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除输入映射 '+objName+"type"+objSqlType+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输入映射 '+objName+" 类型 "+objSqlType+' 吗?', forwardToDel);
 }
 
 
@@ -1187,7 +1187,7 @@ function deleteInputMappingsFromAddQuery(objName,objSqlType,queryId,type){
         var url = 'inputMappingProcessor.jsp?inputMappingId='+objName+'&inputMappingSqlType='+objSqlType+'&queryId='+queryId+'&flag=delete'+type+'&origin=save';
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除输入映射 '+objName+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输入映射 '+objName+' 吗?', forwardToDel);
 }
 
 function deleteSQLDialectAddQuery(queryId,dialect){
@@ -1195,7 +1195,7 @@ function deleteSQLDialectAddQuery(queryId,dialect){
         var url = 'sqlDialectProcessor.jsp?queryId='+queryId+'&flag=delete&txSQLDialect='+dialect;
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除SQL方言 '+dialect+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输入映射SQL方言 '+dialect+' 吗?', forwardToDel);
 }
 
 function deleteSparqlInputMappingsFromAddQuery(objName,objSqlType,queryId){
@@ -1203,7 +1203,7 @@ function deleteSparqlInputMappingsFromAddQuery(objName,objSqlType,queryId){
         var url = 'sparqlInputMappingProcessor.jsp?inputMappingId='+objName+'&inputMappingSqlTypeId='+objSqlType+'&queryId='+queryId+'&flag=delete&origin=save';
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除输入映射 '+objName+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输入映射 '+objName+' 吗?', forwardToDel);
 }
 
 function deleteOutputMappings(queryId,name,mappingType){
@@ -1222,7 +1222,7 @@ function deleteOutputMappings(queryId,name,mappingType){
         }
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('Do you want to delete the output mapping '+name+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输出映射 '+name+' 吗?', forwardToDel);
 }
 
 function deleteComplexOutputMappings(queryId,complexPath,name,mappingType){
@@ -1241,7 +1241,7 @@ function deleteComplexOutputMappings(queryId,complexPath,name,mappingType){
         }
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除输出映射 '+name+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输出映射 '+name+' 吗?', forwardToDel);
 }
 
 function deleteRDFOutputMappings(queryId,name,mappingType){
@@ -1254,7 +1254,7 @@ function deleteRDFOutputMappings(queryId,name,mappingType){
         }
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除输出映射 '+name+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输出映射 '+name+' 吗?', forwardToDel);
 }
 
 function deleteOutputMappingsFromAddQuery(queryId,name,mappingType){
@@ -1276,7 +1276,7 @@ function deleteOutputMappingsFromAddQuery(queryId,name,mappingType){
         }
         document.location.href = url;
     }
-    CARBON.showConfirmationDialog('是否要删除输出映射 '+name+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除输出映射 '+name+' 吗?', forwardToDel);
 }
 
 function redirectToMainConfiguration(obj){
@@ -1285,7 +1285,7 @@ function redirectToMainConfiguration(obj){
         document.location.href = url;
     }
     if(!validateReturnToMainConfiguration(document)) {
-       CARBON.showConfirmationDialog('是否要返回主配置?',forwardToDel);
+       CARBON.showConfirmationDialog('你确信要返回到主配置页面吗?',forwardToDel);
     } else {
        forwardToDel();
     }
@@ -1346,13 +1346,13 @@ function changeDataSourceType (obj, document) {
 	var selectedDS = document.getElementById('datasourceId').value;
 	var reWhiteSpace = new RegExp("^[a-zA-Z0-9_]+$");
 	if (selectedDS == ''){
-        CARBON.showWarningDialog('数据源标识不能为空');
+        CARBON.showWarningDialog('Insert datasource id');
         obj.selectedIndex = 0;
         return false;
 	}
 	// Validate for alphanumeric characters and underscores
     if (!reWhiteSpace.test(selectedDS)) {
-       CARBON.showWarningDialog("数据源ID中只允许字母数字字符和下划线");
+       CARBON.showWarningDialog("仅在数据源ID中允许字母数字字符和下划线");
        obj.selectedIndex = 0;
        return false;
     }
@@ -1453,7 +1453,7 @@ function changeAddValidatorFields(obj,document) {
     document.getElementById('min').value = "";
     document.getElementById('pattern').value = "";
     document.getElementById('customClass').value = "";
-    document.getElementById('addValidator').value = "Add Validator";
+    document.getElementById('addValidator').value = "添加验证器";
 }
 
 function toggleValidators(validatorName, i, document) {
@@ -1561,7 +1561,7 @@ function deleteEvent(eventId, queryId) {
         document.location.href = url;
 
     }
-   CARBON.showConfirmationDialog('是否要删除输入映射 '+eventId+'?', forwardToDel);
+   CARBON.showConfirmationDialog('确信要删除输入映射 '+eventId+' 吗?', forwardToDel);
 }
 
 function showSQLDialects() {
@@ -1627,10 +1627,10 @@ function validateValidators(obj, document) {
 
     if(validator == 'validateLongRange' || validator == 'validateDoubleRange' || validator == 'validateLength') {
         if(isNaN(max)){
-            CARBON.showWarningDialog("最大值 " + "'" +max + "'" + " 应为数值");
+            CARBON.showWarningDialog("最大值 " + "'" +max + "'" + " 应该是数字");
             return false;
         } else if(isNaN(min)){
-            CARBON.showWarningDialog("最小值 " + "'" +min + "'" + " 应为数值");
+            CARBON.showWarningDialog("最小值 " + "'" +min + "'" + " 应该是数字");
             return false;
         } else if(( validator == 'validateLongRange' || validator == 'validateLength') && (parseInt(max) < parseInt(min))) {
             CARBON.showWarningDialog("最大值小于最小值");
@@ -1639,21 +1639,21 @@ function validateValidators(obj, document) {
             CARBON.showWarningDialog("最大值小于最小值");
             return false;
         } else if (max == '') {
-            CARBON.showWarningDialog("最大值不能为空");
+            CARBON.showWarningDialog("最大值是必需的");
             return false;
         } else if (min == '') {
-            CARBON.showWarningDialog("最小值不能为空");
+            CARBON.showWarningDialog("最小值是必需的");
             return false;
         }
 
     } else if (validator == 'validatePattern'){
         if (pattern == '') {
-            CARBON.showWarningDialog("模式不能为空");
+            CARBON.showWarningDialog("模式是必需的");
             return false;
         }
     } else if (validator == 'validateCustom') {
         if(customClass == '') {
-            CARBON.showWarningDialog("类别名称是授权");
+            CARBON.showWarningDialog("类名是必需的");
             return false;
         }
     }
@@ -1717,7 +1717,7 @@ function addXAPropertyFields(obj,propertyCount) {
 
     var td1 = document.createElement("TD");
     var label = document.createElement('label');
-    var labelText = document.createTextNode('属性名称');
+    var labelText = document.createTextNode('属性名');
     label.appendChild(labelText);
 
 
@@ -1762,7 +1762,7 @@ function addXAPropertyFields(obj,propertyCount) {
 
     var aliasLabelTD = document.createElement("td");
     var valueAlLabel = document.createElement('label');
-    var aliasLabelText = document.createTextNode('用作机密别名');
+    var aliasLabelText = document.createTextNode('用作安全别名');
     valueAlLabel.appendChild(aliasLabelText);
 
     aliasTD.appendChild(valueAl);
@@ -1789,7 +1789,7 @@ function addStaticUserAuthFields(obj,userCount) {
 
     var td1 = document.createElement("TD");
     var label = document.createElement('label');
-    var labelText = document.createTextNode('Carbon Username');
+    var labelText = document.createTextNode('Carbon 用户名');
     label.appendChild(labelText);
 
 
@@ -1808,7 +1808,7 @@ function addStaticUserAuthFields(obj,userCount) {
 
     var td3 = document.createElement("TD");
     var valueLabel = document.createElement('label');
-    var valueLabelText = document.createTextNode('DB Username');
+    var valueLabelText = document.createTextNode('数据库用户名');
     valueLabel.appendChild(valueLabelText);
 
 
@@ -1824,7 +1824,7 @@ function addStaticUserAuthFields(obj,userCount) {
 
     var td5 = document.createElement("TD");
     var dbpwdLabel = document.createElement('label');
-    var dbpwdLabelText = document.createTextNode('DB User Password');
+    var dbpwdLabelText = document.createTextNode('数据库用户密码');
     dbpwdLabel.appendChild(dbpwdLabelText);
 
 
@@ -2000,18 +2000,18 @@ function deleteOperationParameters(name, operationName, oldOperationName, queryI
     function forwardToDel(){
         document.location.href = 'operationProcessor.jsp?flag=delete&paramName=' + name + '&action=' +action + '&operationName='+operationName +'&oldOperationName='+ oldOperationName + '&queryId='+ queryId + '&operationDesc='+operationDesc + '&enableStreaming='+enableStreaming;
     }
-    CARBON.showConfirmationDialog('是否要删除操作参数 '+name+'?', forwardToDel);
+    CARBON.showConfirmationDialog('确信要删除操作参数 '+name+' 吗?', forwardToDel);
 }
 
 function validateOperationParamForm(){
 	var paramName = document.getElementById('paramNameId').value;
 	var operationParamName = document.getElementById('operationParamNameId').value;
 	if (paramName == '') {
-		  CARBON.showWarningDialog("指定参数名称");
+		  CARBON.showWarningDialog("请指定参数名");
 	      return false;
 	}
 	if (operationParamName == '' || trim(operationParamName) == '') {
-		  CARBON.showWarningDialog("指定操作参数名称");
+		  CARBON.showWarningDialog("请指定操作参数名");
 	      return false;
 	}
 	return true;
@@ -2044,59 +2044,59 @@ function adjustParameterType(obj, document) {
 
 function ValidateDataSourceProperties() {
 	if (isNaN(document.getElementById("maxActive").value) || document.getElementById("maxActive").value < 0) {
-		CARBON.showErrorDialog("请为“最大活动”输入一个正数值");
+		CARBON.showErrorDialog("请为Max Active指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("maxIdle").value) || document.getElementById("maxIdle").value < 0) {
-		CARBON.showErrorDialog("请为“最大空闲”输入一个正数值");
+		CARBON.showErrorDialog("请为Max Idle指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("minIdle").value) || document.getElementById("minIdle").value < 0) {
-		CARBON.showErrorDialog("请输入最小空闲时间的正数");
+		CARBON.showErrorDialog("请为 Min Idle指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("initialSize").value) || document.getElementById("initialSize").value < 0) {
-		CARBON.showErrorDialog("请为初始大小输入一个正数值");
+		CARBON.showErrorDialog("请为Initial Size指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("maxWait").value) || document.getElementById("maxWait").value < 0) {
-		CARBON.showErrorDialog("请为max wait输入一个正数值");
+		CARBON.showErrorDialog("请为Max Wait指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("timeBetweenEvictionRunsMillis").value) || document.getElementById("timeBetweenEvictionRunsMillis").value < 0) {
-		CARBON.showErrorDialog("请为逐出运行毫秒之间的时间输入一个正数。");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("numTestsPerEvictionRun").value) || document.getElementById("numTestsPerEvictionRun").value < 0 ) {
-		CARBON.showErrorDialog("请为每次逐出运行的num测试输入一个正数。");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("minEvictableIdleTimeMillis").value) || document.getElementById("minEvictableIdleTimeMillis").value < 0) {
-		CARBON.showErrorDialog("请为最小可收回空闲时间毫秒输入一个正数");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("removeAbandonedTimeout").value) || document.getElementById("removeAbandonedTimeout").value < 0) {
-		CARBON.showErrorDialog("请为删除放弃的超时值输入一个正数");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("validationInterval").value) || document.getElementById("validationInterval").value < 0) {
-		CARBON.showErrorDialog("请为验证间隔输入一个正数值");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("abandonWhenPercentageFull").value) || document.getElementById("abandonWhenPercentageFull").value < 0) {
-		CARBON.showErrorDialog("请输入一个正数值以在百分比满时放弃");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("maxAge").value) || document.getElementById("maxAge").value < 0) {
-		CARBON.showErrorDialog("请为“最大年龄”输入一个正数");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("suspectTimeout").value) || document.getElementById("suspectTimeout").value < 0) {
-		CARBON.showErrorDialog("请为可疑超时输入一个正数");
+		CARBON.showErrorDialog("请为指定正整数");
 		return false;
 	}
 	if (isNaN(document.getElementById("validationQueryTimeout").value) || document.getElementById("validationQueryTimeout").value < 0) {
-    	CARBON.showErrorDialog("请为验证查询超时输入一个正数值");
+    	CARBON.showErrorDialog("请为指定正整数");
     	return false;
     }
 	return true;
@@ -2232,7 +2232,7 @@ function addValidatorProperties() {
     var inputs = theTable.getElementsByTagName('input');
     for (var i = 0; i < inputs.length; i++) {
         if (inputs[i].value == "") {
-            CARBON.showErrorDialog("Cannot add a property with empty key or value. Please specify a key and a value");
+            CARBON.showErrorDialog("无法添加键或值为空的属性。请指定键和值");
             return;
         }
     }
@@ -2243,7 +2243,7 @@ function addValidatorProperties() {
 }
 
 function deleteValidatorPropRow(index) {
-    CARBON.showConfirmationDialog('Do you want to delete the Validator Property?', function () {
+    CARBON.showConfirmationDialog('确信要删除验证器属性吗?', function () {
         document.getElementById('dsValidatorPropertyTable').deleteRow(index);
         if (document.getElementById('dsValidatorPropertyTable').rows.length == 1) {
             document.getElementById('dsValidatorPropertyTable').style.display = 'none';
@@ -2269,7 +2269,7 @@ function addValidatorServiceParamRow(key, value, table, delFunction) {
     param2Cell.appendChild(inputElem);
 
     var delCell = document.createElement('td');
-    delCell.innerHTML = '<a id="deleteLink" href="#" onClick="' + delFunction + '(this.parentNode.parentNode.rowIndex)" alt="Delete" class="icon-link" style="background-image:url(../admin/images/delete.gif);">Delete</a>';
+    delCell.innerHTML = '<a id="deleteLink" href="#" onClick="' + delFunction + '(this.parentNode.parentNode.rowIndex)" alt="删除" class="icon-link" style="background-image:url(../admin/images/delete.gif);">删除</a>';
 
     var rowtoAdd = document.createElement('tr');
     rowtoAdd.appendChild(param1Cell);
@@ -2314,7 +2314,7 @@ function addValidatorsForSparqlInput() {
 function validateQuery(value) {
     var regex = /<\/textarea>/i;
     if (regex.test(value)) {
-        CARBON.showWarningDialog("无效查询");
+        CARBON.showWarningDialog("无效的查询");
         return false;
     }
     return true;

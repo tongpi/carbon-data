@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="org.wso2.carbon.dataservices.common.DBConstants"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
@@ -53,9 +54,9 @@
         sourceList = client.getCarbonDataSourceNamesForTypes(types);
     }catch(AxisFault e){
         CarbonError carbonError = new CarbonError();
-        carbonError.addError("Error occurred while saving data service configuration.");
+        carbonError.addError("保存数据服务配置时发生错误.");
         request.setAttribute(CarbonError.ID, carbonError);
- 	 
+
  	     }
  	  %>
 <script type="text/javascript" src="js/ui-validations.js"></script>
@@ -79,7 +80,7 @@
                                     <td><fmt:message key="available.carbon.source.names"/><font color="red">*</font></td>
                                     <td>
                                         <select name="datasource" id="datasource">
-                                           <option value="" selected="selected">--SELECT--</option>
+                                           <option value="" selected="selected">--请选择--</option>
                                             <% if (sourceList != null) {%>
                                             <% for (String name : sourceList) {%>
                                               <%  if(name.equals(datasource)) { %>
@@ -119,4 +120,4 @@
             </form>
         </div>
     </div>
-</fmt:bundle>    
+</fmt:bundle>

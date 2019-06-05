@@ -15,6 +15,7 @@
 ~ specific language governing permissions and limitations
 ~ under the License.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.apache.axis2.context.ConfigurationContext" %>
 <%@ page import="org.wso2.carbon.CarbonConstants" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.*" %>
@@ -180,7 +181,7 @@
         }
     }
 
-     
+
 %>
 <%
     //retrieve form values set in addInputMapping.jsp page
@@ -440,7 +441,7 @@
                                 List<ComplexElement> complexElementsList = res
                                         .getComplexElements();
                                 if (action.equals("addbutton")) {
-                                    String message = "Cannot add Complex Element to the result without child elements";
+                                    String message = "无法将复杂元素添加到没有子元素的结果中";
                                     CarbonUIMessage.sendCarbonUIMessage(message,
                                             CarbonUIMessage.ERROR, request);
                                     forwardTo = "addOutputMapping.jsp?queryId=" + queryId
@@ -501,7 +502,7 @@
                             } else {
                                 // when adding as the first Complex Element to the result
                                 if (action.equals("addbutton")) {
-                                    String message = "Cannot add Complex Element to the result without child elements";
+                                    String message = "无法将复杂元素添加到没有子元素的结果中";
                                     CarbonUIMessage.sendCarbonUIMessage(message,
                                             CarbonUIMessage.ERROR, request);
                                     forwardTo = "addOutputMapping.jsp?queryId=" + queryId
@@ -657,7 +658,7 @@
                                     }
 
                                 }
-                                
+
                                 res.setElementLocalNames(dsOMElementName);
                                 res.setDisplayColumnNames(dsOMElementColumnName);
                                 res.setResultSetColumnNames(dsOMElementColumnName);

@@ -15,6 +15,7 @@
  ~ specific language governing permissions and limitations
  ~ under the License.
  --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.Param" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.Query" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.beans.Validator" %>
@@ -53,8 +54,8 @@
             validators = (ArrayList) session.getAttribute("validators");
 
             sparqlType = param.getSqlType();
-           
-           
+
+
             defaultValue = param.getDefaultValue();
         }
     }
@@ -64,7 +65,7 @@
     disable = (paramName != null);
     sparqlType = (sparqlType == null) ? "" : sparqlType;
 
-  
+
     if(!paramName.equals("")){
         caption = "save";
     }else{
@@ -109,95 +110,95 @@
     <td><fmt:message key="datasources.sparql.type"/><font color="red">*</font></td>
     <td><select id="inputMappingSqlTypeId" name="inputMappingSqlType">
        <% if (sparqlType.equals("")) { %>
-        <option value="" selected="selected">--SELECT--</option>
+        <option value="" selected="selected">--请选择--</option>
         <% } else { %>
-        <option value="">--SELECT--</option>
+        <option value="">--请选择--</option>
         <% }
             if (sparqlType.equals("STRING")) { %>
-        <option value="STRING" selected="selected">STRING</option>
+        <option value="STRING" selected="selected">字符串</option>
         <% } else { %>
-        <option value="STRING">STRING</option>
+        <option value="STRING">字符串</option>
         <% }
             if (sparqlType.equals("INTEGER")) { %>
-        <option value="INTEGER" selected="selected">INTEGER</option>
+        <option value="INTEGER" selected="selected">整型</option>
         <% } else { %>
-        <option value="INTEGER">INTEGER</option>
-        <% } 
+        <option value="INTEGER">整型</option>
+        <% }
            if (sparqlType.equals("FLOAT")) { %>
-            <option value="FLOAT" selected="selected">FLOAT</option>
+            <option value="FLOAT" selected="selected">浮点数</option>
         <% } else { %>
-            <option value="FLOAT">FLOAT</option>
+            <option value="FLOAT">浮点数</option>
         <% }
             if (sparqlType.equals("DOUBLE")) { %>
-        <option value="DOUBLE" selected="selected">DOUBLE</option>
+        <option value="DOUBLE" selected="selected">双精度浮点数</option>
         <% } else { %>
-        <option value="DOUBLE">DOUBLE</option>
+        <option value="DOUBLE">双精度浮点数</option>
         <% }
             if (sparqlType.equals("DECIMAL")) { %>
-            <option value="DECIMAL" selected="selected">NUMERIC</option>
+            <option value="DECIMAL" selected="selected">数字</option>
         <% } else { %>
-            <option value="DECIMAL">DECIMAL</option>
+            <option value="DECIMAL">数字</option>
         <% }
             if (sparqlType.equals("LONG")) { %>
-            <option value="LONG" selected="selected">LONG</option>
+            <option value="LONG" selected="selected">长整型</option>
         <% } else { %>
-            <option value="LONG">LONG</option>
+            <option value="LONG">长整型</option>
         <% }
             if (sparqlType.equals("BOOLEAN")) { %>
-            <option value="BOOLEAN" selected="selected">BOOLEAN</option>
+            <option value="BOOLEAN" selected="selected">布尔值</option>
         <% } else { %>
-            <option value="BOOLEAN">BOOLEAN</option>
+            <option value="BOOLEAN">布尔值</option>
         <% }
             if (sparqlType.equals("DATE")) { %>
-        <option value="DATE" selected="selected">DATE[yyyy-mm-dd]</option>
+        <option value="DATE" selected="selected">日期[yyyy-mm-dd]</option>
         <% } else { %>
-        <option value="DATE">DATE[yyyy-mm-dd]</option>
+        <option value="DATE">日期[yyyy-mm-dd]</option>
         <% }
             if (sparqlType.equals("TIME")) { %>
-        <option value="TIME" selected="selected">TIME[hh:mm:ss]</option>
+        <option value="TIME" selected="selected">时间[hh:mm:ss]</option>
         <% } else { %>
-        <option value="TIME">TIME[hh:mm:ss]</option>
+        <option value="TIME">时间[hh:mm:ss]</option>
         <% }
             if (sparqlType.equals("DATETIME")) { %>
-        <option value="DATETIME" selected="selected">DATETIME</option>
+        <option value="DATETIME" selected="selected">日期时间</option>
         <% } else { %>
-        <option value="DATETIME">DATETIME</option>
-        <% } 
+        <option value="DATETIME">日期时间</option>
+        <% }
             if (sparqlType.equals("GYEARMONTH")) { %>
-        <option value="GYEARMONTH" selected="selected">GYEARMONTH</option>
+        <option value="GYEARMONTH" selected="selected">年月</option>
         <% } else { %>
-        <option value="GYEARMONTH">GYEARMONTH</option>
+        <option value="GYEARMONTH">年月</option>
         <% }
             if (sparqlType.equals("GYEAR")) { %>
-        <option value="GYEAR" selected="selected">GYEAR</option>
+        <option value="GYEAR" selected="selected">年</option>
         <% } else { %>
-        <option value="GYEAR">GYEAR</option>
+        <option value="GYEAR">年</option>
         <% }
             if (sparqlType.equals("GMONTHDAY")) { %>
-        <option value="GMONTHDAY" selected="selected">GMONTHDAY</option>
+        <option value="GMONTHDAY" selected="selected">月日</option>
         <% } else { %>
-        <option value="GMONTHDAY">GMONTHDAY</option>
-        <% }            
+        <option value="GMONTHDAY">月日</option>
+        <% }
             if (sparqlType.equals("GDAY")) { %>
-        <option value="GDAY" selected="selected">GDAY</option>
+        <option value="GDAY" selected="selected">日</option>
         <% } else { %>
-        <option value="GDAY">GDAY</option>
-        <% }                    
+        <option value="GDAY">日</option>
+        <% }
             if (sparqlType.equals("GMONTH")) { %>
-        <option value="GMONTH" selected="selected">GMONTH</option>
+        <option value="GMONTH" selected="selected">月</option>
         <% } else { %>
-        <option value="GMONTH">GMONTH</option>
-        <% }            
+        <option value="GMONTH">月</option>
+        <% }
             if (sparqlType.equals("BASE64BINARY")) { %>
         <option value="BASE64BINARY" selected="selected">BASE64BINARY</option>
         <% } else { %>
         <option value="BASE64BINARY">BASE64BINARY</option>
-        <% } 
+        <% }
            if (sparqlType.equals("HEXBINARY")) { %>
         <option value="HEXBINARY" selected="selected">HEXBINARY</option>
         <% } else { %>
         <option value="HEXBINARY">HEXBINARY</option>
-        <% } 
+        <% }
             if (sparqlType.equals("ANYURI")) { %>
         <option value="ANYURI" selected="selected">URI</option>
         <% } else { %>
@@ -219,12 +220,12 @@
 <tr>
     <td><fmt:message key="dataservices.validator"/> </td>
     <td><select id="validatorList" name="validatorList" onchange="changeAddValidatorFields(this,document);">
-        <option value="">--Select--</option>
-        <option value="validateLongRange">Long Range Validator</option>
-        <option value="validateDoubleRange">Double Range Validator</option>
-        <option value="validateLength">Length Validator</option>
-        <option value="validatePattern">Pattern Validator</option>
-        <option value="validateCustom">Custom Validator</option>
+        <option value="">--请选择--</option>
+        <option value="validateLongRange">长整型范围验证器</option>
+        <option value="validateDoubleRange">双精度范围验证器</option>
+        <option value="validateLength">长度验证器</option>
+        <option value="validatePattern">正则表达式模式验证器</option>
+        <option value="validateCustom">自定义验证器</option>
         </select> </td>
 </tr>
 <div id="validators" style="display:none">
@@ -352,13 +353,13 @@
                 <%=params[a].getDefaultValue()%>
                 <% }
                 %>
-                  
+
                 </td>
                 <td>
                     <a class="icon-link" style="background-image:url(../admin/images/edit.gif);"
                        href="addSparqlInputMapping.jsp?paramName=<%=params[a].getName()%>&queryId=<%=queryId%>&paramType=<%="SCALAR"%>"><fmt:message
                             key="edit"/></a>
-                            
+
                    <a class="icon-link" style="background-image:url(../admin/images/delete.gif);" href="#"
                        onclick="deleteInputMappings(document.getElementById('<%=params[a].getName()%>').value,
                        document.getElementById('<%=params[a].getSqlType()%>').value,

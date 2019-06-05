@@ -18,6 +18,7 @@
 ~  *
 ~  */
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <%@ page import="org.apache.axis2.AxisFault" %>
@@ -29,8 +30,6 @@
 <%@ page import="org.wso2.carbon.dataservices.ui.stub.admin.core.xsd.PaginatedTableInfo" %>
 <%@ page import="org.wso2.carbon.ui.CarbonUIUtil" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%> 
-<%@ page contentType="text/html;charset=utf-8"%> 
 <carbon:breadcrumb
         label="Select the tables"
         resourceBundle="org.wso2.carbon.dataservices.ui.i18n.Resources"
@@ -130,7 +129,7 @@
 
     //selectedTableList = (String[])session.getAttribute("tableList");
      if ((isBack)) {
-         
+
     	   tableListSession = (String[])session.getAttribute("tableList");
     	   schemaList = (String[])session.getAttribute("schemaList");
     	   String[] newschemaList = request.getParameterValues("schemaList");
@@ -209,10 +208,10 @@
                <table>
                 <tr>
                 <td>
-                    <a href="#" onclick="selectAll(true);return false;"  style="cursor:pointer">在此页面中选择全部</a>&nbsp<b>|</b>&nbsp;
+                    <a href="#" onclick="selectAll(true);return false;"  style="cursor:pointer">全选</a>&nbsp<b>|</b>&nbsp;
                 </td>
                 <td>
-                    <a href="#" onclick="selectAll(false);return false; "  style="cursor:pointer">取消选择</a>
+                    <a href="#" onclick="selectAll(false);return false; "  style="cursor:pointer">全不选</a>
                 </td>
                 </tr>
                 </table>

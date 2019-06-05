@@ -15,6 +15,7 @@
 ~ specific language governing permissions and limitations
 ~ under the License.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="org.wso2.carbon.dataservices.common.DBConstants.DataSourceTypes"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
@@ -29,7 +30,6 @@
 <%@ page import="org.wso2.carbon.ui.util.CharacterEncoder" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.wso2.carbon.dataservices.ui.DataServiceAdminClient" %>
-<%@ page contentType="text/html;charset=utf-8"%>
 <fmt:bundle basename="org.wso2.carbon.dataservices.ui.i18n.Resources">
 <script type="text/javascript" src="../ajax/js/prototype.js"></script>
 <script type="text/javascript" src="../resources/js/resource_util.js"></script>
@@ -45,7 +45,7 @@
 
 <jsp:useBean id="dataService" class="org.wso2.carbon.dataservices.ui.beans.Data"
              scope="session"></jsp:useBean>
-             
+
 <script type="text/javascript">
 
 window.onload=function() {
@@ -56,9 +56,9 @@ window.onload=function() {
 	value = JSON.stringify(value, null, 4);
 	$('textarea#jsonMapping').val(value);
 };
-   
+
 </script>
-             
+
 <script type="text/javascript" src="js/ui-validations.js"></script>
 
 <script type="text/javascript">
@@ -161,14 +161,14 @@ window.onload=function() {
             keyColumns = query.getKeyColumns();
             if (c != null) {
                 datasourceType = c.getDataSourceType();
-                if (datasourceType != null && c.getPropertyValue(DBConstants.RDBMS.URL) instanceof String 
+                if (datasourceType != null && c.getPropertyValue(DBConstants.RDBMS.URL) instanceof String
                 		&& ((String)c.getPropertyValue(DBConstants.RDBMS.URL)).trim().length() != 0 ) {
                 	if (datasourceType.equals(DataSourceTypes.EXCEL)) {
                 		datasourceType = DataSourceTypes.RDBMS;
                 	} else if (datasourceType.equals(DataSourceTypes.GDATA_SPREADSHEET)) {
                 		datasourceType = DataSourceTypes.RDBMS;
                 	}
-                } 
+                }
                 if (datasourceType != null && c.getPropertyValue(DBConstants.Excel.DATASOURCE) instanceof String &&
             			((String)c.getPropertyValue(DBConstants.Excel.DATASOURCE)).trim().length() != 0) {
                 	datasourceType = DataSourceTypes.EXCEL;
@@ -180,7 +180,7 @@ window.onload=function() {
             	if (datasourceType != null && c.getPropertyValue(DBConstants.GSpread.DATASOURCE) instanceof String &&
             			((String)c.getPropertyValue(DBConstants.GSpread.DATASOURCE)).trim().length() != 0) {
             		datasourceType = DataSourceTypes.GDATA_SPREADSHEET;
-                } 
+                }
                 if (c.getPropertyValue(DBConstants.CustomDataSource.DATA_SOURCE_QUERY_CLASS) instanceof String) {
             		customDSType = DBConstants.DataSourceTypes.CUSTOM_QUERY;
             	} else if (c.getPropertyValue(DBConstants.CustomDataSource.DATA_SOURCE_TABULAR_CLASS) instanceof String) {
@@ -332,11 +332,11 @@ window.onload=function() {
                 	} else if (dsType.equals(DataSourceTypes.GDATA_SPREADSHEET)) {
                 		dsType = DataSourceTypes.RDBMS;
                 	}
-                } 
+                }
             	if (dsType != null && c.getPropertyValue(DBConstants.Excel.DATASOURCE) instanceof String &&
             			((String)c.getPropertyValue(DBConstants.Excel.DATASOURCE)).trim().length() != 0) {
                 	dsType = DataSourceTypes.EXCEL;
-                } 
+                }
             	if (dsType != null && c.getPropertyValue(DBConstants.GSpread.DATASOURCE) instanceof String &&
             			((String)c.getPropertyValue(DBConstants.GSpread.DATASOURCE)).trim().length() != 0) {
                 	dsType = DataSourceTypes.GDATA_SPREADSHEET;
@@ -383,7 +383,7 @@ window.onload=function() {
                 <td><fmt:message key="query.datasource"/><font color="red">*</font></td>
                 <td><select id="datasource" name="datasource"
                             onchange="showTables(this,document);return false;"/>
-                    <option value="#">--SELECT--</option>
+                    <option value="#">--请选择--</option>
                     <%
                         if (configs != null && configs.size() > 0) {
                             Iterator iterator = configs.iterator();
@@ -432,7 +432,7 @@ window.onload=function() {
                 <td><textarea cols="50" rows="8" id="sql"
                               name="sql"><%=(query != null) ? sql : ""%></textarea></td>
             </tr>
-           
+
             <tr>
                 <td>
                     <a href="javascript: document.dataForm.submit();"
@@ -441,7 +441,7 @@ window.onload=function() {
                        style="background-image:url(images/add.gif);" class="icon-link"
                        type="submit"><fmt:message key="add.new.sql.dialect"/></a>
 
-                    
+
                 </td>
                 <td>
                     <a href="#" id="addAutoInputMappings"
@@ -469,7 +469,7 @@ window.onload=function() {
                 <td><textarea cols="50" rows="8" id="expression"
                               name="expression"><%=(query != null) ? expression : ""%></textarea></td>
             </tr>
-           
+
            </table>
     </td>
 </tr>
@@ -625,16 +625,16 @@ window.onload=function() {
                 <td><select id="fetchDirection" name="fetchDirection">
                     <% if (fetchDirection.equals("forward")) { %>
                     <option value=""></option>
-                    <option value="forward" selected="true">Forward</option>
-                    <option value="reverse">Reverse</option>
+                    <option value="forward" selected="true">向前</option>
+                    <option value="reverse">向后</option>
                     <% } else if (fetchDirection.equals("reverse")) { %>
                     <option value=""></option>
-                    <option value="forward">Forward</option>
-                    <option value="reverse" selected="true">Reverse</option>
+                    <option value="forward">向前</option>
+                    <option value="reverse" selected="true">向后</option>
                     <% } else if (fetchDirection.equals("")) { %>
                     <option value="" selected="true"></option>
-                    <option value="forward">Forward</option>
-                    <option value="reverse">Reverse</option>
+                    <option value="forward">向前</option>
+                    <option value="reverse">向后</option>
                     <% } %>
                 </select>
                 </td>
@@ -646,7 +646,7 @@ window.onload=function() {
             <tr>
                 <td><fmt:message key="dataservices.max.field.size"/></td>
                 <td><input type="text" id="maxFieldSize" name="maxFieldSize"
-                           value="<%=maxFieldSize%>"/> Bytes
+                           value="<%=maxFieldSize%>"/> 字节
                 </td>
             </tr>
             <tr>
@@ -658,39 +658,39 @@ window.onload=function() {
                 <td><select id="forceStoredProc" name="forceStoredProc">
                     <% if (forceStoredProc.equals("true")) { %>
                     <option value=""></option>
-                    <option value="true" selected="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="true" selected="true">是</option>
+                    <option value="false">否</option>
                     <% } else if (forceStoredProc.equals("false")) { %>
                     <option value=""></option>
-                    <option value="true">Yes</option>
-                    <option value="false" selected="true">No</option>
+                    <option value="true">是</option>
+                    <option value="false" selected="true">否</option>
                     <% } else if (forceStoredProc.equals("")) { %>
                     <option value="" selected="true"></option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
                     <% } %>
                 </select>
                 </td>
-            </tr>            
+            </tr>
             <tr>
                 <td><fmt:message key="dataservices.query.force.jdbc.batch.requests"/></td>
                 <td><select id="forceJDBCBatchRequests" name="forceJDBCBatchRequests">
                     <% if (forceJDBCBatchRequests.equals("true")) { %>
                     <option value=""></option>
-                    <option value="true" selected="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="true" selected="true">是</option>
+                    <option value="false">否</option>
                     <% } else if (forceJDBCBatchRequests.equals("false")) { %>
                     <option value=""></option>
-                    <option value="true">Yes</option>
-                    <option value="false" selected="true">No</option>
+                    <option value="true">是</option>
+                    <option value="false" selected="true">否</option>
                     <% } else if (forceJDBCBatchRequests.equals("")) { %>
                     <option value="" selected="true"></option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
+                    <option value="true">是</option>
+                    <option value="false">否</option>
                     <% } %>
                 </select>
                 </td>
-            </tr>            
+            </tr>
         </table>
     </td>
 </tr>
@@ -710,8 +710,8 @@ window.onload=function() {
 <% boolean inputMappingsSupported = (datasourceType.equals("RDBMS") || datasourceType.equals("JNDI") || datasourceType.equals("MongoDB") ||
                                      datasourceType.equals("CARBON_DATASOURCE") || datasourceType.equals("RDF") || datasourceType.equals("SPARQL") || datasourceType.equals("Cassandra") || datasourceType.equals("CUSTOM")); %>
 <tr style="<%=inputMappingsSupported ? "" : "display:none"%>">
-   <td colspan="7" />                                                           
-</tr>                                                          
+   <td colspan="7" />
+</tr>
 
 <tr id="inputHeading" style="<%=inputMappingsSupported ? "" : "display:none"%>">
     <td colspan="2" class="middle-header"><fmt:message key="dataservices.input.mapping"/></td>
@@ -803,7 +803,7 @@ window.onload=function() {
         </table>
     </td>
 </tr>
-                                                           
+
 <tr id="InputMappingButtonRow" style="<%=inputMappingsSupported ? "" : "display:none"%>">
     <td colspan="2">
         <a href="javascript: document.dataForm.submit();"
@@ -815,7 +815,7 @@ window.onload=function() {
     </td>
 </tr>
 
-<tr id="SparqlInputMappingButtonRow" style="<%=( datasourceType.equals("RDF") || datasourceType.equals("SPARQL") 
+<tr id="SparqlInputMappingButtonRow" style="<%=( datasourceType.equals("RDF") || datasourceType.equals("SPARQL")
                                                            )?"":"display:none"%>">
     <td>
         <input type="submit" id="newSparqlInputMapping" value="Add New Input Mapping"
@@ -853,11 +853,11 @@ window.onload=function() {
                         color="red">*</font></label></td>
                 <td><select id="txtExcelHeaderColumns" name="txtExcelHeaderColumns" onchange="javascript:hasHeaderOnChange(this,document);return false;">
                     <% if (headersAvailable) { %>
-                    <option value="true" selected="selected">true</option>
-                    <option value="false">false</option>
+                    <option value="true" selected="selected">是</option>
+                    <option value="false">否</option>
                     <% } else { %>
-                    <option value="true">true</option>
-                    <option value="false" selected="selected">false</option>
+                    <option value="true">是</option>
+                    <option value="false" selected="selected">否</option>
                     <% } %>
                 </select></td>
             </tr>
@@ -900,11 +900,11 @@ window.onload=function() {
                         color="red">*</font></label></td>
                 <td><select id="txtGSpreadHeaderColumns" name="txtGSpreadHeaderColumns" onchange="javascript:hasHeaderOnChange(this,document);return false;">
                     <% if (headersAvailable) { %>
-                    <option value="true" selected="selected">true</option>
-                    <option value="false">false</option>
+                    <option value="true" selected="selected">是</option>
+                    <option value="false">否</option>
                     <% } else { %>
-                    <option value="true">true</option>
-                    <option value="false" selected="selected">false</option>
+                    <option value="true">是</option>
+                    <option value="false" selected="selected">否</option>
                     <% } %>
                 </select></td>
             </tr>
@@ -927,14 +927,14 @@ window.onload=function() {
                 <%--<td><label><fmt:message key="datasources.return.generated.keys"/></label></td>--%>
                      <%--<td><select id="returnGeneratedKeys" name="returnGeneratedKeys" onchange="document.dataForm.action='queryProcessor.jsp?setReturnGeneratedKeys=true&flag=ReturnRowChanged';document.dataForm.submit();">--%>
 				        <%--<% if(returnGeneratedKeys){ %>--%>
-				        <%--<option value="true" selected="selected">Yes</option>--%>
+				        <%--<option value="true" selected="selected">是</option>--%>
 				        <%--<% }else{ %>--%>
-				        <%--<option value="true">Yes</option>--%>
+				        <%--<option value="true">是</option>--%>
 				        <%--<% } %>--%>
 				        <%--<% if(!returnGeneratedKeys) { %>--%>
-				        <%--<option value="false" selected="selected">No</option>--%>
+				        <%--<option value="false" selected="selected">否</option>--%>
 				        <%--<% } else { %>--%>
-				        <%--<option value="false">No</option>--%>
+				        <%--<option value="false">否</option>--%>
 				        <%--<% } %>--%>
 				        <%--</select> </td>--%>
                 <%
@@ -952,7 +952,7 @@ window.onload=function() {
                            onclick="var validated=validateClickOnReturnGeneratedKeys();if(validated){document.dataForm.action='queryProcessor.jsp?setReturnGeneratedKeys=true&flag=ReturnRowChanged';document.dataForm.submit();} return validated;" />
                     <% } %>
                     <label for="returnGeneratedKeys"><fmt:message
-                        key="datasources.return.generated.keys"/></label>                    
+                        key="datasources.return.generated.keys"/></label>
                 </td>
                 <td>
                     <%
@@ -1068,10 +1068,10 @@ window.onload=function() {
                            value="<%=xsltPath%>"/></td>
                 <td><a onclick="showResourceTree('xsltPath', setValueConf , '/_system/config')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> 配置注册表 </a></td>
+                       href="#"> Configuration Registry </a></td>
                 <td><a onclick="showResourceTree('xsltPath', setValueGov , '/_system/governance')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#">管理注册 </a></td>
+                       href="#"> Govenance Registry </a></td>
 
             </tr>
 
@@ -1099,13 +1099,13 @@ window.onload=function() {
                            value="<%=rdfXsltPath%>" readonly="readonly"/></td>
                 <%--<td><a onclick="showResourceTree('rdfXsltPath', setValue , '/_system/config')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#">Registry path</a></td>--%>
+                       href="#">注册表路径</a></td>--%>
                 <td><a onclick="showResourceTree('rdfXsltPath', setValueConf , '/_system/config')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
                        href="#"> 配置注册表 </a></td>
                 <td><a onclick="showResourceTree('rdfXsltPath', setValueGov , '/_system/governance')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> 管理注册 </a></td>
+                       href="#"> 治理注册表 </a></td>
             </tr>
         </table>
     </td>
@@ -1120,7 +1120,7 @@ window.onload=function() {
                   <textarea rows="25" cols="70" name="jsonMapping" id="jsonMapping"><%=textMapping%></textarea>
               </td>
             </tr>
-            
+
         </table>
     </td>
 </tr>
@@ -1170,9 +1170,9 @@ window.onload=function() {
     <%--</tr>--%>
 
 <% } %>
-  
+
 <tbody>
-  
+
 <%
 
     if (elements != null) {
@@ -1274,7 +1274,7 @@ window.onload=function() {
             String xportType = "";
             String arrayName = "";
             String optional = "";
-            if (attribute.getRequiredRoles() != null && 
+            if (attribute.getRequiredRoles() != null &&
             		attribute.getRequiredRoles().trim().length() > 0) {
                 roles = attribute.getRequiredRoles();
             } else {
@@ -1337,7 +1337,7 @@ window.onload=function() {
             RDFResource resource = (RDFResource) itrResources.next();
             String roles = "";
             String xType = "";
-            if (resource.getRequiredRoles() != null && 
+            if (resource.getRequiredRoles() != null &&
             		resource.getRequiredRoles().trim().length() > 0) {
                 roles = resource.getRequiredRoles();
             } else {
@@ -1441,7 +1441,7 @@ window.onload=function() {
     while (itrCallQueries.hasNext()) {
         CallQuery callQuery = (CallQuery) itrCallQueries.next();
         String roles = "";
-        if (callQuery.getRequiredRoles() != null && 
+        if (callQuery.getRequiredRoles() != null &&
         		callQuery.getRequiredRoles().trim().length() > 0) {
             roles = callQuery.getRequiredRoles();
         } else {
@@ -1507,7 +1507,7 @@ window.onload=function() {
             <tr>
                 <td><fmt:message key="input.event.trigger"/></td>
                 <td><Select id="inputEventTrigger" name="inputEventTrigger">
-                    <option value="">--Select--</option>
+                    <option value="">--请选择--</option>
                     <%
                         if (dataService.getEvents() != null) {
                             Iterator<Event> eventItr = dataService.getEvents().iterator();
@@ -1535,7 +1535,7 @@ window.onload=function() {
             <tr>
                 <td><fmt:message key="output.event.trigger"/></td>
                 <td><Select id="outputEventTrigger" name="outputEventTrigger">
-                    <option value="">--Select--</option>
+                    <option value="">--请选择--</option>
                     <%
                         if (dataService.getEvents() != null) {
                             Iterator<Event> eventItr = dataService.getEvents().iterator();

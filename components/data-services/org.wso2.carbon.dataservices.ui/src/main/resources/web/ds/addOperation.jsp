@@ -15,6 +15,7 @@
 ~ specific language governing permissions and limitations
 ~ under the License.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import="org.apache.axis2.context.ConfigurationContext"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
@@ -25,7 +26,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Iterator" %>
 <%@ page import="org.owasp.encoder.Encode" %>
-<%@ page contentType="text/html;charset=utf-8"%>
 <script type="text/javascript" src="../admin/js/main.js"></script>
 
 <jsp:include page="../dialog/display_messages.jsp"/>
@@ -127,7 +127,7 @@
         returnRequestStatus = operation.isReturnRequestStatus();
     }
     serviceName = dataService.getName();
-    
+
     //Set Display Parameters
     if (editParam != null && editParam.equals("editparam") && selectedQueryId.equalsIgnoreCase(operation.getCallQuery().getHref())
         && operation.getCallQuery().getWithParams().size() > 0) {
@@ -336,7 +336,7 @@
                                     <td colspan="3">
                                         <a class="icon-link"
                                            style="background-image:url(../admin/images/add.gif);"
-                                           href='addOperation.jsp?param=qparam&operationName=<%=Encode.forHtmlAttribute(operationName)%>&operationDesc=<%=Encode.forHtmlAttribute(operationDesc) %>&action=<%=Encode.forHtml(action)%>&selectedQueryId=<%=Encode.forHtmlAttribute(selectedQueryId)%>' >添加查询参数作为操作参数</a>
+                                           href='addOperation.jsp?param=qparam&operationName=<%=Encode.forHtmlAttribute(operationName)%>&operationDesc=<%=Encode.forHtmlAttribute(operationDesc) %>&action=<%=Encode.forHtml(action)%>&selectedQueryId=<%=Encode.forHtmlAttribute(selectedQueryId)%>' >添加查询参数为操作参数</a>
                                     </td>
                                 </tr>
                                 <%

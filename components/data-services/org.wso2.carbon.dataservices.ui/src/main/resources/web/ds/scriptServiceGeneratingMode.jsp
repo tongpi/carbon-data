@@ -18,10 +18,10 @@
 ~  *
 ~  */
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%> 
-<%@ page contentType="text/html;charset=utf-8"%> 
+
 <%@ page import="java.util.Arrays" %>
 <carbon:breadcrumb
         label="service.generation"
@@ -61,11 +61,11 @@
                             <tr><td>
                                 <table class="normal" >
                                    <tr>
-                                     <td> <input type="radio" name="mode" value="Single" id="mode" <%= (multipleMode) ? "checked=\"checked\"" : "" %> onchange="onModeChange(document);"> 单一服务-为所有选定的表创建一个服务</td>
+                                     <td> <input type="radio" name="mode" value="Single" id="mode" <%= (multipleMode) ? "checked=\"checked\"" : "" %> onchange="onModeChange(document);"> 单个服务 - 选择的全部表均创建在一个服务中</td>
                                    </tr>
                                     <br>
                                     <tr>
-                                      <td> <input type="radio" name="mode" value="Multiple" id="mode" <%= (!multipleMode) ? "checked=\"checked\"" : "" %> onchange="onModeChange(document);"> 多个服务-为每个表创建一个服务</td>
+                                      <td> <input type="radio" name="mode" value="Multiple" id="mode" <%= (!multipleMode) ? "checked=\"checked\"" : "" %> onchange="onModeChange(document);"> 多个服务 - 每个表创建一个服务</td>
                                    </tr>
                                  </table>
                             </td></tr>
@@ -76,7 +76,7 @@
 				                    <td>
 				                    <input value="" id="txtNamespace"
 				                           name="txtNamespace" size="30" type="text"></td>
-				                </tr>    
+				                </tr>
 				                <tr id ="txServiceNameRow"  style="<%=(multipleMode)  ? "" : "display:none"%>">
 					                <td><label><fmt:message key="service.name"/><font color="red">*</font></label></td>
 					                <td><input value="" id="txtServiceName"

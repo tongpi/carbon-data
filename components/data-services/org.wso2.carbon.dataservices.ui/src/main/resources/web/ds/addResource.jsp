@@ -15,6 +15,7 @@
 ~ specific language governing permissions and limitations
 ~ under the License.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://wso2.org/projects/carbon/taglibs/carbontags.jar" prefix="carbon" %>
 <%@ page import="org.wso2.carbon.utils.ServerConstants" %>
@@ -75,7 +76,7 @@
     String description = request.getParameter("resourceDesc");
     String resourceMethod = request.getParameter("resourceMethod");
     String flag = request.getParameter("flag");
-    String existingResource = null;    
+    String existingResource = null;
     if (resourcePath != null && resourcePath.trim().length() > 0 && resourceMethod != null && resourceMethod.trim().length() > 0) {
         resource = dataService.getResource(resourcePath, resourceMethod);
         if (resource != null) {
@@ -165,7 +166,7 @@
                                     <td><select type="text" name="resourceMethod"
                                                 id="resourceMethod">
                                         <% if (resourceMethod.equals("")) { %>
-                                        <option value="">--SELECT--</option>
+                                        <option value="">--请选择--</option>
                                         <option value="GET">GET</option>
                                         <option value="PUT">PUT</option>
                                         <option value="POST">POST</option>
@@ -302,7 +303,7 @@
                                         <label for="returnRequestStatus"><fmt:message
                                                 key="service.return.request.status"/></label>
                                     </td>
-                                </tr>                                
+                                </tr>
                             </table>
                         </td>
                     </tr>
