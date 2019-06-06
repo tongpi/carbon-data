@@ -1068,10 +1068,10 @@ window.onload=function() {
                            value="<%=xsltPath%>"/></td>
                 <td><a onclick="showResourceTree('xsltPath', setValueConf , '/_system/config')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> Configuration Registry </a></td>
+                       href="#"> 配置注册表 </a></td>
                 <td><a onclick="showResourceTree('xsltPath', setValueGov , '/_system/governance')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> Govenance Registry </a></td>
+                       href="#"> 管理注册表 </a></td>
 
             </tr>
 
@@ -1105,7 +1105,7 @@ window.onload=function() {
                        href="#"> 配置注册表 </a></td>
                 <td><a onclick="showResourceTree('rdfXsltPath', setValueGov , '/_system/governance')"
                        style="background-image:url(images/registry_picker.gif);" class="icon-link"
-                       href="#"> 治理注册表 </a></td>
+                       href="#"> 管理注册表 </a></td>
             </tr>
         </table>
     </td>
