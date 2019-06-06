@@ -48,13 +48,13 @@ public class CustomInsertQuery extends InsertQuery {
 	@Override
 	public int executeUpdate() throws SQLException {
 		if (!(this.getConnection() instanceof TCustomConnection)) {
-            throw new SQLException("Connection does not refer to a Custom connection");
+            throw new SQLException("连接未引用自定义连接");
         }
 		DataTable table = ((TCustomConnection) this.getConnection()).getDataSource().getDataTable(
 				this.getTargetTableName());
 		if (table == null) {
-			throw new SQLException("The custom data table '" + 
-					this.getTargetTableName() + "' does not exist");
+			throw new SQLException("自定义数据表: '" +
+					this.getTargetTableName() + "' 不存在");
 		}
 		DataRow row = new DataRow(0);
 		Map<Integer, DataCell> cells = new HashMap<Integer, DataCell>();

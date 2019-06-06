@@ -79,7 +79,7 @@ public class TDriverUtil {
     public static ColumnInfo[] getHeaders(Connection connection,
                                           String tableName) throws SQLException {
         if (!(connection instanceof TConnection)) {
-            throw new SQLException("Invalid connection type");
+            throw new SQLException("连接类型无效");
         }
         String connectionType = ((TConnection) connection).getType();
         QueryFactory.QueryTypes type =
@@ -92,7 +92,7 @@ public class TDriverUtil {
             case CUSTOM:
                 return getCustomHeaders(connection, tableName);
             default:
-                throw new SQLException("Invalid query type: " + type);
+                throw new SQLException("查询类型无效: " + type);
         }
     }
 
@@ -100,12 +100,12 @@ public class TDriverUtil {
                                                 String tableName) throws SQLException {
         List<ColumnInfo> columns = new ArrayList<ColumnInfo>();
         if (!(connection instanceof TExcelConnection)) {
-            throw new SQLException("Invalid connection type");
+            throw new SQLException("连接类型无效");
         }
         Workbook workbook = ((TExcelConnection) connection).getWorkbook();
         Sheet sheet = workbook.getSheet(tableName);
         if (sheet == null) {
-            throw new SQLException("Sheet '" + tableName + "' does not exist");
+            throw new SQLException("表: '" + tableName + "' 不存在");
         }
         Iterator<Cell> cellItr = sheet.getRow(0).cellIterator();
         while (cellItr.hasNext()) {
@@ -126,11 +126,11 @@ public class TDriverUtil {
         List<ColumnInfo> columns = new ArrayList<ColumnInfo>();
 
         if (!(connection instanceof TGSpreadConnection)) {
-            throw new SQLException("Invalid connection type");
+            throw new SQLException("连接类型无效");
         }
         currentWorksheet = getCurrentWorkSheetEntry((TGSpreadConnection) connection, sheetName);
         if (currentWorksheet == null) {
-            throw new SQLException("Worksheet '" + sheetName + "' does not exist");
+            throw new SQLException("表名为: '" + sheetName + "' 不存在");
         }
         CellFeed cellFeed = getGSpreadCellFeed((TGSpreadConnection) connection, currentWorksheet);
         for (CellEntry cell : cellFeed.getEntries()) {
@@ -238,7 +238,7 @@ public class TDriverUtil {
                 try {
                     RegistryService registryService = SQLDriverDSComponent.getRegistryService();
                     if (registryService == null) {
-                        throw new SQLException("DBUtils.getInputStreamFromPath(): Registry service is not available");
+                        throw new SQLException("DBUtils.getInputStreamFromPath（）：注册表服务不可用");
                     }
                     Registry registry;
                     if (filePath.startsWith(CONF_REGISTRY_PATH_PREFIX)) {
@@ -246,14 +246,14 @@ public class TDriverUtil {
                             filePath = filePath.substring(CONF_REGISTRY_PATH_PREFIX.length());
                             registry = registryService.getConfigSystemRegistry(getCurrentTenantId());
                         } else {
-                            throw new SQLException("Empty configuration registry path given");
+                            throw new SQLException("给定的配置注册表路径为空");
                         }
                     } else {
                         if (filePath.length() > GOV_REGISTRY_PATH_PREFIX.length()) {
                             filePath = filePath.substring(GOV_REGISTRY_PATH_PREFIX.length());
                             registry = registryService.getGovernanceSystemRegistry(getCurrentTenantId());
                         } else {
-                            throw new SQLException("Empty governance registry path given");
+                            throw new SQLException("给定的管理注册表路径为空");
                         }
                     }
                     if (registry.resourceExists(filePath)) {
@@ -265,7 +265,7 @@ public class TDriverUtil {
                         registry.put(filePath, serviceResource);
                     } else {
                         throw new SQLException(
-                                "The given XSLT resource path at '" + filePath + "' does not exist");
+                                "给定的XSLT资源路径位于: '" + filePath + "' 不存在");
                     }
                 } catch (RegistryException e) {
                     throw new SQLException(e);
@@ -280,7 +280,7 @@ public class TDriverUtil {
                 workbook.write(out);
             }
         } catch (FileNotFoundException e) {
-            throw new SQLException("Error occurred while locating the EXCEL datasource", e);
+            throw new SQLException("定位Excel数据源时出错", e);
         } catch (IOException e) {
             throw new SQLException("Error occurred while writing the records to the EXCEL " +
                                    "data source", e);
@@ -322,7 +322,7 @@ public class TDriverUtil {
             try {
                 RegistryService registryService = SQLDriverDSComponent.getRegistryService();
                 if (registryService == null) {
-                    throw new SQLException("DBUtils.getInputStreamFromPath(): Registry service is not available");
+                    throw new SQLException("DBUtils.getInputStreamFromPath(): 注册表服务不可用");
                 }
                 Registry registry;
                 if (path.startsWith(CONF_REGISTRY_PATH_PREFIX)) {
@@ -330,14 +330,14 @@ public class TDriverUtil {
                         path = path.substring(CONF_REGISTRY_PATH_PREFIX.length());
                         registry = registryService.getConfigSystemRegistry(getCurrentTenantId());
                     } else {
-                        throw new SQLException("Empty configuration registry path given");
+                        throw new SQLException("给定的配置注册表路径为空");
                     }
                 } else {
                     if (path.length() > GOV_REGISTRY_PATH_PREFIX.length()) {
                         path = path.substring(GOV_REGISTRY_PATH_PREFIX.length());
                         registry = registryService.getGovernanceSystemRegistry(getCurrentTenantId());
                     } else {
-                        throw new SQLException("Empty governance registry path given");
+                        throw new SQLException("给定的管理注册表路径为空");
                     }
                 }
                 if (registry.resourceExists(path)) {
@@ -345,7 +345,7 @@ public class TDriverUtil {
                     ins = serviceResource.getContentStream();
                 } else {
                     throw new SQLException(
-                            "The given XSLT resource path at '" + path + "' does not exist");
+                            "给定的XSLT资源路径位于: '" + path + "' 不存在");
                 }
             } catch (RegistryException e) {
                 throw new SQLException(e);

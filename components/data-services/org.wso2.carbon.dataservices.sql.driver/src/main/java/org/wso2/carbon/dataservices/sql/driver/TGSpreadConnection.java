@@ -67,11 +67,11 @@ public class TGSpreadConnection extends TConnection {
                 this.feedProcessor.setClientSecret(URLDecoder.decode(this.feedProcessor.getClientSecret(), "UTF-8"));
                 this.feedProcessor.setRefreshToken(URLDecoder.decode(this.feedProcessor.getRefreshToken(), "UTF-8"));
             } catch (UnsupportedEncodingException e) {
-                throw new SQLException("Error in retrieving Authentication information " + e.getMessage(), e);
+                throw new SQLException("检索身份验证信息时出错 " + e.getMessage(), e);
             }
         }
         if (spreadSheetName == null) {
-            throw new SQLException("Spread Sheet name is not provided");
+            throw new SQLException("未提供电子表格名称");
         }
 
         SpreadsheetService service = new SpreadsheetService(Constants.SPREADSHEET_SERVICE_NAME);
@@ -110,7 +110,7 @@ public class TGSpreadConnection extends TConnection {
 
     @Override
     public CallableStatement prepareCall(String sql) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override
@@ -122,7 +122,7 @@ public class TGSpreadConnection extends TConnection {
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType,
                                          int resultSetConcurrency) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override
@@ -136,7 +136,7 @@ public class TGSpreadConnection extends TConnection {
     public CallableStatement prepareCall(String sql, int resultSetType,
                                          int resultSetConcurrency,
                                          int resultSetHoldability) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override
@@ -159,7 +159,7 @@ public class TGSpreadConnection extends TConnection {
 
     private WorksheetFeed extractWorkSheetFeed() throws SQLException {
         if (this.getSpreadSheetFeed() == null) {
-            throw new SQLException("Spread Sheet Feed is null");
+            throw new SQLException("Spread Sheet Feed 为空");
         }
         List<SpreadsheetEntry> entries = this.getSpreadSheetFeed().getEntries();
         /* If no SpreadSheetEntry is available in the spreadsheet feed inferred using a
@@ -185,7 +185,7 @@ public class TGSpreadConnection extends TConnection {
             List<SpreadsheetEntry> entries = feed.getEntries();
             return (entries != null && entries.size() > 0) ? entries.get(0) : null;
         } catch (Exception e) {
-            throw new SQLException("Error occurred while extracting spread sheet entry", e);
+            throw new SQLException("提取电子表格条目时出错", e);
         }
     }
 
@@ -194,7 +194,7 @@ public class TGSpreadConnection extends TConnection {
         try {
             spreadSheetFeedUrl = this.feedProcessor.getSpreadSheetFeedUrl();
         } catch (MalformedURLException e) {
-            throw new SQLException("Error occurred while constructing the Spread Sheet Feed URL");
+            throw new SQLException("构造电子表格源URL时出错");
         }
         SpreadsheetQuery spreadSheetQuery =
                 TDriverUtil.createSpreadSheetQuery(this.getSpreadSheetName(), spreadSheetFeedUrl);

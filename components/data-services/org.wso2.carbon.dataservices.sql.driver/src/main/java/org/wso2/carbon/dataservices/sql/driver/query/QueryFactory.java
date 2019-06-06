@@ -66,7 +66,7 @@ public class QueryFactory {
             case DROP:
                 return createDropQuery(stmt);
             default:
-                throw new SQLException("Unsupport query type");
+                throw new SQLException("不支持查询类型");
         }
     }
 
@@ -80,7 +80,7 @@ public class QueryFactory {
             case GSPREAD:
                 return new GSpreadDropQuery(stmt);
             default:
-                throw new SQLException("Unsupported type");
+                throw new SQLException("不支持的类型");
         }
     }
 
@@ -94,7 +94,7 @@ public class QueryFactory {
             case GSPREAD:
                 return new GSpreadCreateQuery(stmt);
             default:
-                throw new SQLException("Unsupported type");
+                throw new SQLException("不支持的类型");
         }
     }
 
@@ -110,7 +110,7 @@ public class QueryFactory {
             case CUSTOM:
                 return new CustomDeleteQuery(stmt);
             default:
-                throw new SQLException("Unsupported type");
+                throw new SQLException("不支持的类型");
         }
     }
 
@@ -126,7 +126,7 @@ public class QueryFactory {
             case CUSTOM:
                 return new CustomInsertQuery(stmt);
             default:
-                throw new SQLException("Unsupported type");
+                throw new SQLException("不支持的类型");
         }
     }
 
@@ -142,7 +142,7 @@ public class QueryFactory {
             case CUSTOM:
                 return new CustomSelectQuery(stmt);
             default:
-                throw new SQLException("Unsupported type");
+                throw new SQLException("不支持的类型");
         }
     }
 
@@ -158,7 +158,7 @@ public class QueryFactory {
             case CUSTOM:
                 return new CustomUpdateQuery(stmt);
             default:
-                throw new SQLException("Unsupported type");
+                throw new SQLException("不支持的类型");
         }
     }
 

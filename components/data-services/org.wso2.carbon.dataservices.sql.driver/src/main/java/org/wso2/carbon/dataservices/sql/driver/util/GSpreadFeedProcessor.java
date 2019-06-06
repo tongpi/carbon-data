@@ -104,20 +104,20 @@ public class GSpreadFeedProcessor {
         }
         if (requiresAuth()) {
             if (this.clientId == null || this.clientId.isEmpty()){
-                throw new SQLException("Valid Client id not provided");
+                throw new SQLException("未提供有效的客户端ID");
             }
             if (this.clientSecret == null || this.clientSecret.isEmpty()){
-                throw new SQLException("Valid Client secret not provided");
+                throw new SQLException("未提供有效的客户端密钥");
             }
             if (this.refreshToken == null || this.refreshToken.isEmpty()){
-                throw new SQLException("Valid refresh token not provided");
+                throw new SQLException("未提供有效的刷新令牌");
             }
             try {
                 this.clientId = URLDecoder.decode(this.clientId, "UTF-8");
                 this.clientSecret = URLDecoder.decode(this.clientSecret, "UTF-8");
                 this.refreshToken = URLDecoder.decode(this.refreshToken, "UTF-8");
             } catch (UnsupportedEncodingException e) {
-                throw new SQLException("Error in retrieving Authentication information " + e.getMessage(), e);
+                throw new SQLException("检索身份验证信息时出错 " + e.getMessage(), e);
             }
         }
         this.baseRegistryOauthTokenPath = baseRegistryOauthTokenPath;
@@ -150,7 +150,7 @@ public class GSpreadFeedProcessor {
             }
             return this.service.insert(feedUrl, entry);
         } catch (Exception e) {
-            throw new SQLException("Error in retrieving Feed data " + e.getMessage(), e);
+            throw new SQLException("检索Feed数据时出错 " + e.getMessage(), e);
         }
     }
 
@@ -192,7 +192,7 @@ public class GSpreadFeedProcessor {
             }
             return this.service.getFeed(feedUrl, feedClass);
         } catch (Exception e) {
-            throw new SQLException("Error in retrieving Feed data " + e.getMessage(), e);
+            throw new SQLException("检索Feed数据时出错 " + e.getMessage(), e);
         }
     }
 
@@ -234,7 +234,7 @@ public class GSpreadFeedProcessor {
             }
             return this.service.getFeed(query, feedClass);
         } catch (Exception e) {
-            throw new SQLException("Error in retrieving Feed data " + e.getMessage(), e);
+            throw new SQLException("检索Feed数据时出错" + e.getMessage(), e);
         }
     }
 
@@ -316,7 +316,7 @@ public class GSpreadFeedProcessor {
      */
     private String getAccessTokenFromRegistry() throws Exception {
         if (SQLDriverDSComponent.getRegistryService() == null) {
-            String msg = "GSpreadConfig.getFeed(): Registry service is not available, authentication key sharing fails";
+            String msg = "GSpreadConfig.getFeed（）：注册表服务不可用，身份验证密钥共享失败";
             throw new SQLException(msg);
         }
         Registry registry = SQLDriverDSComponent.getRegistryService()

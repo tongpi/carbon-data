@@ -28,7 +28,7 @@ public class DataReaderFactory {
 
     public static DataReader createDataReader(Connection connection) throws SQLException {
         if (!(connection instanceof TConnection)) {
-            throw new SQLException("Connection cannot be casted to 'TConnection'");
+            throw new SQLException("无法将连接强制转换为'tconnection'");
         }
         String connectionType = ((TConnection) connection).getType();
         if (Constants.EXCEL.equals(connectionType)) {
@@ -38,7 +38,7 @@ public class DataReaderFactory {
         } else if (Constants.CUSTOM.equals(connectionType)) {
             return new CustomDataReader(connection);
         } else {
-            throw new SQLException("Unsupported config type");
+            throw new SQLException("不支持的配置类型");
         }
     }
 

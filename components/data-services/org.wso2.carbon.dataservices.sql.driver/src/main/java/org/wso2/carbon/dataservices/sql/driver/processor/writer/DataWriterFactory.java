@@ -31,7 +31,7 @@ public class DataWriterFactory {
         if (Constants.EXCEL.equals(type)) {
             return new ExcelDataWriter(null, data);
         } else {
-            throw new ParserException("Unsupported data type");
+            throw new ParserException("不支持的数据类型");
         }
     }
 

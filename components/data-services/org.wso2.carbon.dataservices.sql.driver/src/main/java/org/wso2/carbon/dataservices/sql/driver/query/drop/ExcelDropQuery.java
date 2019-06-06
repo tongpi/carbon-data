@@ -58,8 +58,8 @@ public class ExcelDropQuery extends DropQuery {
         Workbook workbook = excelConnection.getWorkbook();
 
         if (!isSheetExists(workbook)) {
-            throw new SQLException("Excel sheet named '" + this.getTableName() +
-                    "' does not exist");
+            throw new SQLException("工作表: '" + this.getTableName() +
+                    "' 不存在");
         }
 
         int sheetIndex = workbook.getSheetIndex(this.getTableName());

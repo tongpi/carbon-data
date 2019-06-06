@@ -76,9 +76,9 @@ public class TExcelConnection extends TConnection {
             throw new SQLException("Could not locate the EXCEL datasource in the provided " +
                                    "location", e);
         } catch (IOException | InvalidFormatException e) {
-            throw new SQLException("Error occurred while initializing the EXCEL datasource", e);
+            throw new SQLException("初始化Excel数据源时出错", e);
         } catch (InterruptedException e) {
-            throw new SQLException("Error Acquiring the lock for the workbook path - " + filePath, e);
+            throw new SQLException("获取工作簿路径的锁时出错 - " + filePath, e);
         } finally {
             releaseLock();
         }
@@ -98,7 +98,7 @@ public class TExcelConnection extends TConnection {
                 log.debug("Acquired the lock for the excel file to make it transactional, current lock count - " + lockCount);
             }
         } else {
-            throw new SQLException("Error acquiring lock for the excel file even after 20 second wait, filePath - " + this.filePath);
+            throw new SQLException("获取Excel文件的锁时出错，即使在等待20秒后，文件路径 - " + this.filePath);
         }
     }
 
@@ -142,7 +142,7 @@ public class TExcelConnection extends TConnection {
 
     @Override
     public CallableStatement prepareCall(String sql) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override
@@ -154,7 +154,7 @@ public class TExcelConnection extends TConnection {
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType,
                                          int resultSetConcurrency) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override
@@ -167,7 +167,7 @@ public class TExcelConnection extends TConnection {
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency,
                                          int resultSetHoldability) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override

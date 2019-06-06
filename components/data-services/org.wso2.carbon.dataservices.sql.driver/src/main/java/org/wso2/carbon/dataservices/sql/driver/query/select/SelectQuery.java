@@ -114,11 +114,11 @@ public abstract class SelectQuery extends ConditionalQuery {
         /* Drops FROM keyword */
         tokens.poll();
         if (!Constants.TABLE.equals(tokens.peek())) {
-            throw new SQLException("'TABLE' keyword is expected");
+            throw new SQLException("'应输入table'关键字");
         }
         tokens.poll();
         if (!ParserUtil.isStringLiteral(tokens.peek())) {
-            throw new SQLException("Syntax Error : String literal is expected");
+            throw new SQLException("语法错误：需要字符串文本");
         }
         return tokens.poll();
     }
@@ -128,7 +128,7 @@ public abstract class SelectQuery extends ConditionalQuery {
             return;
         }
         if (!Constants.WHERE.equalsIgnoreCase(tokens.peek())) {
-            throw new SQLException("Syntax Error : 'WHERE' keyword is expected");
+            throw new SQLException("语法错误：应输入'where'关键字");
         }
         //Removing WHERE keyword
         tokens.poll();
@@ -145,11 +145,11 @@ public abstract class SelectQuery extends ConditionalQuery {
     private void processTargetColumns(Queue<String> tokens, int count,
                                       List<ColumnInfo> columns) throws SQLException {
         if (!Constants.COLUMN.equals(tokens.peek())) {
-            throw new SQLException("Syntax Error : 'COLUMN' keyword is expected");
+            throw new SQLException("语法错误：应输入“column”关键字");
         }
         tokens.poll();
         if (!ParserUtil.isStringLiteral(tokens.peek())) {
-            throw new SQLException("Syntax Error : String literal is expected");
+            throw new SQLException("语法错误：需要字符串文本");
         }
         columns.add(new ColumnInfo(tokens.poll(), count));
         if (Constants.COLUMN.equals(tokens.peek())) {

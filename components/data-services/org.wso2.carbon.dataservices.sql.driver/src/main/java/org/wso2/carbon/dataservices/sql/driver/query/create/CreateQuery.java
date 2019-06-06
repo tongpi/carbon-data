@@ -58,7 +58,7 @@ public abstract class CreateQuery extends Query {
             return columns;
         }
         if (!Constants.COLUMN.equals(tokens.peek())) {
-             throw new SQLException("Unable to extract columns");
+             throw new SQLException("无法提取列");
         }
         tokens.poll();
         columns.add(new ColumnInfo(tokens.poll(), this.getTableName(), -1));

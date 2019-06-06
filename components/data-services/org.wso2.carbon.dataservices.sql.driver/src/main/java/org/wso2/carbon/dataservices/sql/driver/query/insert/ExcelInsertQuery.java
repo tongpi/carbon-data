@@ -57,7 +57,7 @@ public class ExcelInsertQuery extends InsertQuery {
     private synchronized int executeSQL() throws SQLException {
         int rowCount = 0;
         if (!(getConnection() instanceof TExcelConnection)) {
-            throw new SQLException("Connection does not refer to a Excel connection");
+            throw new SQLException("连接未引用Excel连接");
         }
         TExcelConnection excelConnection = (TExcelConnection) this.getConnection();
         //begin transaction,
@@ -65,8 +65,8 @@ public class ExcelInsertQuery extends InsertQuery {
         Workbook workbook = excelConnection.getWorkbook();
         Sheet sheet = workbook.getSheet(getTargetTableName());
         if (sheet == null) {
-            throw new SQLException("Excel sheet named '" + this.getTargetTableName() +
-                    "' does not exist");
+            throw new SQLException("Excel表名为: '" + this.getTargetTableName() +
+                    "'不存在");
         }
         int lastRowNo = sheet.getLastRowNum();
 

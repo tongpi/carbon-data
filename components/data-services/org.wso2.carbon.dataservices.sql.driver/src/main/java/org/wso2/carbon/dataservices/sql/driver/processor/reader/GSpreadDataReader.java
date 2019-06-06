@@ -42,7 +42,7 @@ public class GSpreadDataReader extends AbstractFixedDataReader {
         TGSpreadConnection gsConnection = (TGSpreadConnection) getConnection();
         WorksheetFeed workSheetFeed = gsConnection.getWorksheetFeed();
         if (workSheetFeed == null) {
-            throw new SQLException("Work sheet feed it not initialized properly and is null");
+            throw new SQLException("工作表源未正确初始化且为空");
         }
         List<WorksheetEntry> workSheets = workSheetFeed.getEntries();
         for (WorksheetEntry workSheet : workSheets) {
