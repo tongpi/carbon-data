@@ -51,18 +51,18 @@ public abstract class InsertQuery extends Query {
 
     private String extractTargetTableName(Queue<String> tokens) throws SQLException {
         if (tokens == null || tokens.isEmpty()) {
-            throw new SQLException("Unable to populate attributes");
+            throw new SQLException("无法填充属性");
         }
         /* Drops INSERT keyword */
         tokens.poll();
         /* Drops INTO keyword */
         tokens.poll();
         if (!Constants.TABLE.equalsIgnoreCase(tokens.peek())) {
-            throw new SQLException("Table name is missing");
+            throw new SQLException("缺少表名");
         }
         tokens.poll();
         if (!ParserUtil.isStringLiteral(tokens.peek())) {
-            throw new SQLException("Table name is missing");
+            throw new SQLException("缺少表名");
         }
         return tokens.poll();
     }
@@ -82,7 +82,7 @@ public abstract class InsertQuery extends Query {
         Map<Integer, Object> targetColumnValues = new HashMap<Integer, Object>();
         if (!(Constants.VALUES.equalsIgnoreCase(tokens.peek()) ||
                 Constants.VALUE.equalsIgnoreCase(tokens.peek()))) {
-            throw new SQLException("VALUE/VALUES keyword is missing");
+            throw new SQLException("缺少value/values关键字");
         }
         tokens.poll();
         processColumnValues(tokens, targetColumnValues, 0, false, false, true);
@@ -96,7 +96,7 @@ public abstract class InsertQuery extends Query {
         }
         tokens.poll();
         if (!ParserUtil.isStringLiteral(tokens.peek())) {
-            throw new SQLException("Syntax Error : String literal expected");
+            throw new SQLException("语法错误：需要字符串文本");
         }
         targetColumns.put(colCount, tokens.poll());
         if (Constants.COLUMN.equalsIgnoreCase(tokens.peek())) {
@@ -109,11 +109,11 @@ public abstract class InsertQuery extends Query {
                                      boolean isInit) throws SQLException {
         if (!isEnd) {
             if (!Constants.PARAM_VALUE.equalsIgnoreCase(tokens.peek())) {
-                throw new SQLException("Syntax Error : 'PARAM_VALUE' is expected");
+                throw new SQLException("语法错误：应为“param_value”");
             }
             tokens.poll();
             if (!ParserUtil.isStringLiteral(tokens.peek())) {
-                throw new SQLException("Syntax Error : String literal expected");
+                throw new SQLException("语法错误：需要字符串文本");
             }
             if ("?".equalsIgnoreCase(tokens.peek())) {
                 if (isInit) {

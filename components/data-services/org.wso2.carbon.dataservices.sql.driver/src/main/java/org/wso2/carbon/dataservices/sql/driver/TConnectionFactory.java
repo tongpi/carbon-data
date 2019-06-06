@@ -35,7 +35,7 @@ public class TConnectionFactory {
         } else if (Constants.CUSTOM.equals(type)) {
             return new TCustomConnection(props);
         } else {
-            throw new SQLException("Unsupported datasource type");
+            throw new SQLException("不支持的数据源类型");
         }
 
     }

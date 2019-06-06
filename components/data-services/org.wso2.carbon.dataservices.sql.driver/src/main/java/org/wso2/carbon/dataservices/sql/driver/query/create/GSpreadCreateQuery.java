@@ -62,7 +62,7 @@ public class GSpreadCreateQuery extends CreateQuery {
         TGSpreadConnection gspreadCon = (TGSpreadConnection) getConnection();
         GSpreadFeedProcessor feedProcessor = gspreadCon.getFeedProcessor();
         if (isWorkSheetExists(gspreadCon)) {
-            throw new SQLException("A sheet named '" + this.getTableName() + "' already exists");
+            throw new SQLException("一张名为:'" + this.getTableName() + "' 的工作表已经存在");
         }
 
         WorksheetEntry newWorkSheet = new WorksheetEntry();
@@ -83,10 +83,10 @@ public class GSpreadCreateQuery extends CreateQuery {
                 cellFeed.insert(cell);
             }
         } catch (IOException e) {
-            throw new SQLException("Error occurred while adding column header to the sheet '" +
+            throw new SQLException("向工作表添加列标题时发生错误 '" +
                     this.getTableName() + "'", e);
         } catch (ServiceException e) {
-            throw new SQLException("Error occurred while adding column header to the sheet '" +
+            throw new SQLException("向工作表添加列标题时出错 '" +
                     this.getTableName() + "'", e);
         }
     }

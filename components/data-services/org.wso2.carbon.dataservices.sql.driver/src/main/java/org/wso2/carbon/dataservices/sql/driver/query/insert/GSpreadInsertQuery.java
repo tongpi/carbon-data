@@ -74,7 +74,7 @@ public class GSpreadInsertQuery extends InsertQuery {
         WorksheetEntry currentWorkSheet =
                 TDriverUtil.getCurrentWorkSheetEntry(connection, getTargetTableName());
         if (currentWorkSheet == null) {
-            throw new SQLException("WorkSheet '" + getTargetTableName() + "' does not exist");
+            throw new SQLException("表名为: '" + getTargetTableName() + "'不存在");
         }
 
         ListFeed listFeed = TDriverUtil.getListFeed(connection, currentWorkSheet);

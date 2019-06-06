@@ -74,7 +74,7 @@ public class TDriver implements Driver {
     @SuppressWarnings("unchecked")
     private Properties getProperties(String url, Properties info) throws SQLException {
         if (url == null) {
-            throw new SQLException("JDBC URL cannot be NULL");
+            throw new SQLException("JDBC URL 不能为空");
         }
         Properties props = new Properties();
         for (Enumeration<String> e = (Enumeration<String>) info.propertyNames();
@@ -89,16 +89,16 @@ public class TDriver implements Driver {
         StringBuilder token = new StringBuilder();
         pos = getNextTokenPos(url, pos, token);
         if (!Constants.JDBC_PREFIX.equalsIgnoreCase(token.toString())) {
-            throw new SQLException("Malformed URL");
+            throw new SQLException("格式错误的URL");
         }
         pos = getNextTokenPos(url, pos, token);
         if (!Constants.PROVIDER_PREFIX.equalsIgnoreCase(token.toString())) {
-            throw new SQLException("Malformed URL");
+            throw new SQLException("格式错误的URL");
         }
         pos = getNextTokenPos(url, pos, token);
         if (!Constants.EXCEL_PREFIX.equalsIgnoreCase(token.toString()) &&
                 !Constants.GSPRED_PREFIX.equalsIgnoreCase(token.toString())) {
-            throw new SQLException("Malformed URL");
+            throw new SQLException("格式错误的URL");
         }
         props.setProperty(Constants.DRIVER_PROPERTIES.DATA_SOURCE_TYPE, token.toString());
         pos = getNextTokenPos(url, pos, token);
@@ -107,7 +107,7 @@ public class TDriver implements Driver {
             pos = getNextTokenPos(url, pos, token);
             String propValue = token.toString();
             if (propValue == null || "".equals(propValue)) {
-                throw new SQLException("File path attribute is missing");
+                throw new SQLException("缺少文件路径属性");
             }
             props.setProperty(Constants.DRIVER_PROPERTIES.FILE_PATH, propValue);
         }
@@ -119,7 +119,7 @@ public class TDriver implements Driver {
                 pos = getNextTokenPos(url, pos, token);
                 String propValue = token.toString();
                 if (propValue == null || "".equals(propValue)) {
-                    throw new SQLException("Sheet name attribute is missing");
+                    throw new SQLException("缺少工作表名称属性");
                 }
                 props.setProperty(Constants.DRIVER_PROPERTIES.SHEET_NAME, propValue);
             }
@@ -161,13 +161,13 @@ public class TDriver implements Driver {
         if (hasHeader != null && !Boolean.parseBoolean(hasHeader)) {
             String maxColumns = (String) optionalProps.get(Constants.DRIVER_PROPERTIES.MAX_COLUMNS);
             if (maxColumns == null) {
-                throw new SQLException("'hasHeader' attribute should be accompanied by the " +
-                        "attribute 'maxColumns'");
+                throw new SQLException("'hasHeader'属性应与 " +
+                        " 'maxColumns' 一起使用");
             }
             try {
                 Integer.parseInt(maxColumns);
             } catch (Exception e) {
-                throw new SQLException("Invalid value specified for the attribute 'maxColumns'", e);
+                throw new SQLException("为属性'maxColumns'指定的值无效", e);
             }
         }
     }
@@ -218,7 +218,7 @@ public class TDriver implements Driver {
     }
 
     public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        throw new SQLFeatureNotSupportedException("This method is not supported");
+        throw new SQLFeatureNotSupportedException("不支持此方法");
     }
 
 }

@@ -132,7 +132,7 @@ public class ExcelDataReader extends AbstractFixedDataReader {
                                     cell.getColumnIndex() + 1));
                             break;
                         default:
-                            throw new SQLException("Invalid column type");
+                            throw new SQLException("列类型无效");
                     }
                 }
             }

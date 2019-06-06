@@ -42,7 +42,7 @@ public class TCustomConnection extends TConnection {
 		super(props);
 		this.dataSource = (CustomDataSource) props.get(CUSTOM_DATASOURCE);
 		if (this.dataSource == null) {
-			throw new SQLException("Custom data source object not available in properties");
+			throw new SQLException("自定义数据源对象在属性中不可用");
 		}
 	}
 	
@@ -65,7 +65,7 @@ public class TCustomConnection extends TConnection {
 
     @Override
     public CallableStatement prepareCall(String sql) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override
@@ -77,7 +77,7 @@ public class TCustomConnection extends TConnection {
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType,
                                          int resultSetConcurrency) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override
@@ -90,7 +90,7 @@ public class TCustomConnection extends TConnection {
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency,
                                          int resultSetHoldability) throws SQLException {
-        throw new SQLFeatureNotSupportedException("CallableStatements are not supported");  
+        throw new SQLFeatureNotSupportedException("不支持CallableStatements");
     }
 
     @Override

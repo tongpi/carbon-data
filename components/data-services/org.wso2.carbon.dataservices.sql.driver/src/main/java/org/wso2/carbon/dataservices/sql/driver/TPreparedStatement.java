@@ -88,7 +88,7 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
     private ParamInfo getParameter(int parameterIndex) throws SQLException {
         determineConnectionState();
         if (parameterIndex > this.getParameters().length || parameterIndex < 0) {
-            throw new SQLException("Invalid parameter index '" + parameterIndex + "'");
+            throw new SQLException("无效的参数索引 '" + parameterIndex + "'");
         }
         return parameters[parameterIndex - 1];
     }
@@ -112,7 +112,7 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
     }
 
     public void setByte(int parameterIndex, byte x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'byte' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型'byte'");
     }
 
     public void setShort(int parameterIndex, short x) throws SQLException {
@@ -144,33 +144,33 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
     }
 
     public void setBytes(int parameterIndex, byte[] x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'byte[]' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型'byte[]'");
     }
 
     public void setDate(int parameterIndex, Date x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Date' is not supported");
+        throw new SQLFeatureNotSupportedException(" 不支持数据类型'Date'");
     }
 
     public void setTime(int parameterIndex, Time x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Time' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Time' ");
     }
 
     public void setTimestamp(int parameterIndex, Timestamp x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'TimeStamp' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'TimeStamp'");
     }
 
     public void setAsciiStream(int parameterIndex, InputStream x, int length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setUnicodeStream(int parameterIndex, InputStream x,
                                  int length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setBinaryStream(int parameterIndex, InputStream x,
                                 int length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void clearParameters() throws SQLException {
@@ -185,28 +185,28 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
     }
 
     public void addBatch() throws SQLException {
-        throw new SQLFeatureNotSupportedException("Batch addition is not supported");
+        throw new SQLFeatureNotSupportedException("不支持批量添加");
     }
 
     public void setCharacterStream(int parameterIndex, Reader reader,
                                    int length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setRef(int parameterIndex, Ref x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Ref' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Ref' ");
     }
 
     public void setBlob(int parameterIndex, Blob x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Blob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Blob' ");
     }
 
     public void setClob(int parameterIndex, Clob x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Clob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Clob' ");
     }
 
     public void setArray(int parameterIndex, Array x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Array' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Array' ");
     }
 
     public ResultSetMetaData getMetaData() throws SQLException {
@@ -214,23 +214,23 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
     }
 
     public void setDate(int parameterIndex, Date x, Calendar cal) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Date' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Date' ");
     }
 
     public void setTime(int parameterIndex, Time x, Calendar cal) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Time' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Time' ");
     }
 
     public void setTimestamp(int parameterIndex, Timestamp x, Calendar cal) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'TimeStamp' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'TimeStamp' ");
     }
 
     public void setNull(int parameterIndex, int sqlType, String typeName) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Null' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Null' ");
     }
 
     public void setURL(int parameterIndex, URL x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'URL' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'URL' ");
     }
 
     public ParameterMetaData getParameterMetaData() throws SQLException {
@@ -243,34 +243,34 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
     }
 
     public void setNString(int parameterIndex, String value) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'NString' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'NString'");
     }
 
     public void setNCharacterStream(int parameterIndex, Reader value,
                                     long length) throws SQLException {
 
-        throw new SQLFeatureNotSupportedException("Data type 'NCharacterStream' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'NCharacterStream' ");
     }
 
     public void setNClob(int parameterIndex, NClob value) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'NClob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'NClob' ");
     }
 
     public void setClob(int parameterIndex, Reader reader, long length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Clob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Clob' ");
     }
 
     public void setBlob(int parameterIndex, InputStream inputStream,
                         long length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Blob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Blob' ");
     }
 
     public void setNClob(int parameterIndex, Reader reader, long length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'NClob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'NClob'");
     }
 
     public void setSQLXML(int parameterIndex, SQLXML xmlObject) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'SQLXML' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'SQLXML' ");
     }
 
     public void setObject(int parameterIndex, Object x, int targetSqlType,
@@ -280,50 +280,50 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
 
     public void setAsciiStream(int parameterIndex, InputStream x,
                                long length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setBinaryStream(int parameterIndex, InputStream x,
                                 long length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setCharacterStream(int parameterIndex, Reader reader,
                                    long length) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setAsciiStream(int parameterIndex, InputStream x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setBinaryStream(int parameterIndex, InputStream x) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setCharacterStream(int parameterIndex, Reader reader) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setNCharacterStream(int parameterIndex, Reader value) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void setClob(int parameterIndex, Reader reader) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Clob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Clob' ");
     }
 
     public void setBlob(int parameterIndex, InputStream inputStream) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'Blob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'Blob' ");
     }
 
     public void setNClob(int parameterIndex, Reader reader) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type 'NClob' is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型 'NClob' ");
     }
 
     public synchronized void close() throws SQLException {
         if (this.isClosed()) {
-            throw new SQLException("Statement has already been closed");
+            throw new SQLException("声明已经结束");
         }
         isClosed = true;
     }
@@ -354,7 +354,7 @@ public class TPreparedStatement extends TStatement implements PreparedStatement 
 
     private void determineConnectionState() throws SQLException {
         if (isClosed()) {
-            throw new SQLException("Connection has already been closed");
+            throw new SQLException("连接已关闭");
         }
     }
 

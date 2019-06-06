@@ -69,7 +69,7 @@ public class GSpreadDeleteQuery extends DeleteQuery {
                 }
             }
             if (currentWorksheet == null) {
-                throw new SQLException("Sheet '" + getTargetTableName() + "' does not exist");
+                throw new SQLException("表: '" + getTargetTableName() + "'不存在");
             }
             ListFeed listFeed =
                     connection.getFeedProcessor().getFeed(currentWorksheet.getListFeedUrl(), ListFeed.class);
@@ -80,9 +80,9 @@ public class GSpreadDeleteQuery extends DeleteQuery {
                 count++;
             }
         } catch (IOException e) {
-            throw new SQLException("Error occurred while deleting the row", e);
+            throw new SQLException("删除行时出错", e);
         } catch (ServiceException e) {
-            throw new SQLException("Error occurred while deleting the row", e);
+            throw new SQLException("删除行时出错", e);
         }
         return count;
     }

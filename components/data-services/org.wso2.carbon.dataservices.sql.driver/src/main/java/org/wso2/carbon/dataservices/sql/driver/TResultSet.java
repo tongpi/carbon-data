@@ -87,7 +87,7 @@ public class TResultSet implements ResultSet {
 
     public byte getByte(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public short getShort(int columnIndex) throws SQLException {
@@ -124,32 +124,32 @@ public class TResultSet implements ResultSet {
 
     public byte[] getBytes(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Date getDate(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Time getTime(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Timestamp getTimestamp(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public InputStream getAsciiStream(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public InputStream getUnicodeStream(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public InputStream getBinaryStream(int columnIndex) throws SQLException {
@@ -170,7 +170,7 @@ public class TResultSet implements ResultSet {
 
     public byte getByte(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public short getShort(String columnLabel) throws SQLException {
@@ -208,62 +208,62 @@ public class TResultSet implements ResultSet {
         int columnIndex = findColumn(columnLabel);
         DataCell cell = getCurrentRow().getCells().get(columnIndex);
         if (cell == null) {
-            throw new SQLException("Error occurred while extracting the value");
+            throw new SQLException("提取值时出错");
         }
         if (cell.getCellType() != Cell.CELL_TYPE_NUMERIC) {
-            throw new SQLException("Value cannot be cast to a string");
+            throw new SQLException("值不能转换为字符串");
         }
         return BigDecimal.valueOf(Long.parseLong(cell.getCellValue().toString()));
     }
 
     public byte[] getBytes(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Date getDate(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Time getTime(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Timestamp getTimestamp(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public InputStream getAsciiStream(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public InputStream getUnicodeStream(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public InputStream getBinaryStream(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public SQLWarning getWarnings() throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void clearWarnings() throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public String getCursorName() throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public ResultSetMetaData getMetaData() throws SQLException {
@@ -275,7 +275,7 @@ public class TResultSet implements ResultSet {
         determineResultSetState();
         DataCell cell = getCurrentRow().getCells().get(columnIndex);
         if (cell == null) {
-            throw new SQLException("Error occurred while extracting the value");
+            throw new SQLException("提取值时出错");
         }
         return cell.getCellValue();
     }
@@ -284,7 +284,7 @@ public class TResultSet implements ResultSet {
         int columnIndex = findColumn(columnLabel);
         DataCell cell = getCurrentRow().getCells().get(columnIndex);
         if (cell == null) {
-            throw new SQLException("Error occurred while extracting the value");
+            throw new SQLException("提取值时出错");
         }
         return cell.getCellValue();
     }
@@ -293,29 +293,29 @@ public class TResultSet implements ResultSet {
         determineResultSetState();
         Object o = getData().getHeader(columnLabel);
         if (o == null) {
-            throw new SQLException("Invalid column name '" + columnLabel + "'");
+            throw new SQLException("列名称无效 '" + columnLabel + "'");
         }
         return Integer.parseInt(o.toString());
     }
 
     public Reader getCharacterStream(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Reader getCharacterStream(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public BigDecimal getBigDecimal(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public BigDecimal getBigDecimal(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public boolean isBeforeFirst() throws SQLException {
@@ -421,195 +421,195 @@ public class TResultSet implements ResultSet {
 
     public void updateNull(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBoolean(int columnIndex, boolean x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateByte(int columnIndex, byte x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateShort(int columnIndex, short x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateInt(int columnIndex, int x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateLong(int columnIndex, long x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateFloat(int columnIndex, float x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateDouble(int columnIndex, double x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBigDecimal(int columnIndex, BigDecimal x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateString(int columnIndex, String x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBytes(int columnIndex, byte[] x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateDate(int columnIndex, Date x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateTime(int columnIndex, Time x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateTimestamp(int columnIndex, Timestamp x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateAsciiStream(int columnIndex, InputStream x, int length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBinaryStream(int columnIndex, InputStream x, int length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateCharacterStream(int columnIndex, Reader x, int length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateObject(int columnIndex, Object x, int scaleOrLength) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateObject(int columnIndex, Object x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNull(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBoolean(String columnLabel, boolean x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateByte(String columnLabel, byte x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateShort(String columnLabel, short x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateInt(String columnLabel, int x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateLong(String columnLabel, long x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateFloat(String columnLabel, float x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateDouble(String columnLabel, double x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBigDecimal(String columnLabel, BigDecimal x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateString(String columnLabel, String x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBytes(String columnLabel, byte[] x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateDate(String columnLabel, Date x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateTime(String columnLabel, Time x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateTimestamp(String columnLabel, Timestamp x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateAsciiStream(String columnLabel, InputStream x,
                                   int length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBinaryStream(String columnLabel, InputStream x,
                                    int length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateCharacterStream(String columnLabel, Reader reader,
                                       int length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateObject(String columnLabel, Object x, int scaleOrLength) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateObject(String columnLabel, Object x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void insertRow() throws SQLException {
@@ -647,165 +647,165 @@ public class TResultSet implements ResultSet {
 
     public Object getObject(int columnIndex, Map<String, Class<?>> map) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public Ref getRef(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Blob getBlob(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Clob getClob(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Array getArray(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Object getObject(String columnLabel, Map<String, Class<?>> map) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public <T> T getObject(String columnLabel, Class<T> type) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public <T> T getObject(int columnIndex, Class<T> type) throws SQLException {
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Ref getRef(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Blob getBlob(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Clob getClob(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Array getArray(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Date getDate(int columnIndex, Calendar cal) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Date getDate(String columnLabel, Calendar cal) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Time getTime(int columnIndex, Calendar cal) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Time getTime(String columnLabel, Calendar cal) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Timestamp getTimestamp(int columnIndex, Calendar cal) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public Timestamp getTimestamp(String columnLabel, Calendar cal) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public URL getURL(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public URL getURL(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void updateRef(int columnIndex, Ref x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateRef(String columnLabel, Ref x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBlob(int columnIndex, Blob x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBlob(String columnLabel, Blob x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateClob(int columnIndex, Clob x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateClob(String columnLabel, Clob x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateArray(int columnIndex, Array x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateArray(String columnLabel, Array x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public RowId getRowId(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public RowId getRowId(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateRowId(int columnIndex, RowId x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateRowId(String columnLabel, RowId x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public int getHoldability() throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public boolean isClosed() throws SQLException {
@@ -814,222 +814,222 @@ public class TResultSet implements ResultSet {
 
     public void updateNString(int columnIndex, String nString) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNString(String columnLabel, String nString) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNClob(int columnIndex, NClob nClob) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNClob(String columnLabel, NClob nClob) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public NClob getNClob(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public NClob getNClob(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public SQLXML getSQLXML(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public SQLXML getSQLXML(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Data type is not supported");
+        throw new SQLFeatureNotSupportedException("不支持数据类型");
     }
 
     public void updateSQLXML(int columnIndex, SQLXML xmlObject) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateSQLXML(String columnLabel, SQLXML xmlObject) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public String getNString(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public String getNString(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public Reader getNCharacterStream(int columnIndex) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public Reader getNCharacterStream(String columnLabel) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNCharacterStream(int columnIndex, Reader x, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNCharacterStream(String columnLabel, Reader reader, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateAsciiStream(int columnIndex, InputStream x, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBinaryStream(int columnIndex, InputStream x, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateCharacterStream(int columnIndex, Reader x, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateAsciiStream(String columnLabel, InputStream x, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBinaryStream(String columnLabel, InputStream x, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateCharacterStream(String columnLabel, Reader reader, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBlob(int columnIndex, InputStream inputStream, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBlob(String columnLabel, InputStream inputStream, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateClob(int columnIndex, Reader reader, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateClob(String columnLabel, Reader reader, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNClob(int columnIndex, Reader reader, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNClob(String columnLabel, Reader reader, long length) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNCharacterStream(int columnIndex, Reader x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNCharacterStream(String columnLabel, Reader reader) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateAsciiStream(int columnIndex, InputStream x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBinaryStream(int columnIndex, InputStream x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateCharacterStream(int columnIndex, Reader x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateAsciiStream(String columnLabel, InputStream x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBinaryStream(String columnLabel, InputStream x) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateCharacterStream(String columnLabel, Reader reader) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBlob(int columnIndex, InputStream inputStream) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateBlob(String columnLabel, InputStream inputStream) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateClob(int columnIndex, Reader reader) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateClob(String columnLabel, Reader reader) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNClob(int columnIndex, Reader reader) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public void updateNClob(String columnLabel, Reader reader) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public <T> T unwrap(Class<T> iface) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public boolean isWrapperFor(Class<?> iface) throws SQLException {
         determineResultSetState();
-        throw new SQLFeatureNotSupportedException("Operation is not supported");
+        throw new SQLFeatureNotSupportedException("不支持操作");
     }
 
     public int getCurrentRowPosition() {

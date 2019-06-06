@@ -57,16 +57,16 @@ public class GSpreadDropQuery extends DropQuery {
                 TDriverUtil.getCurrentWorkSheetEntry((TGSpreadConnection) getConnection(), this.getTableName());
 
         if (currentWorkSheet == null) {
-            throw new SQLException("WorkSheet named '" + this.getTableName() + "' does not exist");
+            throw new SQLException("工作表:'" + this.getTableName() + "' 不存在");
         }
 
         try {
             currentWorkSheet.delete();
         } catch (IOException e) {
-            throw new SQLException("Error occurred while deleting the work sheet entry '" +
+            throw new SQLException("删除工作表条目时出错 '" +
                     this.getTableName() + "'", e);
         } catch (ServiceException e) {
-            throw new SQLException("Error occurred while deleting the work sheet entry '" +
+            throw new SQLException("删除工作表条目时出错 '" +
                     this.getTableName() + "'", e);
         }
     }

@@ -40,12 +40,12 @@ public class TDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public String getURL() throws SQLException {
-        throw new SQLFeatureNotSupportedException("Functionality is not supported");  
+        throw new SQLFeatureNotSupportedException("Functionality is not supported");
     }
 
     @Override
     public String getUserName() throws SQLException {
-        throw new SQLFeatureNotSupportedException("Functionality is not supported");  
+        throw new SQLFeatureNotSupportedException("Functionality is not supported");
     }
 
     @Override
@@ -75,22 +75,22 @@ public class TDatabaseMetaData implements DatabaseMetaData {
 
     @Override
     public String getDatabaseProductName() throws SQLException {
-        throw new SQLFeatureNotSupportedException("Functionality is not supported");  
+        throw new SQLFeatureNotSupportedException("Functionality is not supported");
     }
 
     @Override
     public String getDatabaseProductVersion() throws SQLException {
-        throw new SQLFeatureNotSupportedException("Functionality is not supported");  
+        throw new SQLFeatureNotSupportedException("Functionality is not supported");
     }
 
     @Override
     public String getDriverName() throws SQLException {
-        throw new SQLFeatureNotSupportedException("Functionality is not supported");  
+        throw new SQLFeatureNotSupportedException("Functionality is not supported");
     }
 
     @Override
     public String getDriverVersion() throws SQLException {
-        throw new SQLFeatureNotSupportedException("Functionality is not supported");  
+        throw new SQLFeatureNotSupportedException("Functionality is not supported");
     }
 
     @Override

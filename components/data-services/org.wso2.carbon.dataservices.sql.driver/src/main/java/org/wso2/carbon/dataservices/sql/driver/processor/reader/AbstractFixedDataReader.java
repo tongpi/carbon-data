@@ -49,7 +49,7 @@ public abstract class AbstractFixedDataReader implements DataReader {
     public DataTable getDataTable(String name) throws SQLException {
         DataTable result = this.getData().get(name);
         if (result == null) {
-            throw new SQLException("Sheet '" + name + "' does not exist");
+            throw new SQLException("表 '" + name + "' 不存在");
         }
         return result;
     }

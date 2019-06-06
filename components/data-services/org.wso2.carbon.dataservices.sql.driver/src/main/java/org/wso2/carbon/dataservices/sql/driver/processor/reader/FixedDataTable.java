@@ -143,7 +143,7 @@ public class FixedDataTable extends DataTable {
 		} else if (Constants.LESS_THAN.equals(operator)) {
 			this.handleLessThanCondition(dataRows, cellId, value, operator);
 		} else {
-			throw new RuntimeException("Unsupported operator: " + operator);
+			throw new RuntimeException("不支持的运算符： " + operator);
 		}
 		return dataRows;
 	}
